@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Status extends Model
 {
-    protected $table = 'payment_status';
-    protected $fillable = ['status'];
+    protected $table = 'status';
+    protected $fillable = ['name'];
 }
