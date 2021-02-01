@@ -19,6 +19,8 @@ class User extends Authenticatable
        'roles_id', 'name', 'email', 'password', 'dob', 'address', 'user_types_id', 'channels_id', 'status_id',
     ];
 
+  
+
     /**
      * The attributes that should be hidden for arrays.
      *
