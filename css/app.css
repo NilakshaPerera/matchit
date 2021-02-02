@@ -10944,3 +10944,44 @@ a.text-dark:focus {
   }
 }
 
+.page-home .event-item {
+  box-shadow: 0px 0px 6px 0px #e8e8e8;
+  margin-bottom: 15px;
+  margin-top: 10px;
+  border-radius: 15px;
+  border: unset !important;
+}
+
+.page-home .event-item .card-img-top {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 200px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.page-home .event-item .card-body {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.page-home .event-item .card-body .card-title {
+  margin-bottom: 0rem;
+  font-weight: 600;
+}
+
+.page-home .event-item .card-body .card-text {
+  margin-bottom: 0rem;
+  color: #858a90;
+}
+
+.page-home .event-item .card-body .card-info {
+  margin-bottom: 1rem;
+  color: #35244d;
+}
+
+.page-home .event-item .card-body .card-action {
+  margin-bottom: 0rem;
+}
+
