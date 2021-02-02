@@ -1,15 +1,14 @@
 <?php
-
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Status extends Model
+class Role extends Model
 {
-    protected $table = 'status';
+    protected $table = 'roles';
     protected $fillable = ['name'];
 
     public function user(){
-        return $this->hasOne('App\User', 'status_id');
+        return $this->hasOne('App\User', 'roles_id');
     }
 }
