@@ -8,4 +8,8 @@ class Channel extends Model
 {
     protected $table = 'channels';
     protected $fillable = ['name']; 
+
+    public function user(){
+        return $this->hasOne('App\User', 'channels_id');
+    }
 }
