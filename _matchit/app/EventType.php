@@ -10,6 +10,6 @@ class EventType extends Model
     protected $fillable = ['name']; 
 
     public function event(){
-        return $this->belongsTo('App\Event','event_types_id');
+        return $this->hasOne('App\Event','event_types_id');
     }
 }
