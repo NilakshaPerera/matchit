@@ -52,4 +52,14 @@ class User extends Authenticatable
     public function status(){
         return $this->belongsTo('App\Status', 'status_id');
     }
+    public function userhashobby(){
+        return $this->hasMany('App\UserHasHobby', 'users_id');
+    }
+    public function userhasbooking(){
+        return $this->hasMany('App\UserHasBooking', 'users_id');
+    }
+    public function userhasreview(){
+        return $this->hasMany('App\UserHasReview', 'users_id');
+    }
+   
 }
