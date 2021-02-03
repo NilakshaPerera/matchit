@@ -14,7 +14,7 @@
                 <div class="col-md-4">
                     <div class="card event-item" style="">
                         <a href="#!">
-                            <div class="card-img-top" style="background-image: url('{{url('/images/1.jpeg')}}');">
+                            <div class="card-img-top" style="background-image: url('{{url('/assets_app/images/1.jpeg')}}');">
                             </div>
                         </a>
                         <div class="card-body">
