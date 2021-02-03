@@ -61,5 +61,8 @@ class User extends Authenticatable
     public function userhasreview(){
         return $this->hasMany('App\UserHasReview', 'users_id');
     }
+    public function usershaspersonalitydetail(){
+        return $this->hasMany('App\UsersHasPersonalityDetail', 'users_id');
+    }
    
 }
