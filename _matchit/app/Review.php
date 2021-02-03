@@ -8,4 +8,8 @@ class Review extends Model
 {
     protected $table = 'reviews';
     protected $fillable = ['name'];
+
+    public function userhasreview(){
+        return $this->hasMany('App\UserHasReview', 'reviews_id');
+    }
 }
