@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-class Userscontroller extends Controller
+
+class EventController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -22,6 +23,7 @@ class Userscontroller extends Controller
      */
     public function index()
     {
-      
+        return view('admin.events.index');
     }
+
 }
