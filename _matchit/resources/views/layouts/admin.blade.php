@@ -153,8 +153,6 @@
 
                 @yield('content')
 
-
-
 			</div>
 
 			<!-- Footer Mobile -->
