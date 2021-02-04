@@ -17,6 +17,9 @@
 	<link href="{{ asset('assets_theme/common/css/colors.min.css') }}" rel="stylesheet" type="text/css">
 	<!-- /global stylesheets -->
 
+	
+	@yield('css')
+
 	<!-- Core JS files -->
 	<script src="{{ asset('assets_theme/js/main/jquery.min.js') }}"></script>
 	<script src="{{ asset('assets_theme/js/main/bootstrap.bundle.min.js') }}"></script>
@@ -24,8 +27,14 @@
 	<!-- /core JS files -->
 
 	<!-- Theme JS files -->
+
+	@yield('theme-script')
+
 	<script src="{{ asset('assets_theme/common/js/app.js') }}"></script>
 	<!-- /theme JS files -->
+
+	@yield('script')
+	
 
 </head>
 
