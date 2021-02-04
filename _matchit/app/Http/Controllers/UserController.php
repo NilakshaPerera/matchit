@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-class Users_typescontroller extends Controller
+use App\Providers\AppServiceProvider;
+use Auth;
+
+class Usercontroller extends Controller
 {
     /**
      * Create a new controller instance.
@@ -22,6 +25,10 @@ class Users_typescontroller extends Controller
      */
     public function index()
     {
-      
+        if( Auth::user()->roles_id == AppServiceProvider::Client ){
+            return view('site.user');
+        }else{
+            return view('admin.users.user');
+        }
     }
 }

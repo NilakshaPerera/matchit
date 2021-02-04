@@ -17,6 +17,9 @@
 	<link href="{{ asset('assets_theme/common/css/colors.min.css') }}" rel="stylesheet" type="text/css">
 	<!-- /global stylesheets -->
 
+	
+	@yield('css')
+
 	<!-- Core JS files -->
 	<script src="{{ asset('assets_theme/js/main/jquery.min.js') }}"></script>
 	<script src="{{ asset('assets_theme/js/main/bootstrap.bundle.min.js') }}"></script>
@@ -24,8 +27,14 @@
 	<!-- /core JS files -->
 
 	<!-- Theme JS files -->
+
+	@yield('theme-script')
+
 	<script src="{{ asset('assets_theme/common/js/app.js') }}"></script>
 	<!-- /theme JS files -->
+
+	@yield('script')
+	
 
 </head>
 
@@ -33,7 +42,7 @@
 	<!-- Main navbar -->
 	<div class="navbar navbar-expand-md navbar-dark">
 		<div class="navbar-brand">
-			<a href="index.html" class="d-inline-block">
+			<a href="{{ url('/') }}" class="d-inline-block">
 				<img src="{{ asset('assets_theme/images/logo_light.png') }}" alt="">
 			</a>
 		</div>
@@ -96,9 +105,9 @@
 								<a href="#"><img src="{{ asset('assets_theme/images/placeholders/placeholder.jpg') }}" width="38" height="38" class="rounded-circle" alt=""></a>
 							</div>
 							<div class="media-body">
-								<div class="media-title font-weight-semibold">Victoria Baker</div>
+								<div class="media-title font-weight-semibold">{{ Auth::user()->name }}</div>
 								<div class="font-size-xs opacity-50">
-									<i class="icon-pin font-size-sm"></i> &nbsp;Santa Ana, CA
+									&nbsp;{{ Auth::user()->role->name }}
 								</div>
 							</div>
 						</div>
@@ -112,15 +121,62 @@
 					<ul class="nav nav-sidebar" data-nav-type="accordion">
 						<!-- Main -->
                         <li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Main</div> <i class="icon-menu" title="Main"></i></li>
-                        
+                    
+
 						<li class="nav-item nav-item-submenu nav-item-expanded nav-item-open">
-							<a href="#" class="nav-link"><i class="icon-copy"></i> <span>Layouts</span></a>
+							<a href="#" class="nav-link"><i class="icon-copy"></i> <span>System</span></a>
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-								<li class="nav-item"><a href="{{ url('/home') }}" class="nav-link ">Default layout</a></li>
-								<li class="nav-item"><a href="{{ url('/') }}" class="nav-link ">Home</a></li>
+								<li class="nav-item"><a href="" class="nav-link ">Client Matches</a></li>
+								<li class="nav-item"><a href="" class="nav-link ">Member Fees</a></li>
 						    </ul>
 						</li>
 
+						<li class="nav-item nav-item-submenu nav-item-expanded nav-item-open">
+							<a href="#" class="nav-link"><i class="icon-copy"></i> <span>Users</span></a>
+							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
+								<li class="nav-item"><a href="" class="nav-link ">Clients</a></li>
+								<li class="nav-item"><a href="" class="nav-link ">Create Clients</a></li>
+								<li class="nav-item"><a href="" class="nav-link ">Update Clients</a></li>
+						    </ul>
+						</li>
+
+						<li class="nav-item nav-item-submenu nav-item-expanded nav-item-open">
+							<a href="#" class="nav-link"><i class="icon-copy"></i> <span>Event Bookings</span></a>
+							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
+								<li class="nav-item"><a href="" class="nav-link ">Accept Bookings</a></li>
+								<li class="nav-item"><a href="" class="nav-link ">Accept Payments</a></li>
+						    </ul>
+						</li>
+
+						<li class="nav-item nav-item-submenu nav-item-expanded nav-item-open">
+							<a href="#" class="nav-link"><i class="icon-copy"></i> <span>Event Bookings</span></a>
+							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
+								<li class="nav-item"><a href="" class="nav-link ">Accept Bookings</a></li>
+								<li class="nav-item"><a href="" class="nav-link ">Accept Payments</a></li>
+						    </ul>
+						</li>
+
+						<li class="nav-item nav-item-submenu nav-item-expanded nav-item-open">
+							<a href="#" class="nav-link"><i class="icon-copy"></i> <span>Event Bookings</span></a>
+							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
+								<li class="nav-item"><a href="" class="nav-link ">Accept Bookings</a></li>
+								<li class="nav-item"><a href="" class="nav-link ">Accept Payments</a></li>
+						    </ul>
+						</li>
+
+						<li class="nav-item nav-item-submenu nav-item-expanded nav-item-open">
+							<a href="#" class="nav-link"><i class="icon-copy"></i> <span>Reports</span></a>
+							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
+								<li class="nav-item"><a href="" class="nav-link ">Generate</a></li>
+						    </ul>
+						</li>
+
+						<li class="nav-item nav-item-submenu nav-item-expanded nav-item-open">
+							<a href="#" class="nav-link"><i class="icon-copy"></i> <span>Events</span></a>
+							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
+								<li class="nav-item"><a href="{{ route('events.index') }}" class="nav-link ">Create</a></li>
+						    </ul>
+						</li>
 
 					</ul>
 				</div>
@@ -152,8 +208,6 @@
 			<div class="content">
 
                 @yield('content')
-
-
 
 			</div>
 

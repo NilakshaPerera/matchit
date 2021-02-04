@@ -3,10 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
-use App\Role;
-
-class HomeController extends Controller
+class PersonalityDetailController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -25,11 +22,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        $roles = Role::all();
-
-        return view('home')
-            ->withUsers($users)
-            ->withRoles($roles);
+      
     }
 }

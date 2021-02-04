@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-class Personality_detailscontroller extends Controller
+class UserTypesController extends Controller
 {
     /**
      * Create a new controller instance.

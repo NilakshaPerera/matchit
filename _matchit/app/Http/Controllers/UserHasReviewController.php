@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class UserHasReview extends Controller
+class UserHasReviewController extends Controller
 {
     //
 }
