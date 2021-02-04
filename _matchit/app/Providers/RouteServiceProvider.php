@@ -23,6 +23,11 @@ class RouteServiceProvider extends ServiceProvider
      */
     public const HOME = '/home';
 
+    /**
+     * path to user route for authenticated users
+     * 
+     * @var string 
+     */
     public const USER = '/user';
 
     /**

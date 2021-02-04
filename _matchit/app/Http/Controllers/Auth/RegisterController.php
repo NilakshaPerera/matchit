@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Providers\AppServiceProvider;
 use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -29,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = RouteServiceProvider::USER;
 
     /**
      * Create a new controller instance.
@@ -67,6 +68,7 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'roles_id' => AppServiceProvider::Client,
             'password' => Hash::make($data['password']),
         ]);
     }
