@@ -17,6 +17,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Route::get('/user' , 'Usercontroller@index')->name('user');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin/events', 'EventController@index')->name('events.index');
+Route::post('/admin/events/create', 'EventController@store')->name('events.create');
+
+Auth::routes();
