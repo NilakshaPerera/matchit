@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-class Users_typescontroller extends Controller
+class BookingController extends Controller
 {
     /**
      * Create a new controller instance.

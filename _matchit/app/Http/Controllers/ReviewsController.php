@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-class Reviewscontroller extends Controller
+class ReviewsController extends Controller
 {
     /**
      * Create a new controller instance.
