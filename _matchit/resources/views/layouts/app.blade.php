@@ -82,7 +82,7 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('assets_app/js/app.js') }}" defer></script>
+    <script src="{{ asset('assets_app/js/app.js') }}"></script>
 
     @yield('script')
 

@@ -3,6 +3,10 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
+use Auth;
+use Illuminate\Support\Facades\Log;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,12 +28,20 @@ class AppServiceProvider extends ServiceProvider
     }
 
     /**
-     * Bootstrap any application services.
+     * Updated By : Nilaksha
+     * Updated On : 5/2/2021
+     * Summary : Add new rule to validate password
      *
      * @return void
      */
     public function boot()
     {
-        //
+        Validator::extend('userpassword', function ($attribute, $value, $parameters) {
+            //$parameters[0]
+            if (!Hash::check($value, Auth::user()->password)) {
+                return false;
+            }
+            return true;
+        });
     }
 }
