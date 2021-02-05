@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Role;
 use Illuminate\Http\Request;
 use App\Providers\AppServiceProvider;
 use Auth;
@@ -30,5 +30,11 @@ class Usercontroller extends Controller
         }else{
             return view('admin.users.user');
         }
+
+        $roles = role::all();
+        
+        return view('admin.client.index')
+            ->withRoles($roles);
+            
     }
 }
