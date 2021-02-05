@@ -64,8 +64,6 @@
                       </div>
 
 
-
-
                       <div class="form-row">
                         <div class="form-group col-md-6">
                           <label for="email">User Type</label>
@@ -89,7 +87,7 @@
 
                         <div class="form-group col-md-6">
                           <label for="phone">Address</label>
-                          <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ $user->phone }}" placeholder="{{ __('Address') }}" required autocomplete="address" autofocus>
+                          <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ $user->address }}" placeholder="{{ __('Address') }}" required autocomplete="address" autofocus>
                             @error('address')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
