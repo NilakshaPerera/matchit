@@ -420,7 +420,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('personality_details')->insert([
-            ['id' => '1', 'name' => '', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['id' => '1', 'name' => 'pd 1', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['id' => '2', 'name' => 'pd 2', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['id' => '3', 'name' => 'pd 3', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
         ]);
     }
 }
