@@ -128,6 +128,8 @@ class Usercontroller extends Controller
             ]);
             }
 
+            
+
             UsersHasPersonalityDetail::where('users_id' , Auth::user()->id)->delete();
             foreach ($request['personality-details'] as $personDetail) {
                 UsersHasPersonalityDetail::create([
