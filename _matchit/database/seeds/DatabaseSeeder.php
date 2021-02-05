@@ -27,8 +27,8 @@ class DatabaseSeeder extends Seeder
         ]);
         
         DB::table('user_types')->insert([
-            ['id' => '1', 'name' => 'Local', 'fee' => '12' , 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['id' => '2', 'name' => 'Remote', 'fee' => '5' , 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['id' => '1', 'name' => 'Within Sussex', 'fee' => '12' , 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['id' => '2', 'name' => 'Out of Region', 'fee' => '5' , 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
         ]);
 
         DB::table('channels')->insert([
