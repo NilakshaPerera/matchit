@@ -19,6 +19,7 @@ Route::get('/', function () {
 
 Route::get('/user' , 'Usercontroller@index')->name('user');
 Route::post('/user/update' , 'Usercontroller@update')->name('user.update');
+Route::post('/user/store' , 'Usercontroller@store')->name('user.store');
 
 Route::get('/admin/events', 'EventController@index')->name('events.index');
 Route::post('/admin/events/create', 'EventController@store')->name('events.create');

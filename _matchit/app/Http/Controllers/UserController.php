@@ -13,7 +13,14 @@ use App\User;
 use App\UserHasHobby;
 use App\UsersHasPersonalityDetail;
 use Auth;
+
+use App\Channel;
+use App\Status;
+use App\User;
+use Illuminate\Support\Facades\Hash;
+
 use Illuminate\Support\Facades\DB;
+
 
 class Usercontroller extends Controller
 {
@@ -42,14 +49,90 @@ class Usercontroller extends Controller
                 ->withPersonalityDetails(PersonalityDetail::all())
                 ->withUserTypes(UserType::all());
         } else {
-            return view('admin.users.user');
+           
+            return view('admin.client.index')
+                ->withRoles(Role::all())
+                ->withUserTypes(UserType::all())
+                ->withChannels(Channel::all())
+                ->withStatus(Status::all());
         }
 
+
+        
+    }
+   
+    /**
+     * Created At : 6/2/2021
+     * Created By : Nivetha 
+     * Summary : shows store form for clients
+     * @param Request $request
+     * @return void
+     */
+    public function store(Request $request)
+    {
+        try{
+
+        
+        $dateValidation = ['required', 'date'];
+
+        if($request['roles_id'] && ( $request['roles_id'] == AppServiceProvider::Client))
+        {
+            array_push($dateValidation, 'before:-50 years');
+        }
+       
+        $request->validate([
+            'roles_id' => 'required|exists:roles,id',
+            
+            'address' => 'required|string',
+            'channels_id' => 'required|exists:channels,id',
+            'status_id'=> 'required|exists:status,id',
+
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8'],
+            'phone' => ['required', 'digits:12'],
+            'dob' => $dateValidation,
+            'users_types_id' => ['required', 'exists:user_types,id'],
+        ],[
+            'dob.before' => "The birthday must be a date before 50 years.",
+            
+        ]);
+              
+        User::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'phone' => $request['phone'],
+            'roles_id' => $request['roles_id'],
+            'password' => Hash::make($request['password']),
+            'dob' => $request['dob'],
+            'user_types_id' => $request['users_types_id'],
+            'status_id'=> $request['status_id'],
+            'channels_id'=> $request['channels_id'],
+            'address'=> $request['address'],
+        ]);
+
+
+        return redirect()->back()->with('message', 'User Created Successfully!');
+    } catch (Exception $ex) {
+       
+        Log::error($ex);
+        return redirect()->back()->with('error', 'Something went wrong :(');
         $roles = role::all();
 
-        return view('admin.client.index')
-            ->withRoles($roles);
     }
+
+ 
+
+    }
+
+
+
+
+
+
+
+
+
 
     /**
      * Created At : 5/2/2012
