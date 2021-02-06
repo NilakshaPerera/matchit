@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Role;
 use Illuminate\Http\Request;
 use App\Providers\AppServiceProvider;
@@ -45,10 +46,9 @@ class Usercontroller extends Controller
         }
 
         $roles = role::all();
-        
+
         return view('admin.client.index')
             ->withRoles($roles);
-            
     }
 
     /**
@@ -65,7 +65,7 @@ class Usercontroller extends Controller
 
 
     /**
-     * Created At : 5/2/2012
+     * Created At : 5/2/2021
      * Created By : Nilaksha 
      * Summary : saved data for user
      *
@@ -103,7 +103,7 @@ class Usercontroller extends Controller
                 'birthday.before' => "The birthday must be a date before 50 years.",
                 'old_password.userpassword' => "The old password is incorrect.",
             ]);
-            
+
             $data = [
                 'name' => $request['name'],
                 'email' => $request['email'],
@@ -119,23 +119,21 @@ class Usercontroller extends Controller
             }
 
             User::where('id', $request['id'])->update($data);
-            UserHasHobby::where('users_id' , Auth::user()->id)->delete();
+            UserHasHobby::where('users_id', Auth::user()->id)->delete();
 
             foreach ($request['hobby-details'] as $hobbyDetail) {
                 UserHasHobby::create([
-                'users_id' => Auth::user()->id,
-                'hobbies_id' => $hobbyDetail,
-            ]);
+                    'users_id' => Auth::user()->id,
+                    'hobbies_id' => $hobbyDetail,
+                ]);
             }
 
-            
-
-            UsersHasPersonalityDetail::where('users_id' , Auth::user()->id)->delete();
+            UsersHasPersonalityDetail::where('users_id', Auth::user()->id)->delete();
             foreach ($request['personality-details'] as $personDetail) {
                 UsersHasPersonalityDetail::create([
-                'users_id' => Auth::user()->id,
-                'personality_details_id' => $personDetail,
-            ]);
+                    'users_id' => Auth::user()->id,
+                    'personality_details_id' => $personDetail,
+                ]);
             }
 
             DB::commit();
