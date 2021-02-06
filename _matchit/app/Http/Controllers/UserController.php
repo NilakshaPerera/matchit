@@ -147,4 +147,24 @@ class Usercontroller extends Controller
             return redirect()->back()->with('error', 'Something went wrong :(');
         }
     }
+    
+   /**
+   * Created At : 6/2/2021
+     * Created By : Dulan
+     * Summary : Read client details
+    *
+    * @param Request $request
+    * @return void
+    */    
+    public function all(Request $request){
+
+        return view('admin.client.view')
+        ->withUsers(User::all());
+        
+
+
+
+
+    }
+
 }

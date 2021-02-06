@@ -18,6 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get('/user' , 'Usercontroller@index')->name('user');
+Route::get('/user/all' , 'Usercontroller@all')->name('user.all');
 Route::post('/user/update' , 'Usercontroller@update')->name('user.update');
 
 Route::get('/admin/events', 'EventController@index')->name('events.index');
