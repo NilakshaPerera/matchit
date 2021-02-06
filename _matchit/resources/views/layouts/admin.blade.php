@@ -135,7 +135,7 @@
 							<a href="#" class="nav-link"><i class="icon-copy"></i> <span>Users</span></a>
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
 								<li class="nav-item"><a href="" class="nav-link ">Clients</a></li>
-								<li class="nav-item"><a href="" class="nav-link ">Create Clients</a></li>
+								<li class="nav-item"><a href="{{route('user')}}" class="nav-link ">Create Clients</a></li>
 								<li class="nav-item"><a href="" class="nav-link ">Update Clients</a></li>
 						    </ul>
 						</li>

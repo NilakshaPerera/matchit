@@ -10,6 +10,6 @@ class PaymentStatus extends Model
     protected $fillable = ['name']; 
 
     public function payment(){
-        return $this->hasOne('App\Payment','payment_status_id');
+        return $this->hasMany('App\Payment','payment_status_id');
     }
 }
