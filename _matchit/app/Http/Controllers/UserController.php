@@ -1,17 +1,26 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Role;
 use Illuminate\Http\Request;
 use App\Providers\AppServiceProvider;
 use App\Hobby;
 use App\PersonalityDetail;
 use App\UserType;
+use Illuminate\Support\Facades\Hash;
+use App\User;
+use App\UserHasHobby;
+use App\UsersHasPersonalityDetail;
 use Auth;
+
 use App\Channel;
 use App\Status;
 use App\User;
 use Illuminate\Support\Facades\Hash;
+
+use Illuminate\Support\Facades\DB;
+
 
 class Usercontroller extends Controller
 {
@@ -47,6 +56,7 @@ class Usercontroller extends Controller
                 ->withChannels(Channel::all())
                 ->withStatus(Status::all());
         }
+
 
         
     }
@@ -107,6 +117,8 @@ class Usercontroller extends Controller
        
         Log::error($ex);
         return redirect()->back()->with('error', 'Something went wrong :(');
+        $roles = role::all();
+
     }
 
  
@@ -136,7 +148,7 @@ class Usercontroller extends Controller
 
 
     /**
-     * Created At : 5/2/2012
+     * Created At : 5/2/2021
      * Created By : Nilaksha 
      * Summary : saved data for user
      *
@@ -146,6 +158,7 @@ class Usercontroller extends Controller
     public function update(Request $request)
     {
         try {
+            DB::beginTransaction();
 
             $emailValidation =  ['required', 'string', 'email', 'max:255'];
             $oldPasswordValidatoin = [];
@@ -157,13 +170,14 @@ class Usercontroller extends Controller
 
             if ($request['old_password']) {
                 array_push($passwordValidation, 'required', 'string', 'min:8', 'confirmed');
-                array_push($oldPasswordValidatoin, 'userpassword:'. Auth::user()->id);
+                array_push($oldPasswordValidatoin, 'userpassword:' . Auth::user()->id);
             }
 
             $request->validate([
                 'name' => ['required', 'string', 'max:255'],
                 'email' => $emailValidation,
                 'phone' => ['required', 'digits:12'],
+                'address' => ['required', 'max:1000'],
                 'birthday' => ['required', 'date', 'before:-50 years'],
                 'user_type' => ['required', 'exists:user_types,id'],
                 'old_password' => $oldPasswordValidatoin,
@@ -173,13 +187,43 @@ class Usercontroller extends Controller
                 'old_password.userpassword' => "The old password is incorrect.",
             ]);
 
+            $data = [
+                'name' => $request['name'],
+                'email' => $request['email'],
+                'phone' => $request['phone'],
+                'dob' => $request['birthday'],
+                'address' => $request['address'],
+                'user_types_id'  => $request['user_type'],
+                'status_id' => 1,
+            ];
 
+            if ($request['old_password']) {
+                $data['password'] = Hash::make($request['password']);
+            }
 
+            User::where('id', $request['id'])->update($data);
+            UserHasHobby::where('users_id', Auth::user()->id)->delete();
 
+            foreach ($request['hobby-details'] as $hobbyDetail) {
+                UserHasHobby::create([
+                    'users_id' => Auth::user()->id,
+                    'hobbies_id' => $hobbyDetail,
+                ]);
+            }
+
+            UsersHasPersonalityDetail::where('users_id', Auth::user()->id)->delete();
+            foreach ($request['personality-details'] as $personDetail) {
+                UsersHasPersonalityDetail::create([
+                    'users_id' => Auth::user()->id,
+                    'personality_details_id' => $personDetail,
+                ]);
+            }
+
+            DB::commit();
 
             return redirect()->back()->with('message', 'Profile Updated Successfully!');
-
         } catch (Exception $ex) {
+            DB::rollBack();
             Log::error($ex);
             return redirect()->back()->with('error', 'Something went wrong :(');
         }

@@ -13,15 +13,7 @@
     <div class="row ">
         <div class="col-md-12">
 
-
-
             @include('site.profilenav')
-
-
-
-
-
-
 
             <div class="row">
                 <div class="col-md-12">
@@ -72,8 +64,6 @@
                       </div>
 
 
-
-
                       <div class="form-row">
                         <div class="form-group col-md-6">
                           <label for="email">User Type</label>
@@ -94,19 +84,31 @@
                         @enderror
                         </div>
 
+
+                        <div class="form-group col-md-6">
+                          <label for="phone">Address</label>
+                          <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ $user->address }}" placeholder="{{ __('Address') }}" required autocomplete="address" autofocus>
+                            @error('address')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+
                     </div>
-
-
-
-
 
                       <h4 class="mt-3"><b>Personality Details</b></h4>
 
                       <div class="form-row">
                         <div class="form-group col-md-12">
+
+                          <?php 
+                            $personalityDs = $user->usershaspersonalitydetail->pluck('personality_details_id')->toArray();
+                          ?>
+
                           <select name="personality-details[]" multiple="multiple" id="personality-details[]"  class="form-control select2-basic-multiple @error('personality-details') is-invalid @enderror" name="personality-details" placeholder="{{ __('Personality Details') }}" autocomplete="personality-details">
                             @foreach ($personalityDetails as $personalityDetail)
-                              <option id="personality-detail-{{ $personalityDetail->id }}" value="{{ $personalityDetail->id }}">{{ $personalityDetail->name }}</option>
+                              <option {{ (in_array(  $personalityDetail->id, $personalityDs ))? "selected" : ""  }}  id="personality-detail-{{ $personalityDetail->id }}" value="{{ $personalityDetail->id }}">{{ $personalityDetail->name }}</option>
                             @endforeach
                           </select>
                           @error('personality-details')
@@ -121,9 +123,14 @@
 
                     <div class="form-row">
                       <div class="form-group col-md-12">
+
+                        <?php 
+                          $hobbyDs = $user->userhashobby->pluck('hobbies_id')->toArray();
+                        ?>
+
                         <select id="hobby-details[]" multiple="multiple" class="form-control select2-basic-multiple @error('hobby-details') is-invalid @enderror" name="hobby-details[]" placeholder="{{ __('Hobby Details') }}"  autocomplete="hobby-details">
                           @foreach ($hobbies as $hb)
-                            <option id="hobby-{{ $hb->id }}" value="{{ $hb->id }}">{{ $hb->name }}</option>
+                            <option {{ (in_array( $hb->id , $hobbyDs  ))? "selected" : ""  }} id="hobby-{{ $hb->id }}" value="{{ $hb->id }}">{{ $hb->name }}</option>
                           @endforeach
                         </select>
                           @error('hobby-details')
