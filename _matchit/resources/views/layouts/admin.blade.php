@@ -175,6 +175,7 @@
 							<a href="#" class="nav-link"><i class="icon-copy"></i> <span>Events</span></a>
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
 								<li class="nav-item"><a href="{{ route('events.index') }}" class="nav-link ">Create</a></li>
+								<li class="nav-item"><a href="{{ route('events.all') }}" class="nav-link ">Event Schedule</a></li>
 						    </ul>
 						</li>
 
