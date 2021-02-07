@@ -17,6 +17,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Route::get('/user' , 'Usercontroller@index')->name('user');
+Route::get('/user/all' , 'Usercontroller@all')->name('user.all');
+Route::post('/user/update' , 'Usercontroller@update')->name('user.update');
+Route::post('/user/store' , 'Usercontroller@store')->name('user.store');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin/events', 'EventController@index')->name('events.index');
+Route::post('/admin/events/create', 'EventController@store')->name('events.create');
+Route::get('/admin/events/all', 'EventController@all')->name('events.all');
+
+
+Route::get('/admin/client', 'UserController@index')->name('client.index');
+Route::post('/admin/client/create', 'UserController@store')->name('client.create');
+
+Auth::routes();

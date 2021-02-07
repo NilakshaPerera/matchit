@@ -8,4 +8,8 @@ class EventType extends Model
 {
     protected $table = 'event_types';
     protected $fillable = ['name']; 
+
+    public function event(){
+        return $this->hasMany('App\Event','event_types_id');
+    }
 }

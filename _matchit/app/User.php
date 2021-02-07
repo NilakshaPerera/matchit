@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-       'roles_id', 'name', 'email', 'password', 'dob', 'address', 'user_types_id', 'channels_id', 'status_id',
+       'roles_id', 'name', 'email', 'phone' , 'password', 'dob', 'address', 'user_types_id', 'channels_id', 'status_id',
     ];
 
     /**
@@ -60,6 +60,9 @@ class User extends Authenticatable
     }
     public function userhasreview(){
         return $this->hasMany('App\UserHasReview', 'users_id');
+    }
+    public function usershaspersonalitydetail(){
+        return $this->hasMany('App\UsersHasPersonalityDetail', 'users_id');
     }
    
 }
