@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Providers\AppServiceProvider;
 use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -29,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = RouteServiceProvider::USER;
 
     /**
      * Create a new controller instance.
@@ -53,6 +54,11 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'phone' => ['required', 'digits:12'],
+            'birthday' => ['required', 'date', 'before:-50 years'],
+            'user_type' => ['required', 'exists:user_types,id'],
+        ],[
+            'birthday.before' => "The birthday must be a date before 50 years.",
         ]);
     }
 
@@ -67,7 +73,11 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'phone' => $data['phone'],
+            'roles_id' => AppServiceProvider::Client,
             'password' => Hash::make($data['password']),
+            'dob' => $data['birthday'],
+            'user_types_id' => $data['user_type'],
         ]);
     }
 }
