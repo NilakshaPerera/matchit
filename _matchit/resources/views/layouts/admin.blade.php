@@ -144,7 +144,7 @@
 						<li class="nav-item nav-item-submenu nav-item-expanded nav-item-open">
 							<a href="#" class="nav-link"><i class="icon-copy"></i> <span>Event Bookings</span></a>
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-								<li class="nav-item"><a href="" class="nav-link ">Accept Bookings</a></li>
+								<li class="nav-item"><a href="{{route('booking.index')}}" class="nav-link ">Accept Bookings</a></li>
 								<li class="nav-item"><a href="" class="nav-link ">Accept Payments</a></li>
 						    </ul>
 						</li>
