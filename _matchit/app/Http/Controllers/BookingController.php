@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Providers\AppServiceProvider;
 use App\Event;
 use App\User;
 use App\Role;
@@ -25,8 +26,10 @@ class BookingController extends Controller
      */
     public function index()
     {
+
+        
         $events = Event::all();
-        $users = User::all();
+        $users = User::where('roles_id', AppServiceProvider::Client)->get();
         $roles = Role::all();
         return view('admin.bookings.index')
         ->withEvents($events)
