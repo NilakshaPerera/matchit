@@ -219,11 +219,5 @@ class Usercontroller extends Controller
 
         return view('admin.client.view')
         ->withUsers(User::all());
-        
-
-
-
-
     }
-
 }
