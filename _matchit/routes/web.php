@@ -30,4 +30,7 @@ Route::get('/admin/events/all', 'EventController@all')->name('events.all');
 Route::get('/admin/client', 'UserController@index')->name('client.index');
 Route::post('/admin/client/create', 'UserController@store')->name('client.create');
 
+Route::get('/admin/bookings/index', 'BookingController@index')->name('booking.index');
+
+Route::get('/sendmail','MailSendController@mailsend');
 Auth::routes();
