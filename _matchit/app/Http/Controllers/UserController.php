@@ -11,7 +11,6 @@ use App\UserType;
 use App\UserHasHobby;
 use App\UsersHasPersonalityDetail;
 use Auth;
-
 use App\Channel;
 use App\Status;
 use App\User;

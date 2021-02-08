@@ -70,9 +70,9 @@
 
 <div class="mb-3">
     <h6 class="mb-0 font-weight-semibold">
-        View Users in the System
+        View events in the System
     </h6>
-    <span class="text-muted d-block">View all your users here</span>
+    <span class="text-muted d-block">View all events here</span>
 </div>
 
 <div class="row">
@@ -82,31 +82,21 @@
                 <table class="table table-striped jstable">
                     <thead>
                         <tr>
-                            <th>Roles</th>
-                            <th>Name</th>
-                            <th>E-mail</th>
-                            <th>Phone</th>
-                            <th>Date of Birth</th>
-                            <th>Address</th>
-                            <th>User-Type</th>
-                            <th>Channel</th>
-                            <th>Status</th>
-                            <th>Created At</th>
+                            <th>Event Name</th>
+                            <th>Event Type</th>
+                            <th>Price £</th>
+                            <th>Date</th>
+                            <th>Venue</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($users as $user)
+                        @foreach($events as $event)
                         <tr>
-                            <td>{{ $user->role->name }}</td>
-                            <td>{{ $user->name }}</td>
-                            <td>{{ $user->email }}</td>
-                            <td>{{ $user->phone }}</td>
-                            <td>{{ $user->dob }}</td>
-                            <td>{{ $user->address }}</td>
-                            <td>{{ ($user->user_types_id)? $user->userType->name : "N/A" }}</td>
-                            <td>{{ ($user->channels_id)? $user->channel->name : "N/A" }}</td>
-                            <td>{{ ($user->status_id)? $user->status->name : "N/A" }}</td>
-                            <td>{{ $user->created_at }}</td>
+                            <td>{{ $event->name }}</td>
+                            <td>{{ $event->eventType->name }}</td>
+                            <td>{{ $event->price }}</td>
+                            <td>{{ $event->date }}</td>
+                            <td>{{ $event->venue }}</td>
                         </tr>
                         @endforeach                
                     </tbody>

@@ -26,7 +26,7 @@
                                 <span class="badge badge-primary">BBQ</span>
                             </p>
                             <p class="card-action text-center">
-                                <a href="#" class="btn btn-dark">Book Event</a>
+                                <a href="{{ route('payment', ['s', 'd', 's']) }}" class="btn btn-dark">Book Event</a>
                             </p>
                         </div>
                     </div>
