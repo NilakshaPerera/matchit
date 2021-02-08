@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Event;
+use App\User;
+use App\Role;
 
 use Illuminate\Http\Request;
 class BookingController extends Controller
@@ -22,6 +25,12 @@ class BookingController extends Controller
      */
     public function index()
     {
-      
+        $events = Event::all();
+        $users = User::all();
+        $roles = Role::all();
+        return view('admin.bookings.index')
+        ->withEvents($events)
+        ->withUsers($users)
+        ->withRoles($roles);
     }
 }
