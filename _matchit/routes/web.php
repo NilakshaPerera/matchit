@@ -22,6 +22,9 @@ Route::get('/user/all' , 'Usercontroller@all')->name('user.all');
 Route::post('/user/update' , 'Usercontroller@update')->name('user.update');
 Route::post('/user/store' , 'Usercontroller@store')->name('user.store');
 
+Route::get('/payment/{user}/{type}/{id}' , 'PaymentController@index')->name('payment');
+Route::post('/payment/create' , 'PaymentController@create')->name('payment.create');
+
 Route::get('/admin/events', 'EventController@index')->name('events.index');
 Route::post('/admin/events/create', 'EventController@store')->name('events.create');
 
