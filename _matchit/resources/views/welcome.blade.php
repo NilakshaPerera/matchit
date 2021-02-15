@@ -10,7 +10,13 @@
 
             <div class="row ">
 
-                @for ($i = 0; $i < 10; $i++) 
+                <?php
+
+                $events = \App\Event::all();
+
+                ?>
+
+                @foreach ($events as $event) 
                 <div class="col-md-4">
                     <div class="card event-item" style="">
                         <a href="#!">
@@ -26,13 +32,16 @@
                                 <span class="badge badge-primary">BBQ</span>
                             </p>
                             <p class="card-action text-center">
-                                <a href="{{ route('payment', ['s', 'd', 's']) }}" class="btn btn-dark">Book Event</a>
+                                <?php 
+                                    $route = ( Auth::user())? (route('payment', [Auth::user() ->id , 'event', $event->id])) : route('login');
+                                ?>
+                                <a href="{{ $route  }}" class="btn btn-dark">Book Event</a>
                             </p>
                         </div>
                     </div>
             
                 </div>
-                @endfor
+                @endforeach
 
             </div>
 
