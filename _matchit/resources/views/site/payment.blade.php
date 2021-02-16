@@ -13,6 +13,7 @@
     <form action="{{ route('payment.create') }}" method="POST">
         <div class="row d-flex justify-content-center">
 
+            @csrf
 
             <div class="col-md-8">
 
@@ -40,6 +41,8 @@
                             <input type="hidden" name="price" id="price" value="{{ $price }}">
                             <input type="hidden" name="paytype" id="paytype" value="{{ $payType }}">
                             <input type="hidden" name="id" id="id" value="{{ $id }}">
+                            
+                            <input type="hidden" name="user" id="user" value="{{ $user->id }}">
 
                         </div>
 
@@ -81,6 +84,7 @@
 @section('script')
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js"></script>
+
 <script>
     $(document).ready(function () {
         $("#card_expiry").inputmask({
@@ -95,4 +99,20 @@
     });
 
 </script>
+
+<?php if (session('paymentError')) { ?>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script>
+        alertError();
+        function alertError() {
+            Swal.fire({
+                title: 'Payment Failed!',
+                text: '{{session('paymentError')}}',
+                icon: 'error',
+                confirmButtonText: 'OK'
+                });
+        }
+    </script>
+    <?php } ?>
 @endsection
