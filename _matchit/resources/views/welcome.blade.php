@@ -30,12 +30,13 @@
                             <h5 class="card-title">{{ $event->name }}</h5>
                             <p class="card-text">Fee : {{ $event->price }}£ </p>
                             <p class="card-text">On : {{ $event->date }} </p>
+                            <p class="card-text">Venue : {{ $event->venue }} </p>
                             <p class="card-info">Tags :
                                 <span class="badge badge-primary">{{ $event->eventType->name }}</span>
                             </p>
                             <p class="card-action text-center">
                                 <?php 
-                                    $route = ( Auth::user())? (route('payment', [Auth::user() ->id , 'event', $event->id])) : route('login');
+                                    $route = ( Auth::user())? (route('payment', [Auth::user()->id , 'event', $event->id])) : route('login');
                                     if(!$booking){
                                 ?>
                                 <a href="{{ $route  }}" class="btn btn-dark">Book Event</a>
