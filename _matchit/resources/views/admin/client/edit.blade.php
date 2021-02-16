@@ -18,9 +18,9 @@
 
 <div class="mb-3">
     <h6 class="mb-0 font-weight-semibold">
-        Update Client
+        Update Clients
     </h6>
-    <span class="text-muted d-block">Update client information</span>
+    <span class="text-muted d-block">Update all clients here</span>
 </div>
 
 <div class="row">
@@ -31,14 +31,14 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-10 offset-md-1">
-                        <form method="POST" action="{{ route('client.update') }}" enctype="multipart/form-data">
-                            
+                        <form method="POST" action="{{ route('user.update') }}" enctype="multipart/form-data">
+                            <input type="hidden" name="user_id" id="user_id" value="{{$user->id}}"
                             @csrf
                             <div class="form-group">
                                 <label>Select role of user</label>
-                                <select name="roles_id" id="roles_id" data-placeholder="Select user role" class="form-control form-control-select2 @error('roles_id') is-invalid @enderror" data-fouc value="{{ old('roles_id') }}">
-                                    @foreach($roles as $roles)
-                                        <option value="{{ $roles->id }}">{{ $roles->name }}</option>
+                                <select name="roles_id" id="roles_id" data-placeholder="Select user role" class="form-control form-control-select2 @error('roles_id') is-invalid @enderror" data-fouc value="{{ $user->roles_id}}">
+                                    @foreach($roles as $role)
+                                        <option  {{ ($user->roles_id == $role->id)? "selected" : "" }} value="{{ $role->id }}">{{ $role->name }}</option>
                                     @endforeach
                                 </select>
                                 @error('roles_id')
@@ -50,7 +50,7 @@
 
                             <div class="form-group">
                                 <label>Enter Client name:</label>
-                                <input name="name" id="name" type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Enter client name" value="{{ old('name') }}">
+                                <input name="name" id="name" type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Enter client name" value="{{ $user->name }}">
                                 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -64,7 +64,7 @@
 
                             <div class="form-group">
                                 <label>Client email</label>
-                                <input name="email" id="email" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Enter client email" value="{{ old('email') }}">
+                                <input name="email" id="email" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Enter client email" value="{{ $user->email}}">
                                 @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -74,7 +74,7 @@
 
                             <div class="form-group">
                                 <label>Client phone</label>
-                                <input name="phone" id="phone" type="number" class="form-control @error('phone') is-invalid @enderror" placeholder="Enter client contact" value="{{ old('phone') }}">
+                                <input name="phone" id="phone" type="number" class="form-control @error('phone') is-invalid @enderror" placeholder="Enter client contact" value="{{ $user->phone }}">
                                 @error('phone')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -82,11 +82,19 @@
                             @enderror
                             </div>
 
-                           
+                           {{-- <div class="form-group">
+                                <label>Password:</label>
+                                <input name="password" id="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Enter password of client" >
+                                @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{ $message }}</strong>
+                                </span>
+                            @enderror
+                            </div> --}}
 
                             <div class="form-group">
                                 <label>Date of Birth</label>
-                                <input name="dob" id="dob" type="date" class="form-control @error('dob') is-invalid @enderror" placeholder="Enter client date of birth" value="{{ old('dob') }}">
+                                <input name="dob" id="dob" type="date" class="form-control @error('dob') is-invalid @enderror" placeholder="Enter client date of birth" value="{{ $user->dob }}">
                                 @error('dob')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -96,7 +104,7 @@
 
                             <div class="form-group">
                                 <label>Client address</label>
-                                <input name="address" id="address" type="text" class="form-control @error('address') is-invalid @enderror" placeholder="Enter client address" value="{{ old('address') }}">
+                                <input name="address" id="address" type="text" class="form-control @error('address') is-invalid @enderror" placeholder="Enter client address" value="{{ $user->address }}">
                                 @error('address')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -106,9 +114,9 @@
 
                             <div class="form-group">
                                 <label>Select user type </label>
-                                <select name="users_types_id" id="users_types_id" data-placeholder="Select user type" class="form-control form-control-select2 @error('users_types_id') is-invalid @enderror" data-fouc value="{{ old('users_types_id') }}">
+                                <select name="users_types_id" id="users_types_id" data-placeholder="Select user type" class="form-control form-control-select2 @error('users_types_id') is-invalid @enderror" data-fouc value="{{ $user->users_types_id }}">
                                     @foreach($userTypes as $userType)
-                                        <option value="{{ $userType->id }}">{{ $userType->name }}</option>
+                                        <option   {{ ($user->users_types_id == $userType->id)? "selected" : "" }}value="{{ $userType->id }}">{{ $userType->name }}</option>
                                     @endforeach
                                 </select>
                                 @error('users_types_id')
@@ -120,9 +128,9 @@
                             
                             <div class="form-group">
                                 <label>Select a channel</label>
-                                <select name="channels_id" id="channels_id" data-placeholder="Select a channel" class="form-control form-control-select2 @error('channels_id') is-invalid @enderror" data-fouc value="{{ old('channels_id') }}">
+                                <select name="channels_id" id="channels_id" data-placeholder="Select a channel" class="form-control form-control-select2 @error('channels_id') is-invalid @enderror" data-fouc value="{{$user->channels_id }}">
                                     @foreach($channels as $channels)
-                                        <option value="{{ $channels->id }}">{{ $channels->name }}</option>
+                                        <option {{ ($user->channels_id == $channels->id)? "selected" : "" }}  value="{{ $channels->id }}">{{ $channels->name }}</option>
                                     @endforeach
                                 </select>
                                 @error('channels_id')
@@ -134,9 +142,9 @@
 
                             <div class="form-group">
                                 <label>Select status</label>
-                                <select name="status_id" id="status_id" data-placeholder="Select a status" class="form-control form-control-select2 @error('status_id') is-invalid @enderror" data-fouc value="{{ old('status_id') }}">
+                                <select name="status_id" id="status_id" data-placeholder="Select a status" class="form-control form-control-select2 @error('status_id') is-invalid @enderror" data-fouc value="{{ $user->status_id }}">
                                     @foreach($status as $status)
-                                        <option value="{{ $status->id }}">{{ $status->name }}</option>
+                                        <option  {{ ($user->status_id == $status->id)? "selected" : "" }} value="{{ $status->id }}">{{ $status->name }}</option>
                                     @endforeach
                                 </select>
                                 @error('status_id')
@@ -147,7 +155,7 @@
                             </div>
 
                             <div class="text-right">
-                                <button type="submit" class="btn btn-primary">Submit form <i class="icon-paperplane ml-2"></i></button>
+                                <button type="submit" class="btn btn-primary">Update  <i class="icon-paperplane ml-2"></i></button>
                             </div>
 
                             @if(session()->has('message'))

@@ -36,6 +36,7 @@ Route::get('/admin/events/all', 'EventController@all')->name('events.all');
 
 Route::get('/admin/client', 'UserController@index')->name('client.index');
 Route::get('/admin/client/create', 'UserController@store')->name('client.create');
+Route::get('/admin/client/edit/{id}', 'UserController@edit')->name('client.edit');
 Route::post('/admin/client/update', 'UserController@update')->name('client.update');
 
 

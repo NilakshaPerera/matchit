@@ -171,8 +171,15 @@ class Usercontroller extends Controller
      * @param [type] $id
      * @return void
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
+        $user = User::where('id', $request['id'])->first();
+        return view ('admin.client.edit')
+                ->withUser($user)
+                ->withRoles(Role::all())
+                ->withUserTypes(UserType::all())
+                ->withChannels(Channel::all())
+                ->withStatus(Status::all());
     }
 
     /**
