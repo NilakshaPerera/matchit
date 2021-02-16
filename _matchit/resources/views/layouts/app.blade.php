@@ -50,7 +50,15 @@
                         @else
 
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('user') }}">Account</a>
+                                <a class="nav-link" href="{{ route('user-events') }}">Your Events</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('user-membership') }}">Membership</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('user') }}">Profile</a>
                             </li>
 
                             <li class="nav-item dropdown">
@@ -83,7 +91,6 @@
 
     <!-- Scripts -->
     <script src="{{ asset('assets_app/js/app.js') }}"></script>
-
     @yield('script')
 
 </body>
