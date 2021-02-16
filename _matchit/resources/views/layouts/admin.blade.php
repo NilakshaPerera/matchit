@@ -137,7 +137,7 @@
 
 								<li class="nav-item"><a href="{{ route('user.all') }}" class="nav-link ">Clients</a></li>					
 								<li class="nav-item"><a href="{{route('user')}}" class="nav-link ">Create Clients</a></li>
-								<li class="nav-item"><a href="" class="nav-link ">Update Clients</a></li>
+								<li class="nav-item"><a href=""{{route('client.update')}} class="nav-link ">Update Clients</a></li>
 						    </ul>
 						</li>
 
