@@ -67,7 +67,7 @@
                           <label for="email">User Type</label>
                           <select required id="user_type"  class="form-control @error('user_type') is-invalid @enderror mr-3" name="user_type" required autocomplete="user_type">
                             <?php 
-                                foreach (  $userTypes as $type) {
+                                foreach ($userTypes as $type) {
                             ?>
                                 <option {{ ($user->user_types_id == $type->id)? 'selected': ""  }} id="type-{{ $type->name }}" value="{{ $type->id }}">{{ $type->name }}</option>
                             <?php 
@@ -186,23 +186,6 @@
                     </form>
                 </div>
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         </div>
     </div>
 </div>

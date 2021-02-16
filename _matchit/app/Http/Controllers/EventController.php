@@ -80,4 +80,22 @@ class EventController extends Controller
         }
 
     }
+
+    /**
+     * Created At : 7/2/2021
+     * Created By : Nivetha
+     * Summary : Read event details
+    *
+    * @param Request $request
+    * @return void
+    */    
+    public function all(Request $request){
+
+        return view('admin.events.view')
+        ->withEvents(Event::all()) ;        
+    }
+
+
+
+
 }

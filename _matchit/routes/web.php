@@ -31,8 +31,17 @@ Route::post('/payment/create' , 'PaymentController@create')->name('payment.creat
 
 Route::get('/admin/events', 'EventController@index')->name('events.index');
 Route::post('/admin/events/create', 'EventController@store')->name('events.create');
+Route::get('/admin/events/all', 'EventController@all')->name('events.all');
+
 
 Route::get('/admin/client', 'UserController@index')->name('client.index');
-Route::post('/admin/client/create', 'UserController@store')->name('client.create');
+Route::get('/admin/client/create', 'UserController@store')->name('client.create');
+Route::get('/admin/client/edit/{id}', 'UserController@edit')->name('client.edit');
+Route::post('/admin/client/update', 'UserController@update')->name('client.update');
 
+
+
+Route::get('/admin/bookings/index', 'BookingController@index')->name('booking.index');
+
+Route::get('/sendmail','MailSendController@mailsend');
 Auth::routes();
