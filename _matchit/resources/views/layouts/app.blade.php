@@ -83,7 +83,6 @@
 
     <!-- Scripts -->
     <script src="{{ asset('assets_app/js/app.js') }}"></script>
-
     @yield('script')
 
 </body>
