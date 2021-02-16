@@ -12,4 +12,8 @@ class Event extends Model
     public function eventType(){
         return $this->belongsTo('App\EventType', 'event_types_id');
     }
+
+    public function booking(){
+        return $this->hasMany('App\Booking', 'events_id');
+    }
 }
