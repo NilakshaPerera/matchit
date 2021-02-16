@@ -55,6 +55,7 @@ class Usercontroller extends Controller
                 ->withUserTypes(UserType::all())
                 ->withChannels(Channel::all())
                 ->withStatus(Status::all());
+             
         }
     }
 
@@ -165,7 +166,7 @@ class Usercontroller extends Controller
 
     /**
      * Created At : 5/2/2012
-     * Created By : Nilaksha 
+     * Created By : Nivetha 
      * Summary : shows edit form for user
      *
      * @param [type] $id
@@ -175,11 +176,13 @@ class Usercontroller extends Controller
     {
         $user = User::where('id', $request['id'])->first();
         return view ('admin.client.edit')
-                ->withUser($user)
-                ->withRoles(Role::all())
-                ->withUserTypes(UserType::all())
-                ->withChannels(Channel::all())
-                ->withStatus(Status::all());
+            ->withUser($user)
+            ->withRoles(Role::all())
+            ->withUserTypes(UserType::all())
+            ->withChannels(Channel::all())
+            ->withStatus(Status::all())
+            ->withHobbies(Hobby::all())
+            ->withPersonalityDetails(PersonalityDetail::all());
     }
 
     /**
@@ -199,13 +202,19 @@ class Usercontroller extends Controller
             $oldPasswordValidatoin = [];
             $passwordValidation = [];
 
-            if (Auth::user()->email != $request['email']) {
+            $currentUser = (Auth::user()->roles_id == AppServiceProvider::Client)? Auth::user() : (User::where('id' , $request['user_id'])->first()); 
+
+            if(!$currentUser){
+                return redirect()->back()->with('error', 'Invalid user');
+            }
+
+            if ($currentUser->email != $request['email']) {
                 array_push($emailValidation, 'unique:users');
             }
 
             if ($request['old_password']) {
                 array_push($passwordValidation, 'required', 'string', 'min:8', 'confirmed');
-                array_push($oldPasswordValidatoin, 'userpassword:' . Auth::user()->id);
+                array_push($oldPasswordValidatoin, 'userpassword:' . $currentUser->id);
             }
 
             $request->validate([
@@ -229,27 +238,28 @@ class Usercontroller extends Controller
                 'dob' => $request['birthday'],
                 'address' => $request['address'],
                 'user_types_id'  => $request['user_type'],
-                'status_id' => 1,
+                'status_id' =>  (($request['status_id']) ? $request['status_id'] :  1),
+                'channels_id' => (($request['channels_id'])? $request['channels_id'] : null)
             ];
 
             if ($request['old_password']) {
                 $data['password'] = Hash::make($request['password']);
             }
 
-            User::where('id', $request['id'])->update($data);
-            UserHasHobby::where('users_id', Auth::user()->id)->delete();
+            User::where('id', $currentUser->id)->update($data);
 
+            UserHasHobby::where('users_id', $currentUser->id)->delete();
             foreach ($request['hobby-details'] as $hobbyDetail) {
                 UserHasHobby::create([
-                    'users_id' => Auth::user()->id,
+                    'users_id' => $currentUser->id,
                     'hobbies_id' => $hobbyDetail,
                 ]);
             }
 
-            UsersHasPersonalityDetail::where('users_id', Auth::user()->id)->delete();
+            UsersHasPersonalityDetail::where('users_id', $currentUser->id)->delete();
             foreach ($request['personality-details'] as $personDetail) {
                 UsersHasPersonalityDetail::create([
-                    'users_id' => Auth::user()->id,
+                    'users_id' => $currentUser->id,
                     'personality_details_id' => $personDetail,
                 ]);
             }
