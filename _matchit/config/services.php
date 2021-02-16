@@ -14,6 +14,12 @@ return [
     |
     */
 
+    'stripe' => [
+        'model' => App\User::class,
+        'secret' => 'sk_test_UxrfCCk4wDD9X5UZhmWnYqgF',
+        'key' => 'pk_test_E02RYS0OX55IF8kqSiXKK5Wz',  
+    ],
+
     'mailgun' => [
         'domain' => env('MAILGUN_DOMAIN'),
         'secret' => env('MAILGUN_SECRET'),

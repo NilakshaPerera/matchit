@@ -14,6 +14,9 @@ use Auth;
 use App\Channel;
 use App\Status;
 use App\User;
+use App\Event;
+use App\Payment;
+
 use Illuminate\Support\Facades\Hash;
 
 use Illuminate\Support\Facades\DB;
@@ -53,6 +56,54 @@ class Usercontroller extends Controller
                 ->withChannels(Channel::all())
                 ->withStatus(Status::all());
         }
+    }
+
+    /**
+     * Created At : 16/2/2021
+     * Created By : Nilaksha  
+     * Summary : Shows printable invoice for a given payment record
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function showInvoice(Request $request){
+
+       $payment = Payment::where('id' , $request['id'] )->where('users_id' , Auth::user()->id)->first();
+       return view('site.invoice')->withPayment($payment);
+
+    }
+
+    /**
+     * Created At : 16/2/2021
+     * Created By : Nilaksha  
+     * Summary : Shows user opted in events
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function events(Request $request){
+
+        $events = Event::all();
+
+        $payments = Payment::where('users_id' , Auth::user()->id)
+            ->whereHas('booking', function ( $query) {
+                $query->where('id', '!=', null);
+            })
+            ->get();
+
+        return view('site.user-events')->withEvents($events)->withPayments($payments);
+    }
+
+    /**
+     * Created At : 16/2/2021
+     * Created By : Nilaksha  
+     * Summary : Shows user membership status and payments made
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function membership(Request $request){
+        return view('site.user-membership');
     }
 
     /**

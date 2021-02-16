@@ -18,6 +18,10 @@ Route::get('/', function () {
 });
 
 Route::get('/user' , 'Usercontroller@index')->name('user');
+Route::get('/user/events' , 'Usercontroller@events')->name('user-events');
+Route::get('/user/membership' , 'Usercontroller@membership')->name('user-membership');
+Route::get('/user/invoice/{id}' , 'Usercontroller@showInvoice')->name('user-invoice');
+
 Route::get('/user/all' , 'Usercontroller@all')->name('user.all');
 Route::post('/user/update' , 'Usercontroller@update')->name('user.update');
 Route::post('/user/store' , 'Usercontroller@store')->name('user.store');
@@ -31,7 +35,10 @@ Route::get('/admin/events/all', 'EventController@all')->name('events.all');
 
 
 Route::get('/admin/client', 'UserController@index')->name('client.index');
-Route::post('/admin/client/create', 'UserController@store')->name('client.create');
+Route::get('/admin/client/create', 'UserController@store')->name('client.create');
+Route::post('/admin/client/update', 'UserController@update')->name('client.update');
+
+
 
 Route::get('/admin/bookings/index', 'BookingController@index')->name('booking.index');
 
