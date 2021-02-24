@@ -28,7 +28,9 @@ class PaymentController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Created At : 8/2/2021
+     * Created By : Nilaksha 
+     * Summary : Load payment window
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
@@ -74,7 +76,9 @@ class PaymentController extends Controller
 
 
     /**
-     * Undocumented function
+     * Created At : 14/2/2021
+     * Created By : Nilaksha 
+     * Summary : Make payment
      *
      * @param Request $request
      * @return void
