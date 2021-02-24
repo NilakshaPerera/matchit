@@ -40,9 +40,9 @@
                                 <td>{{ $payment->reference_no }}</td>
                                 <td>{{ $payment->booking->event->name }}</td>
                                 <td>{{ $payment->booking->event->eventType->name }}</td>
-                                <td>{{ $payment->booking->event->price }}£</td>
                                 <td>{{ $payment->booking->event->date }}</td>
                                 <td>{{ $payment->booking->event->venue }}</td>
+                                <td>{{ $payment->booking->event->price }}£</td>
                                 <td>{{ $payment->date }}</td>
                                 <td><a target="_blank" href="{{ route('user-invoice', [ $payment->id ]) }}">Invoice</a></td>
                             </tr>
