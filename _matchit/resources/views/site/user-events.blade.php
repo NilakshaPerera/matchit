@@ -24,11 +24,12 @@
                     <table class="table table-striped jstable">
                         <thead>
                             <tr>
+                                <th>Ref No</th>
                                 <th>Event Name</th>
                                 <th>Event Type</th>
-                                <th>Price</th>
-                                <th>Date</th>
+                                <th>Event Date</th>
                                 <th>Venue</th>
+                                <th>Price</th>
                                 <th>Paid On</th>
                                 <th></th>
                             </tr>
@@ -36,6 +37,7 @@
                         <tbody>
                             @foreach($payments as $payment)
                             <tr>
+                                <td>{{ $payment->reference_no }}</td>
                                 <td>{{ $payment->booking->event->name }}</td>
                                 <td>{{ $payment->booking->event->eventType->name }}</td>
                                 <td>{{ $payment->booking->event->price }}£</td>

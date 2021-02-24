@@ -12,6 +12,7 @@ use Cartalyst\Stripe\Stripe;
 use App\Payment;
 use App\Booking;
 use DB;
+use App\Http\Controllers\Usercontroller;
 
 
 class PaymentController extends Controller
@@ -50,7 +51,11 @@ class PaymentController extends Controller
 
                     break;
                 case 'membership':
-                    $price = $user->userType->price;
+                    $userController = new Usercontroller();
+                    $price = $userController->getMembershipDues($user->id);
+                    if(!$price){
+                        abort(404);
+                    }
                     break;
                 default:
                     abort(404);
@@ -105,7 +110,11 @@ class PaymentController extends Controller
                 }
                 break;
             case 'membership':
-                $price = $user->userType->price;
+                $userController = new Usercontroller();
+                $price = $userController->getMembershipDues($user->id);
+                if(!$price){
+                    abort(404);
+                }
                 break;
         }
 
