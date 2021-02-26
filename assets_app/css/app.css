@@ -10985,6 +10985,10 @@ a.text-dark:focus {
   margin-bottom: 0rem;
 }
 
+.btn-error {
+  color: red;
+}
+
 .auth-container .container {
   background-position: center center;
   background-repeat: no-repeat;

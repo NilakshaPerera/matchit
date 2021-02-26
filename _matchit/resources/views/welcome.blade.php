@@ -36,6 +36,14 @@
                             </p>
                             <p class="card-action text-center">
                                 <?php 
+
+                                    $today = Carbon::now();
+
+                                    $expireDate = Carbon::createFromFormat('Y-m-d', $event->date);
+                                    $difference = $today->diffInDays($expireDate, false);  
+
+                                    if($difference > 0){ 
+
                                     $route = ( Auth::user())? (route('payment', [Auth::user()->id , 'event', $event->id])) : route('login');
                                     if(!$booking){
                                 ?>
@@ -47,7 +55,14 @@
                                 <a href="!#" class="btn btn-dark disabled">You already booked this event</a>
                                 <?php 
                                     }
+                                    }else{
                                 ?>
+
+                                    <a class="btn btn-error disabled">This event is expired</a>
+                                    <?php 
+
+                                    }
+                                    ?>
                             </p>
                         </div>
                     </div>

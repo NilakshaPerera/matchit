@@ -43,6 +43,18 @@ class RegisterController extends Controller
     }
 
     /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function showRegistrationForm()
+    {
+        return view('auth.register')
+            ->withBgimg(true);
+    }
+
+
+    /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
@@ -57,7 +69,7 @@ class RegisterController extends Controller
             'phone' => ['required', 'digits:12'],
             'birthday' => ['required', 'date', 'before:-50 years'],
             'user_type' => ['required', 'exists:user_types,id'],
-        ],[
+        ], [
             'birthday.before' => "The birthday must be a date before 50 years.",
         ]);
     }

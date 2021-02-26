@@ -13,7 +13,7 @@ use App\Payment;
 use App\Booking;
 use DB;
 use App\Http\Controllers\Usercontroller;
-
+use Carbon\Carbon;
 
 class PaymentController extends Controller
 {
@@ -46,6 +46,15 @@ class PaymentController extends Controller
                 case 'event':
 
                     if ($event = Event::where('id', $id)->first()) {
+
+                        $today = Carbon::now();
+                        $expireDate = Carbon::createFromFormat('Y-m-d', $event->date);
+                        $difference = $today->diffInDays($expireDate, false); 
+
+                        if ($difference < 0) {
+                            abort(404);
+                        }
+
                         $price = $event->price;
                     } else {
                         abort(404);
