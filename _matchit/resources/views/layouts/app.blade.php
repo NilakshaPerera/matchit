@@ -50,15 +50,15 @@
                         @else
 
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('user-events') }}">Your Events</a>
+                                <a class="nav-link {{ (Route::currentRouteName() == 'user-events')? 'active' : '' }}" href="{{ route('user-events') }}">Your Events</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('user-membership') }}">Membership</a>
+                                <a class="nav-link {{ (Route::currentRouteName() == 'user-membership')? 'active' : '' }}" href="{{ route('user-membership') }}">Membership</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('user') }}">Profile</a>
+                                <a class="nav-link {{ (Route::currentRouteName() == 'user')? 'active' : '' }}" href="{{ route('user') }}">Profile</a>
                             </li>
 
                             <li class="nav-item dropdown">
@@ -84,7 +84,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-4" @if(isset($bgimg)) style="background: url({{ asset('assets_app/images/background.jpg') }}); background-position: center center; background-size: cover;" @endif>
             @yield('content')
         </main>
     </div>
