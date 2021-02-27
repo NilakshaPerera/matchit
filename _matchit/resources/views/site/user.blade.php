@@ -123,7 +123,7 @@
                       <div class="form-group col-md-12">
 
                         <?php 
-                          $hobbyDs = $user->userhashobby->pluck('hobbies_id')->toArray();
+                          $hobbyDs = $user->userhashobby->pluck('hobbies_id')->toArray(); 
                         ?>
 
                         <select id="hobby-details[]" multiple="multiple" class="form-control select2-basic-multiple @error('hobby-details') is-invalid @enderror" name="hobby-details[]" placeholder="{{ __('Hobby Details') }}"  autocomplete="hobby-details">
