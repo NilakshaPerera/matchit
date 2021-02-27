@@ -11004,6 +11004,13 @@ a.text-dark:focus {
   width: 100%;
 }
 
+.auth-container .container .row .auth-form-container {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: RGBA(0, 0, 0, 0.73);
+  color: #fff;
+}
+
 .auth-container .container .row .auth-form-container .form-group .label {
   font-size: 18px;
 }
