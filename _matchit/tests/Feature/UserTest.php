@@ -18,9 +18,8 @@ class UserTest extends TestCase
 
        
 
-        // $response = $this->get(url('/'));
-
-        // $response->assertStatus(200);
+        $response = $this->get(url('/'));
+        $response->assertStatus(200);
 
         // Session::start();
         // $response = $this->post(url('login') , [

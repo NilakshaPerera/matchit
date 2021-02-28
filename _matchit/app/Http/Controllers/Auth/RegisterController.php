@@ -90,6 +90,8 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'dob' => $data['birthday'],
             'user_types_id' => $data['user_type'],
+            'channels_id' => AppServiceProvider::ChannelWebForm,
+            'status_id' => AppServiceProvider::Partial,
         ]);
     }
 }
