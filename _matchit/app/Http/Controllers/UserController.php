@@ -16,6 +16,7 @@ use App\Status;
 use App\User;
 use App\Event;
 use App\Payment;
+use Carbon\Carbon;
 
 use Illuminate\Support\Facades\Hash;
 
@@ -70,7 +71,10 @@ class Usercontroller extends Controller
     public function showInvoice(Request $request){
 
        $payment = Payment::where('id' , $request['id'] )->where('users_id' , Auth::user()->id)->first();
-       return view('site.invoice')->withPayment($payment);
+       $isEvent = ($payment->event)? true : false;
+       return view('site.invoice')
+            ->withPayment($payment)
+            ->withIsEvent($isEvent);
 
     }
 
@@ -96,7 +100,7 @@ class Usercontroller extends Controller
     }
 
     /**
-     * Created At : 16/2/2021
+     * Created At : 24/2/2021
      * Created By : Nilaksha  
      * Summary : Shows user membership status and payments made
      *
@@ -104,7 +108,68 @@ class Usercontroller extends Controller
      * @return void
      */
     public function membership(Request $request){
-        return view('site.user-membership');
+
+        $payments = Payment::where('users_id' , Auth::user()->id)
+        ->whereDoesntHave('booking')
+        ->get();
+        $dues = $this->getMembershipDues(Auth::user()->id);
+
+        return view('site.user-membership')
+            ->withPayments($payments)
+            ->withDues($dues)
+            ->withLastMembershipPayment($this->getLastPaymentDate(Auth::user()->id));
+    }
+
+    /**
+     * Created At : 28/2/2021
+     * Created By : Nilaksha  
+     * Summary : Gets membership mayment made date
+     *
+     * @param [type] $clientId
+     * @return void
+     */
+    public function getLastPaymentDate($clientId){
+
+        $user = User::where('id' , $clientId)->where('roles_id', AppServiceProvider::Client)->first();
+
+        if(!$user){
+            return "This user is not a client or the user doesnt exist";
+        }
+
+        $payment = Payment::where('users_id' , $user->id)
+        ->whereDoesntHave('booking')
+        ->latest('date')
+        ->first();
+
+        return ($payment)? $payment->date : 'N/A';
+    }
+
+    /**
+     * Created At : 24/2/2021
+     * Created By : Nilaksha  
+     * Summary : Get dues by users ID . returns the payment due by dates
+     *
+     * @return void
+     */
+    public function getMembershipDues($userId){
+
+        $user = User::where('id' , $userId)->first();
+        $totalPaymentsMade = Payment::where('users_id' , $userId)
+        ->whereDoesntHave('booking')
+        ->sum('amount');
+
+        $joinedDate = Carbon::createFromFormat('Y-m-d H:s:i', $user->created_at );
+        $today = Carbon::createFromFormat('Y-m-d H:s:i', Carbon::now() );
+        $monthsSpan = $joinedDate->diffInMonths($today);
+      
+        $dueMembershipAmmount = ( $monthsSpan * $user->userType->fee);
+
+        if( $dueMembershipAmmount >  $totalPaymentsMade ){
+            return ( $dueMembershipAmmount -  $totalPaymentsMade );
+        }
+
+        return 0;
+
     }
 
     /**
@@ -285,11 +350,7 @@ class Usercontroller extends Controller
     public function all(Request $request){
 
         return view('admin.client.view')
-        ->withUsers(User::all());
-        
-
-
-
+            ->withUsers(User::all());
 
     }
 

@@ -12,7 +12,8 @@ use Cartalyst\Stripe\Stripe;
 use App\Payment;
 use App\Booking;
 use DB;
-
+use App\Http\Controllers\Usercontroller;
+use Carbon\Carbon;
 
 class PaymentController extends Controller
 {
@@ -27,7 +28,9 @@ class PaymentController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Created At : 8/2/2021
+     * Created By : Nilaksha 
+     * Summary : Load payment window
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
@@ -43,6 +46,15 @@ class PaymentController extends Controller
                 case 'event':
 
                     if ($event = Event::where('id', $id)->first()) {
+
+                        $today = Carbon::now();
+                        $expireDate = Carbon::createFromFormat('Y-m-d', $event->date);
+                        $difference = $today->diffInDays($expireDate, false); 
+
+                        if ($difference < 0) {
+                            abort(404);
+                        }
+
                         $price = $event->price;
                     } else {
                         abort(404);
@@ -50,7 +62,11 @@ class PaymentController extends Controller
 
                     break;
                 case 'membership':
-                    $price = $user->userType->price;
+                    $userController = new Usercontroller();
+                    $price = $userController->getMembershipDues($user->id);
+                    if(!$price){
+                        abort(404);
+                    }
                     break;
                 default:
                     abort(404);
@@ -69,7 +85,9 @@ class PaymentController extends Controller
 
 
     /**
-     * Undocumented function
+     * Created At : 14/2/2021
+     * Created By : Nilaksha 
+     * Summary : Make payment
      *
      * @param Request $request
      * @return void
@@ -105,7 +123,11 @@ class PaymentController extends Controller
                 }
                 break;
             case 'membership':
-                $price = $user->userType->price;
+                $userController = new Usercontroller();
+                $price = $userController->getMembershipDues($user->id);
+                if(!$price){
+                    abort(404);
+                }
                 break;
         }
 
