@@ -29,6 +29,11 @@ class AppServiceProvider extends ServiceProvider
     public const Complete = 1;
     public const Partial = 2;
 
+    //Report Types
+    public const EventSchedule = 1;
+    public const Income = 2;
+    public const MemberMatches = 3;
+
     /**
      * Register any application services.
      *

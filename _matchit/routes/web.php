@@ -40,6 +40,11 @@ Route::get('/admin/client/edit/{id}', 'UserController@edit')->name('client.edit'
 Route::post('/admin/client/update', 'UserController@update')->name('client.update');
 
 
+Route::get('admin/reports/{type}', 'ReportController@index')->name('reports');
+
+Route::post('admin/report/get', 'ReportController@get')->name('report.get');
+
+
 
 Route::get('/admin/bookings/index', 'BookingController@index')->name('booking.index');
 
