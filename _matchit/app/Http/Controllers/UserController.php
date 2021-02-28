@@ -116,13 +116,38 @@ class Usercontroller extends Controller
 
         return view('site.user-membership')
             ->withPayments($payments)
-            ->withDues($dues);
+            ->withDues($dues)
+            ->withLastMembershipPayment($this->getLastPaymentDate(Auth::user()->id));
+    }
+
+    /**
+     * Created At : 28/2/2021
+     * Created By : Nilaksha  
+     * Summary : Gets membership mayment made date
+     *
+     * @param [type] $clientId
+     * @return void
+     */
+    public function getLastPaymentDate($clientId){
+
+        $user = User::where('id' , $clientId)->where('roles_id', AppServiceProvider::Client)->first();
+
+        if(!$user){
+            return "This user is not a client or the user doesnt exist";
+        }
+
+        $payment = Payment::where('users_id' , $user->id)
+        ->whereDoesntHave('booking')
+        ->latest('date')
+        ->first();
+
+        return ($payment)? $payment->date : 'N/A';
     }
 
     /**
      * Created At : 24/2/2021
      * Created By : Nilaksha  
-     * Summary : Get dues by users ID 
+     * Summary : Get dues by users ID . returns the payment due by dates
      *
      * @return void
      */
@@ -140,7 +165,7 @@ class Usercontroller extends Controller
         $dueMembershipAmmount = ( $monthsSpan * $user->userType->fee);
 
         if( $dueMembershipAmmount >  $totalPaymentsMade ){
-            return (  $dueMembershipAmmount -  $totalPaymentsMade );
+            return ( $dueMembershipAmmount -  $totalPaymentsMade );
         }
 
         return 0;
@@ -325,11 +350,7 @@ class Usercontroller extends Controller
     public function all(Request $request){
 
         return view('admin.client.view')
-        ->withUsers(User::all());
-        
-
-
-
+            ->withUsers(User::all());
 
     }
 
