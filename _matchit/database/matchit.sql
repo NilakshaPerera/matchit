@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 27, 2021 at 02:20 PM
+-- Generation Time: Feb 27, 2021 at 02:54 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.30
 
@@ -530,6 +530,13 @@ CREATE TABLE `password_resets` (
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `password_resets`
+--
+
+INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
+('perera.nilaksha@gmail.com', '$2y$10$.kXZLOPNeWGwJdrr3TTDY.qla39wWpmT5DElIwMON7U4XqaRn7tgy', '2021-02-27 07:59:39');
+
 -- --------------------------------------------------------
 
 --
@@ -677,7 +684,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `roles_id`, `name`, `email`, `phone`, `email_verified_at`, `password`, `dob`, `address`, `user_types_id`, `channels_id`, `status_id`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 5, 'Dale Stokes', 'xahy@mailinator.com', '111111111111', NULL, '$2y$10$dq7sby75kFmVkQ/xIwGAvu2cisIynrwQpZRMpvarhH.Fwo0HUoqwO', '1950-07-27', 'Et omnis modi veniam', 1, NULL, 1, NULL, '2021-01-28 00:49:51', '2021-02-27 07:50:34');
+(1, 5, 'Dale Stokes', 'perera.nilaksha@gmail.com', '111111111111', NULL, '$2y$10$dq7sby75kFmVkQ/xIwGAvu2cisIynrwQpZRMpvarhH.Fwo0HUoqwO', '1950-07-27', 'Et omnis modi veniam', 1, NULL, 1, NULL, '2021-01-28 00:49:51', '2021-02-27 07:50:34');
 
 -- --------------------------------------------------------
 
