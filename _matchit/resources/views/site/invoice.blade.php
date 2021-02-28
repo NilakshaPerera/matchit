@@ -179,7 +179,12 @@
             
             <tr class="item last">
                 <td>
-                   Event - {{ $payment->booking->event->eventType->name }} on {{ $payment->booking->event->date }}
+                   @if ($isEvent)
+                        Event - {{ $payment->booking->event->eventType->name }} on {{ $payment->booking->event->date }}
+                   @else
+                        Due Membership Fees - {{ $payment->date}}
+                   @endif
+                  
                 </td>
                 
                 <td>
