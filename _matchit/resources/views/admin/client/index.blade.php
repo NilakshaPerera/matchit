@@ -60,8 +60,6 @@
 
                             </div>
 
-                           
-
                             <div class="form-group">
                                 <label>Client email</label>
                                 <input name="email" id="email" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Enter client email" value="{{ old('email') }}">
@@ -153,6 +151,13 @@
                                     </span>
                                 @enderror
                             </div>
+
+                            
+
+
+                        
+
+
 
                             <div class="text-right">
                                 <button type="submit" class="btn btn-primary">Submit form <i class="icon-paperplane ml-2"></i></button>

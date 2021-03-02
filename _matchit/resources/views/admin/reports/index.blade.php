@@ -114,6 +114,8 @@ $.ajaxSetup({
                                         <option {{ ($type ==  \App\Providers\AppServiceProvider::EventSchedule)? "selected" : ''  }} value="{{ \App\Providers\AppServiceProvider::EventSchedule }}">Events Report</option>
                                         <option {{ ($type ==  \App\Providers\AppServiceProvider::Income)? "selected" : ''  }} value="{{ \App\Providers\AppServiceProvider::Income }}">Income</option>
                                         <option {{ ($type ==  \App\Providers\AppServiceProvider::MemberMatches)? "selected" : ''  }} value="{{ \App\Providers\AppServiceProvider::MemberMatches }}">Member Matches</option>
+                                        <option {{ ($type ==  \App\Providers\AppServiceProvider::Payments)? "selected" : ''  }} value="{{ \App\Providers\AppServiceProvider::Payments }}">Payments</option>
+
                                 </select>
                                 @error('report_type')
                                     <span class="invalid-feedback" role="alert">
