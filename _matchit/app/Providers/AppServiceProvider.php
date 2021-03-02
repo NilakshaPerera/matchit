@@ -34,6 +34,12 @@ class AppServiceProvider extends ServiceProvider
     public const Income = 2;
     public const MemberMatches = 3;
 
+
+    //Genders 
+    public const GenderMale = "Male";
+    public const GenderFemale = "Female";
+    public const GenderEveryone = 'Everyone';
+
     /**
      * Register any application services.
      *
