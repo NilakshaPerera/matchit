@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 27, 2021 at 02:54 PM
+-- Generation Time: Mar 02, 2021 at 12:01 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.30
 
@@ -37,6 +37,13 @@ CREATE TABLE `bookings` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `bookings`
+--
+
+INSERT INTO `bookings` (`id`, `users_id`, `events_id`, `channel_id`, `payments_id`, `date`, `created_at`, `updated_at`) VALUES
+(1, 1, 2, 5, 2, '2021-02-28', '2021-02-28 12:11:37', '2021-02-28 12:11:37');
 
 -- --------------------------------------------------------
 
@@ -79,6 +86,14 @@ CREATE TABLE `events` (
   `banner` varchar(250) NOT NULL,
   `venue` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `events`
+--
+
+INSERT INTO `events` (`id`, `event_types_id`, `name`, `price`, `date`, `created_at`, `updated_at`, `banner`, `venue`) VALUES
+(1, 5, 'Calista Rivas', '494', '1996-12-18', '2021-02-28 11:53:42', '2021-02-28 11:53:42', 'storage/events/1614533021-2048168733/1614533021-1078406617.jpg', 'Debitis amet quam r'),
+(2, 4, 'Zephania Rush', '222', '2022-01-20', '2021-02-28 12:08:15', '2021-02-28 12:08:15', 'storage/events/1614533895-1748864630/1614533895-929729474.jpg', 'Duis consequat Odio');
 
 -- --------------------------------------------------------
 
@@ -554,6 +569,14 @@ CREATE TABLE `payments` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `payments`
+--
+
+INSERT INTO `payments` (`id`, `users_id`, `payment_status_id`, `date`, `amount`, `reference_no`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, '2021-02-28', '12', 'MATCHIT-00001', '2021-02-28 12:11:03', '2021-02-28 12:11:03'),
+(2, 1, 1, '2021-02-28', '222', 'MATCHIT-00002', '2021-02-28 12:11:37', '2021-02-28 12:11:37');
+
 -- --------------------------------------------------------
 
 --
@@ -670,6 +693,8 @@ CREATE TABLE `users` (
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `dob` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `gender` enum('Male','Female') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `prefered_gender` enum('Male','Female','Everyone') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `address` varchar(500) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `user_types_id` int(11) DEFAULT NULL,
   `channels_id` int(11) DEFAULT NULL,
@@ -683,8 +708,9 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `roles_id`, `name`, `email`, `phone`, `email_verified_at`, `password`, `dob`, `address`, `user_types_id`, `channels_id`, `status_id`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 5, 'Dale Stokes', 'perera.nilaksha@gmail.com', '111111111111', NULL, '$2y$10$dq7sby75kFmVkQ/xIwGAvu2cisIynrwQpZRMpvarhH.Fwo0HUoqwO', '1950-07-27', 'Et omnis modi veniam', 1, NULL, 1, NULL, '2021-01-28 00:49:51', '2021-02-27 07:50:34');
+INSERT INTO `users` (`id`, `roles_id`, `name`, `email`, `phone`, `email_verified_at`, `password`, `dob`, `gender`, `prefered_gender`, `address`, `user_types_id`, `channels_id`, `status_id`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 5, 'Dale Stokes', 'perera.nilaksha@gmail.com', '111111111111', NULL, '$2y$10$dq7sby75kFmVkQ/xIwGAvu2cisIynrwQpZRMpvarhH.Fwo0HUoqwO', '1950-07-27', 'Male', 'Male', 'Et omnis modi veniam', 1, NULL, 1, 'kLSPbhBK8Ve4zILo8LGwP9kkHDMnulDTIm2QxL25ope6xaFpZW3l24Cfhq1J', '2021-01-28 00:49:51', '2021-03-02 03:08:19'),
+(2, 5, 'Cassady Palmer', 'waxub@mailinator.com', '077777773', NULL, '$2y$10$eGwcTW3ha0sO8cHitEbQo.odz3TxNpOFcgWBcgu5iBjmrDyX//qHa', '1951-10-14', 'Male', 'Female', 'Voluptatibus sapient', 2, NULL, 1, NULL, '2021-03-02 00:49:35', '2021-03-02 05:30:06');
 
 -- --------------------------------------------------------
 
@@ -719,7 +745,14 @@ CREATE TABLE `user_has_hobbies` (
 --
 
 INSERT INTO `user_has_hobbies` (`id`, `users_id`, `hobbies_id`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, '2021-02-27 07:50:34', '2021-02-27 07:50:34');
+(43, 1, 1, '2021-03-02 03:08:19', '2021-03-02 03:08:19'),
+(44, 1, 3, '2021-03-02 03:08:19', '2021-03-02 03:08:19'),
+(45, 1, 4, '2021-03-02 03:08:19', '2021-03-02 03:08:19'),
+(46, 1, 13, '2021-03-02 03:08:19', '2021-03-02 03:08:19'),
+(119, 2, 3, '2021-03-02 05:30:06', '2021-03-02 05:30:06'),
+(120, 2, 4, '2021-03-02 05:30:06', '2021-03-02 05:30:06'),
+(121, 2, 5, '2021-03-02 05:30:06', '2021-03-02 05:30:06'),
+(122, 2, 20, '2021-03-02 05:30:06', '2021-03-02 05:30:06');
 
 -- --------------------------------------------------------
 
@@ -740,7 +773,11 @@ CREATE TABLE `user_has_personality_details` (
 --
 
 INSERT INTO `user_has_personality_details` (`id`, `users_id`, `personality_details_id`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, '2021-02-27 07:50:34', '2021-02-27 07:50:34');
+(26, 1, 1, '2021-03-02 03:08:19', '2021-03-02 03:08:19'),
+(27, 1, 2, '2021-03-02 03:08:19', '2021-03-02 03:08:19'),
+(28, 1, 3, '2021-03-02 03:08:19', '2021-03-02 03:08:19'),
+(66, 2, 1, '2021-03-02 05:30:06', '2021-03-02 05:30:06'),
+(67, 2, 2, '2021-03-02 05:30:06', '2021-03-02 05:30:06');
 
 -- --------------------------------------------------------
 
@@ -911,7 +948,7 @@ ALTER TABLE `user_types`
 -- AUTO_INCREMENT for table `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `channels`
@@ -923,7 +960,7 @@ ALTER TABLE `channels`
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `event_types`
@@ -953,7 +990,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `payment_status`
@@ -989,7 +1026,7 @@ ALTER TABLE `status`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `user_has_bookings`
@@ -1001,13 +1038,13 @@ ALTER TABLE `user_has_bookings`
 -- AUTO_INCREMENT for table `user_has_hobbies`
 --
 ALTER TABLE `user_has_hobbies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
 
 --
 -- AUTO_INCREMENT for table `user_has_personality_details`
 --
 ALTER TABLE `user_has_personality_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT for table `user_has_reviews`
