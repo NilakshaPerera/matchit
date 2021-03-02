@@ -379,6 +379,7 @@ class Usercontroller extends Controller
      * Summary : Get matches of a passed client ID
      *
      * @param [type] $uesrId
+     * @param [type] $minScore
      * @return void
      */
     public function getMatches($uesrId, $minScore = 0)
