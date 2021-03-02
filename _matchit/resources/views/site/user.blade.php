@@ -95,6 +95,44 @@
 
                     </div>
 
+
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="email">Gender</label>
+                        <select required id="gender"  class="form-control @error('gender') is-invalid @enderror mr-3" name="gender" required autocomplete="gender">
+                          <option {{ ($user->gender == "Male")? 'selected': ""  }} id="type-male" value="Male">Male</option>
+                          <option {{ ($user->gender == "Female")? 'selected': ""  }} id="type-female" value="Female">Female</option>
+                      </select>
+
+                      @error('gender')
+                      <span class="invalid-feedback" role="alert">
+                          <strong>{{ $message }}</strong>
+                      </span>
+                      @enderror
+                      </div>
+
+
+                      <div class="form-group col-md-6">
+                        <label for="email">Interested In</label>
+                        <select required id="interests"  class="form-control @error('interests') is-invalid @enderror mr-3" name="interests" required autocomplete="interests">
+
+                          <option {{ ($user->prefered_gender == "Male")? 'selected': ""  }} id="type-male" value="Male">Male</option>
+                          <option {{ ($user->prefered_gender == "Female")? 'selected': ""  }} id="type-female" value="Female">Female</option>
+                          <option {{ ($user->prefered_gender == "Everyone")? 'selected': ""  }} id="type-everyone" value="Everyone">Everyone</option>
+                          
+                      </select>
+
+                      @error('interests')
+                      <span class="invalid-feedback" role="alert">
+                          <strong>{{ $message }}</strong>
+                      </span>
+                      @enderror
+                      </div>
+
+                  </div>
+
+
+
                       <h4 class="mt-3"><b>Personality Details</b></h4>
 
                       <div class="form-row">
