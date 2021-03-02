@@ -32,6 +32,9 @@ Route::post('/payment/create' , 'PaymentController@create')->name('payment.creat
 Route::get('/admin/events', 'EventController@index')->name('events.index');
 Route::post('/admin/events/create', 'EventController@store')->name('events.create');
 Route::get('/admin/events/all', 'EventController@all')->name('events.all');
+Route::get('/admin/events/edit/{id}', 'EventController@edit')->name('events.edit');
+Route::post('/admin/events/update', 'EventController@update')->name('events.update');
+
 
 
 Route::get('/admin/client', 'UserController@index')->name('client.index');

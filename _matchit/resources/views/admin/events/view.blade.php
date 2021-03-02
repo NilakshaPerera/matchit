@@ -84,19 +84,22 @@
                         <tr>
                             <th>Event Name</th>
                             <th>Event Type</th>
-                            <th>Price £</th>
                             <th>Date</th>
+                            <th>Price £</th>
                             <th>Venue</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($events as $event)
                         <tr>
                             <td>{{ $event->name }}</td>
-                            <td>{{ $event->eventType->name }}</td>
-                            <td>{{ $event->price }}</td>
+                            <td>{{ ($event->event_types_id)? $event->eventType->name : "N/A" }}</td>
                             <td>{{ $event->date }}</td>
+                            <td>{{ $event->price }}</td>
                             <td>{{ $event->venue }}</td>
+                            <td><a href="{{ route('events.edit',[$event->id]) }}">Edit</a></td>
+
                         </tr>
                         @endforeach                
                     </tbody>

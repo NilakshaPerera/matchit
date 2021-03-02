@@ -33,6 +33,7 @@ class AppServiceProvider extends ServiceProvider
     public const EventSchedule = 1;
     public const Income = 2;
     public const MemberMatches = 3;
+    public const Payments = 4;
 
     /**
      * Register any application services.
