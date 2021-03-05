@@ -38,6 +38,9 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link {{ (Route::currentRouteName() == 'about')? 'active' : '' }}" href="{{ url('/about') }}">About</a>
+                        </li>
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
