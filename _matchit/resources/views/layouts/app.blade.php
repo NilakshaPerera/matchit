@@ -90,6 +90,11 @@
             @yield('content')
         </main>
     </div>
+    <div class="container p-0 lift-and-drop-shadow footer">
+        <div class="col-md-12">
+            <h1>FOOTER</h1>
+        </div>
+    </div>
 
     <!-- Scripts -->
     <script src="{{ asset('assets_app/js/app.js') }}"></script>

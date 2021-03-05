@@ -5,10 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12 card">
 
-
-
             <div class="row">
-
 
                 <div id="carouselExampleIndicators" class="carousel slide home-carousal" data-ride="carousel">
                     <ol class="carousel-indicators">
@@ -54,14 +51,7 @@
                     </a>
                   </div>
 
-
-
-
-
             </div>
-
-
-
 
             <h2 class="text-center mt-4 mb-4"><b>Upcoming Events</b></h2>
             <div class="row ">
@@ -94,7 +84,6 @@
                             </p>
                             <p class="card-action text-center">
                                 <?php 
-
                                     $today = Carbon::now();
 
                                     $expireDate = Carbon::createFromFormat('Y-m-d', $event->date);
@@ -115,12 +104,10 @@
                                     }
                                     }else{
                                 ?>
-
                                     <a class="btn btn-error disabled">This event is expired</a>
                                     <?php 
-
                                     }
-                                    ?>
+                                ?>
                             </p>
                         </div>
                     </div>
