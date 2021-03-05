@@ -17,9 +17,9 @@
 
 <div class="container page-home">
 
-    <div class="row">
+    <div class="row lift-and-drop-shadow">
         <div class="col-md-12">
-            <div class="card">
+            <div class="">
 
 
 
