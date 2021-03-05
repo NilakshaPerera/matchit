@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', function () { return view('welcome'); });
+Route::get('/about', function () { return view('site.about');})->name('about');
+Route::get('/terms', function () { return view('site.terms');})->name('terms');
 
 Route::get('/user' , 'Usercontroller@index')->name('user');
 Route::get('/user/events' , 'Usercontroller@events')->name('user-events');
