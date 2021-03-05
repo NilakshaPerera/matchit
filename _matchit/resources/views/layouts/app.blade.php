@@ -19,9 +19,10 @@
 
 </head>
 <body>
-    <div id="app">
+    <div id="app">    
+        <div class="container p-0">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
+        
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
@@ -81,10 +82,11 @@
                         @endguest
                     </ul>
                 </div>
-            </div>
+            
         </nav>
+    </div>
 
-        <main class="py-4" @if(isset($bgimg)) style="background: url({{ asset('assets_app/images/background.jpg') }}); background-position: center center; background-size: cover;" @endif>
+        <main class="" @if(isset($bgimg)) style="background: url({{ asset('assets_app/images/background.jpg') }}); background-position: center center; background-size: cover;" @endif>
             @yield('content')
         </main>
     </div>

@@ -437,7 +437,6 @@ class Usercontroller extends Controller
                     }
                 }
 
-
                 // hobby details 40%
                 $currentUserHobbyDetailsMatches = [];
                 $userHobbyDetails = ($user->userhashobby) ? $user->userhashobby->pluck('hobbies_id')->toArray() : [];
