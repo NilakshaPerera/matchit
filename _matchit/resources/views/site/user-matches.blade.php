@@ -21,24 +21,117 @@
 
         @if (count($matches['data']) > 0)
 
-
         <div class="col-md-12">
 
-            <h3 class="text-center mt-4 mb-4">Here are your matches based on your profile</h3>
+            <h3 class="text-center mt-4 mb-4 b">Here are your matches based on your profile!</h3>
             <div class="row">
                 @foreach ($matches['data'] as $person)
-                <div class="col-md-6">
+                <div class="col-md-4 profiling-block mb-3">
                     <div class="card">
                         <div class="card-body">
+                            <div>
+                                <div class="img-holder" style="background-image: url({{ $person['profile_pic'] }})"></div>
+
+                                <div class="row">
+                                    <div class=" col-md-12 basic-data text-center mt-2">
+                                        <h3><b>{{ $person['name'] }}</b></h3>
+                                    </div>
+                                </div>
+                                <hr class="m-1">
+                                <div class="row personality-data">
+                                    <div class=" col-5 text-right p-0">
+                                        Personality &nbsp; 
+                                    </div>
+                                    <div class=" col-7 text-left p-0">
+                                        @foreach ($person['personality'] as $p)
+                                            <span class="badge badge-secondary">{{ $p }}</span>
+                                        @endforeach
+                                    </div>
+                                </div>
+
+                                <div class="row personality-data">
+                                    <div class=" col-5 text-right p-0">
+                                        Hobbies &nbsp;
+                                    </div>
+                                    <div class=" col-7 text-left p-0">
+                                        @foreach ($person['hobby'] as $h)
+                                            <span class="badge badge-secondary">{{ $h }}</span>
+                                        @endforeach
+                                    </div>
+                                </div>
+
+                                <hr class="m-1">
+
+                                <div class="row personality-data">
+                                    <div class=" col-5 text-right p-0">
+                                        Gender &nbsp;
+                                    </div>
+                                    <div class=" col-7 text-left p-0 b">
+                                        {{$person['gender']}}
+                                    </div>
+                                </div>
+
+                                <div class="row personality-data">
+                                    <div class=" col-5 text-right p-0">
+                                        Interested In &nbsp;
+                                    </div>
+                                    <div class=" col-7 text-left p-0 b">
+                                        {{$person['prefered_gender']}}
+                                    </div>
+                                </div>
+
+                                <div class="row personality-data">
+                                    <div class=" col-5 text-right p-0">
+                                        Age &nbsp;
+                                    </div>
+                                    <div class=" col-7 text-left p-0 b">
+                                        <?php
+                                            $today = Carbon::now();
+                                            $expireDate = Carbon::createFromFormat('Y-m-d', $person['dob']);
+                                            $difference = $today->diffInYears($expireDate, true);
+                                        ?>
+                                        {{ $difference}}
+                                    </div>
+                                </div>
+
+                                <div class="row personality-data">
+                                    <div class=" col-5 text-right p-0">
+                                        Contact &nbsp;
+                                    </div>
+                                    <div class=" col-7 text-left p-0 b">
+                                        {{$person['phone']}}
+                                    </div>
+                                </div>
+
+                                <div class="row personality-data">
+                                    <div class=" col-5 text-right p-0">
+                                        Email &nbsp;
+                                    </div>
+                                    <div class=" col-7 text-left p-0 b" >
+                                        {{$person['email']}}
+                                    </div>
+                                </div>
+
+                                <hr class="m-1">
+
+                                <div class="row personality-data">
+                                    <div class=" col-5 text-right p-0">
+                                        Match Rate &nbsp;
+                                    </div>
+                                    <div class="col-7 text-left p-0 b match-rate-data">
+                                        {{ $person['total_score'] }}%
+                                    </div>
+                                </div>
+
+                            </div>
                             <?php 
-                            print_r($person);
+                         
                         ?>
                         </div>
                     </div>
                 </div>
                 @endforeach
             </div>
-
 
         </div>
         @else

@@ -497,6 +497,7 @@ class Usercontroller extends Controller
                 if ($score >= $minScore) {
                     $matchData['total_score'] = $score;
                     $matchData['userId'] = $user->id;
+                    $matchData['profile_pic'] = url('/') . '/' . $user->profile_pic;
                     $matchData['name'] = $user->name;
                     $matchData['email'] = $user->email;
                     $matchData['phone'] = $user->phone;
