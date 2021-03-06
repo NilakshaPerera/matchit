@@ -1,3 +1,72 @@
+.image-preview {
+    color: #666;
+    display: block;
+    width: 250px;
+    height: 250px;
+    position: relative;
+    overflow: hidden;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+
+    input {
+        line-height: 50px;
+        font-size: 50px;
+        position: absolute;
+        opacity: 0;
+        z-index: 5;
+        width: 100%;
+    }
+
+    label {
+        position: absolute;
+        z-index: 10;
+        opacity: 1;
+        cursor: pointer;
+        font-size: 50px;
+        text-transform: uppercase;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        text-align: center;
+
+        &:hover {
+            >i {
+                color: #999;
+            }
+        }
+
+        i {
+            cursor: pointer;
+            transition: all .2s ease-in-out;
+            -moz-transition: all .2s ease-in-out;
+            -webkit-transition: all .2s ease-in-out;
+        }
+
+        a.remove-img {
+            width: 22px;
+            height: 22px;
+            font-size: 14px;
+            font-weight: 400;
+            color: #fff;
+            background-color: #da3d3d;
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            //@include border-radius(30px) ;
+            border: 1px solid rgba(255, 255, 255, 0.75);
+            box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+
+            &:hover {
+                background-color: #ad2727;
+                border: 1px solid #ff6767;
+            }
+        }
+    }
+}
+
 .page-home {
 
     .darken-background {
@@ -94,6 +163,10 @@
     -webkit-box-shadow: 0px 3px 11px 0px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 0px 3px 11px 0px rgba(0, 0, 0, 0.75);
     box-shadow: 0px 3px 11px 0px rgba(0, 0, 0, 0.75);
+}
+
+.height-pages{
+    min-height: 80vh;
 }
 
 .footer {
