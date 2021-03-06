@@ -4,8 +4,10 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<title>MatchiIT Admin</title>
 
+	<script> var base = '{{ url('/') }}';</script>
 	<!-- Global stylesheets -->
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
 	<link href=" {{ asset('assets_theme/css/icons/icomoon/styles.min.css') }}" rel="stylesheet" type="text/css">
@@ -148,7 +150,7 @@
 						<li class="nav-item nav-item-submenu nav-item-expanded nav-item-open">
 							<a href="#" class="nav-link"><i class="icon-copy"></i> <span>Reports</span></a>
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-								<li class="nav-item"><a href="" class="nav-link ">Generate</a></li>
+								<li class="nav-item"><a href="{{ route('reports', [0]) }}" class="nav-link ">Generate</a></li>
 						    </ul>
 						</li>
 
