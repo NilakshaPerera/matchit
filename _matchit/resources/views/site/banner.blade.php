@@ -30,7 +30,9 @@
           <div class="centered text-center darken-background">
               <h1>How can you meet new people ?</h1>
               <p>We throw events based on your interests and we let you meet others who are just like you.</p>
+              @guest
                 <a class="btn btn-success" href="{{ route('register') }}">Register Now</a>
+              @endguest
           </div>
         </div>
 

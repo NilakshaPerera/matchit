@@ -9,18 +9,18 @@
             
                     <h2 class="mb-2 "><b>{{ __('Instructions') }}</b></h2>
                     <h5>Please follow the mentioned instructions while Creating a new account.</h5>
-                    <ol>
-                    <li><b> On the 1st field enter your full name as mentioned in the UK Citizen card.</b><br><br>
-                    <li><b> On the 2nd field enter your Phone No<em> (Ex:- 01863-441504).</em> </b><br><br>
-                    <li><b> On the 3rd field enter your valid email address<em> (Ex:- someone@somewhere.com)</em> </b><br><br>
+                    <ol class="register-instructions">
+                    <li><b> On the 1st field enter your full name as mentioned in the UK Citizen card.</b>
+                    <li><b> On the 2nd field enter your Phone No<em> (Ex:- 01863-441504).</em> </b>
+                    <li><b> On the 3rd field enter your valid email address<em> (Ex:- someone@somewhere.com)</em> </b>
                     <li> <b> On the 4th field enter a strong password(Ex:- CrystaL99X).</b><br>
                     <em>(we encourage you to use uppercase,lower case & numerics for your password)</em><br> 
-                    <li><b> On the 5th field re-enter the previously typed password.</b><br><br>
-                    <li><b> On the 6th field (Date picker)select a DOB which sets your age higher than 50 years.</b><br><br>
-                    <li><b> On the 7th field choose weather you are living remote to Sussex or live within Sussex.</b><br><br>
-                    <li><b> After filling all the details press "Register" button to proceed with the registration. </b><br><br>
-                    <li><b> If any of the fields are not according to the set standards , System will generate error(s).  </b><br>
-                    <li><b> You have to rectify the fields one by one before pressing the "Register" button again.    </b><br><br>
+                    <li><b> On the 5th field re-enter the previously typed password.</b>
+                    <li><b> On the 6th field (Date picker)select a DOB which sets your age higher than 50 years.</b>
+                    <li><b> On the 7th field choose weather you are living remote to Sussex or live within Sussex.</b>
+                    <li><b> After filling all the details press "Register" button to proceed with the registration. </b>
+                    <li><b> If any of the fields are not according to the set standards , System will generate error(s).  </b>
+                    <li><b> You have to rectify the fields one by one before pressing the "Register" button again.    </b>
                 </ol>
                 </div>
             <div class="col-md-5 auth-form-container">

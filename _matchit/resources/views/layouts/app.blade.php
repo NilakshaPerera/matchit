@@ -145,7 +145,7 @@
                 @endguest
 
             </ul>
-            <h5>{{ date('Y') }} All Rights Reserved. </h5>
+            <h5>{{ date('Y') }} All Rights Reserved Sussex Companions Pvt Ltd. </h5>
         </div>
     </div>
 
