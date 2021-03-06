@@ -9,7 +9,7 @@ class Review extends Model
     protected $table = 'reviews';
     protected $fillable = ['name'];
 
-    public function userhasreview(){
+    public function userHasReview(){
         return $this->hasMany('App\UserHasReview', 'reviews_id');
     }
 }

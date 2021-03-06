@@ -9,14 +9,16 @@
             <div class="col-md-7 p-4 auth-form-container">
             
                     <h2 class="mb-2 "><b>{{ __('Instructions') }}</b></h2>
+
                     <b>Please follow the mentioned instructions while Creating a new account</b>
+
             
             </div>
             <div class="col-md-5 auth-form-container">
               
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
-                        <h2 class="mb-2 pl-3 pr-3"><b>{{ __('Create New Account') }}</b></h2>
+                        <h2 class="mb-2 pl-3 pr-3 text-center"><b>{{ __('Create New Account') }}</b></h2>
 
                         <div class="form-group ">
                             <div class="col-md-12 mb-1-on-mobile">

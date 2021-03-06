@@ -9,7 +9,7 @@ class Hobby extends Model
     protected $table = 'hobbies';
     protected $fillable = ['name'];
 
-    public function userhashobby(){
+    public function userHasHobby(){
         return $this->hasMany('App\UserHasHobby', 'hobbies_id');
     }
    

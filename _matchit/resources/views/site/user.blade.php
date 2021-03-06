@@ -10,10 +10,8 @@
 
 
 <div class="container page-home">
-    <div class="row ">
+    <div class="row lift-and-drop-shadow">
         <div class="col-md-12">
-
-            @include('site.profilenav')
 
             <div class="row">
                 <div class="col-md-12">
@@ -69,7 +67,7 @@
                           <label for="email">User Type</label>
                           <select required id="user_type"  class="form-control @error('user_type') is-invalid @enderror mr-3" name="user_type" required autocomplete="user_type">
                             <?php 
-                                foreach (  $userTypes as $type) {
+                                foreach ($userTypes as $type) {
                             ?>
                                 <option {{ ($user->user_types_id == $type->id)? 'selected': ""  }} id="type-{{ $type->name }}" value="{{ $type->id }}">{{ $type->name }}</option>
                             <?php 
@@ -96,6 +94,44 @@
                         </div>
 
                     </div>
+
+
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="email">Gender</label>
+                        <select required id="gender"  class="form-control @error('gender') is-invalid @enderror mr-3" name="gender" required autocomplete="gender">
+                          <option {{ ($user->gender == "Male")? 'selected': ""  }} id="type-male" value="Male">Male</option>
+                          <option {{ ($user->gender == "Female")? 'selected': ""  }} id="type-female" value="Female">Female</option>
+                      </select>
+
+                      @error('gender')
+                      <span class="invalid-feedback" role="alert">
+                          <strong>{{ $message }}</strong>
+                      </span>
+                      @enderror
+                      </div>
+
+
+                      <div class="form-group col-md-6">
+                        <label for="email">Interested In</label>
+                        <select required id="interests"  class="form-control @error('interests') is-invalid @enderror mr-3" name="interests" required autocomplete="interests">
+
+                          <option {{ ($user->prefered_gender == "Male")? 'selected': ""  }} id="type-male" value="Male">Male</option>
+                          <option {{ ($user->prefered_gender == "Female")? 'selected': ""  }} id="type-female" value="Female">Female</option>
+                          <option {{ ($user->prefered_gender == "Everyone")? 'selected': ""  }} id="type-everyone" value="Everyone">Everyone</option>
+                          
+                      </select>
+
+                      @error('interests')
+                      <span class="invalid-feedback" role="alert">
+                          <strong>{{ $message }}</strong>
+                      </span>
+                      @enderror
+                      </div>
+
+                  </div>
+
+
 
                       <h4 class="mt-3"><b>Personality Details</b></h4>
 
@@ -125,7 +161,7 @@
                       <div class="form-group col-md-12">
 
                         <?php 
-                          $hobbyDs = $user->userhashobby->pluck('hobbies_id')->toArray();
+                          $hobbyDs = $user->userhashobby->pluck('hobbies_id')->toArray(); 
                         ?>
 
                         <select id="hobby-details[]" multiple="multiple" class="form-control select2-basic-multiple @error('hobby-details') is-invalid @enderror" name="hobby-details[]" placeholder="{{ __('Hobby Details') }}"  autocomplete="hobby-details">
@@ -188,23 +224,6 @@
                     </form>
                 </div>
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         </div>
     </div>
 </div>

@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-       'roles_id', 'name', 'email', 'phone' , 'password', 'dob', 'address', 'user_types_id', 'channels_id', 'status_id',
+       'roles_id', 'name', 'email', 'phone' , 'password', 'dob', 'gender' , 'prefered_gender', 'address', 'user_types_id', 'channels_id', 'status_id',
     ];
 
     /**
@@ -41,6 +41,10 @@ class User extends Authenticatable
         return $this->belongsTo('App\Role', 'roles_id');
     }
 
+    public function payment(){
+        return $this->hasMany('App\Payment', 'users_id');
+    }
+
     public function userType(){
         return $this->belongsTo('App\UserType' , 'user_types_id');
     }
@@ -52,15 +56,19 @@ class User extends Authenticatable
     public function status(){
         return $this->belongsTo('App\Status', 'status_id');
     }
+
     public function userhashobby(){
         return $this->hasMany('App\UserHasHobby', 'users_id');
     }
+
     public function userhasbooking(){
         return $this->hasMany('App\UserHasBooking', 'users_id');
     }
+
     public function userhasreview(){
         return $this->hasMany('App\UserHasReview', 'users_id');
     }
+
     public function usershaspersonalitydetail(){
         return $this->hasMany('App\UsersHasPersonalityDetail', 'users_id');
     }

@@ -43,6 +43,18 @@ class RegisterController extends Controller
     }
 
     /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function showRegistrationForm()
+    {
+        return view('auth.register')
+            ->withBgimg(true);
+    }
+
+
+    /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
@@ -54,10 +66,10 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'phone' => ['required', 'digits:12'],
+            'phone' => ['required', 'max:12', 'unique:users,phone'],
             'birthday' => ['required', 'date', 'before:-50 years'],
             'user_type' => ['required', 'exists:user_types,id'],
-        ],[
+        ], [
             'birthday.before' => "The birthday must be a date before 50 years.",
         ]);
     }
@@ -78,6 +90,8 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'dob' => $data['birthday'],
             'user_types_id' => $data['user_type'],
+            'channels_id' => AppServiceProvider::ChannelWebForm,
+            'status_id' => AppServiceProvider::Partial,
         ]);
     }
 }
