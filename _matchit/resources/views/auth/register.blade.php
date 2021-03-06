@@ -19,7 +19,7 @@
                     <li><b> On the 5th field re-enter the previously typed password.</b><br><br>
                     <li><b> On the 6th field (Date picker)select a DOB which sets your age higher than 50 years.</b><br><br>
                     <li><b> On the 7th field choose weather you are living remote to Sussex or live within Sussex.</b><br><br>
-                    <li><b> After filling all the details press "Register" button to proceed with the registartion. </b><br><br>
+                    <li><b> After filling all the details press "Register" button to proceed with the registration. </b><br><br>
                     <li><b> If any of the fields are not according to the set standards , System will generate error(s).  </b><br>
                     <li><b> You have to rectify the fields one by one before pressing the "Register" button again.    </b><br><br>
                 </ol>
