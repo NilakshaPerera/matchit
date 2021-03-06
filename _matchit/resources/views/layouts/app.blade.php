@@ -19,9 +19,10 @@
 
 </head>
 <body>
-    <div id="app">
+    <div id="app">    
+        <div class="container p-0">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
+        
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
@@ -37,6 +38,9 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link {{ (Route::currentRouteName() == 'about')? 'active' : '' }}" href="{{ url('/about') }}">About</a>
+                        </li>
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -50,7 +54,19 @@
                         @else
 
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('user') }}">Account</a>
+                                <a class="nav-link {{ (Route::currentRouteName() == 'user-events')? 'active' : '' }}" href="{{ route('user-events') }}">Your Events</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link {{ (Route::currentRouteName() == 'user-matches')? 'active' : '' }}" href="{{ route('user-matches') }}">Your Matches</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link {{ (Route::currentRouteName() == 'user-membership')? 'active' : '' }}" href="{{ route('user-membership') }}">Membership</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link {{ (Route::currentRouteName() == 'user')? 'active' : '' }}" href="{{ route('user') }}">Profile</a>
                             </li>
 
                             <li class="nav-item dropdown">
@@ -73,17 +89,22 @@
                         @endguest
                     </ul>
                 </div>
-            </div>
+            
         </nav>
+    </div>
 
-        <main class="py-4">
+        <main class="" @if(isset($bgimg)) style="background: url({{ asset('assets_app/images/background.jpg') }}); background-position: center center; background-size: cover;" @endif>
             @yield('content')
         </main>
+    </div>
+    <div class="container p-0 lift-and-drop-shadow footer">
+        <div class="col-md-12">
+            <h1>FOOTER</h1>
+        </div>
     </div>
 
     <!-- Scripts -->
     <script src="{{ asset('assets_app/js/app.js') }}"></script>
-
     @yield('script')
 
 </body>

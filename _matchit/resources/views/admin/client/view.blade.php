@@ -92,6 +92,7 @@
                             <th>Channel</th>
                             <th>Status</th>
                             <th>Created At</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -107,7 +108,8 @@
                             <td>{{ ($user->channels_id)? $user->channel->name : "N/A" }}</td>
                             <td>{{ ($user->status_id)? $user->status->name : "N/A" }}</td>
                             <td>{{ $user->created_at }}</td>
-                        </tr>
+                            <td><a href="{{ route('client.edit',[$user->id]) }}">Edit</a></td>
+                            </tr>
                         @endforeach                
                     </tbody>
                 </table>

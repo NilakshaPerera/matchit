@@ -2,7 +2,7 @@
 
 @section('css')
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 @endsection
 
 
@@ -10,17 +10,30 @@
 
 
 <div class="container page-home">
-    <div class="row ">
+    <div class="row lift-and-drop-shadow height-pages">
         <div class="col-md-12">
-
-            @include('site.profilenav')
 
             <div class="row">
                 <div class="col-md-12">
-                    <form method="POST" action="{{ route('user.update') }}">
+                    <form method="POST" action="{{ route('user.update') }}" enctype="multipart/form-data">
                       @csrf
                       <input type="hidden" name="id" id="id" value="{{ $user->id }}">
                       <h4 class="mt-3"><b>Basic Details</b></h4>
+
+                        <div class="form-row">
+                          <div class="form-group col-md-12 d-flex justify-content-center">
+                            <div class="image-preview logo profile-placeholder" id="image-preview-logo" data-required="false" data-img="{{ url('/') . '/' . Auth::user()->profile_pic }}" style="background-image: none; background-size: cover; background-position: center center;">
+                                <label for="profile-pic" class="image-label d-flex justify-content-center align-items-center" id="image-label-logo"><i class="fa fa-plus" aria-hidden="true"></i></label>
+                                <input type="file" name="profile-pic" class="image-upload @error('profile-pic') is-invalid @enderror" id="profile-pic" accept="image/*">
+                                @error('profile-pic')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                              </div>
+                          </div>
+                        </div>
+
                         <div class="form-row">
                             <div class="form-group col-md-6">
                               <label for="name">Name</label>
@@ -97,6 +110,44 @@
 
                     </div>
 
+
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="email">Gender</label>
+                        <select required id="gender"  class="form-control @error('gender') is-invalid @enderror mr-3" name="gender" required autocomplete="gender">
+                          <option {{ ($user->gender == "Male")? 'selected': ""  }} id="type-male" value="Male">Male</option>
+                          <option {{ ($user->gender == "Female")? 'selected': ""  }} id="type-female" value="Female">Female</option>
+                      </select>
+
+                      @error('gender')
+                      <span class="invalid-feedback" role="alert">
+                          <strong>{{ $message }}</strong>
+                      </span>
+                      @enderror
+                      </div>
+
+
+                      <div class="form-group col-md-6">
+                        <label for="email">Interested In</label>
+                        <select required id="interests"  class="form-control @error('interests') is-invalid @enderror mr-3" name="interests" required autocomplete="interests">
+
+                          <option {{ ($user->prefered_gender == "Male")? 'selected': ""  }} id="type-male" value="Male">Male</option>
+                          <option {{ ($user->prefered_gender == "Female")? 'selected': ""  }} id="type-female" value="Female">Female</option>
+                          <option {{ ($user->prefered_gender == "Everyone")? 'selected': ""  }} id="type-everyone" value="Everyone">Everyone</option>
+                          
+                      </select>
+
+                      @error('interests')
+                      <span class="invalid-feedback" role="alert">
+                          <strong>{{ $message }}</strong>
+                      </span>
+                      @enderror
+                      </div>
+
+                  </div>
+
+
+
                       <h4 class="mt-3"><b>Personality Details</b></h4>
 
                       <div class="form-row">
@@ -125,7 +176,7 @@
                       <div class="form-group col-md-12">
 
                         <?php 
-                          $hobbyDs = $user->userhashobby->pluck('hobbies_id')->toArray();
+                          $hobbyDs = $user->userhashobby->pluck('hobbies_id')->toArray(); 
                         ?>
 
                         <select id="hobby-details[]" multiple="multiple" class="form-control select2-basic-multiple @error('hobby-details') is-invalid @enderror" name="hobby-details[]" placeholder="{{ __('Hobby Details') }}"  autocomplete="hobby-details">
@@ -196,6 +247,7 @@
 
 
 @section('script')
+@include('site.partials.single-image-preview')
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
 

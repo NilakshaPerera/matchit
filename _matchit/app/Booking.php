@@ -13,6 +13,12 @@ class Booking extends Model
         return $this->hasMany('App\UserHasBooking', 'bookings_id');
     }
 
+    public function payment(){
+        return $this->belongsTo('App\Payment', 'payments_id');
+    }
 
+    public function event(){
+        return $this->belongsTo('App\Event', 'events_id');
+    }
 
 }

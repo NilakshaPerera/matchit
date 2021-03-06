@@ -29,6 +29,17 @@ class LoginController extends Controller
     protected $redirectTo = RouteServiceProvider::USER;
 
     /**
+     * Show the application's login form.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function showLoginForm()
+    {
+        return view('auth.login')
+            ->withBgimg(true);
+    }
+
+    /**
      * Create a new controller instance.
      *
      * @return void

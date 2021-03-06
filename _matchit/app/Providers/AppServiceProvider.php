@@ -17,6 +17,30 @@ class AppServiceProvider extends ServiceProvider
     public const Receptionist = 4;
     public const Client = 5;
 
+    public const UserTypeLocal = 1;
+    public const UserTypeRemote = 2;
+
+    public const ChannelTelephone = 1;
+    public const ChannelFax = 2;
+    public const ChannelPost = 3;
+    public const ChannelEmail = 4;
+    public const ChannelWebForm = 5;
+
+    public const Complete = 1;
+    public const Partial = 2;
+
+    //Report Types
+    public const EventSchedule = 1;
+    public const Income = 2;
+    public const MemberMatches = 3;
+    public const Payments = 4;
+
+
+    //Genders 
+    public const GenderMale = "Male";
+    public const GenderFemale = "Female";
+    public const GenderEveryone = 'Everyone';
+
     /**
      * Register any application services.
      *
