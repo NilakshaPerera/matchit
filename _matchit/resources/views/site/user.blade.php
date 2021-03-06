@@ -78,24 +78,24 @@
 
 
                       <div class="form-row">
-                        <div class="form-group col-md-6">
+                        {{-- <div class="form-group col-md-6">
                           <label for="email">User Type</label>
                           <select required id="user_type"  class="form-control @error('user_type') is-invalid @enderror mr-3" name="user_type" required autocomplete="user_type">
                             <?php 
-                                foreach ($userTypes as $type) {
+                                // foreach ($userTypes as $type) {
                             ?>
-                                <option {{ ($user->user_types_id == $type->id)? 'selected': ""  }} id="type-{{ $type->name }}" value="{{ $type->id }}">{{ $type->name }}</option>
+                                <option { ($user->user_types_id == $type->id)? 'selected': ""  }} id="type-{ $type->name }}" value="{ $type->id }}">{ $type->name }}</option>
                             <?php 
-                                } 
+                                // } 
                             ?>
-                        </select>
+                          </select>
 
                         @error('user_type')
                         <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
+                            <strong>{ $message }}</strong>
                         </span>
                         @enderror
-                        </div>
+                        </div> --}}
 
 
                         <div class="form-group col-md-6">

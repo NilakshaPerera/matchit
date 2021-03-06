@@ -11139,6 +11139,10 @@ a.text-dark:focus {
   color: #fff;
 }
 
+.register-instructions li {
+  margin-bottom: 10px;
+}
+
 @media (max-width: 575.98px) {
   .centered {
     position: inherit !important;
