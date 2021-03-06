@@ -63,6 +63,7 @@
                                 <button type="submit" class="btn btn-primary">Send Email <i class="icon-envelope ml-2"></i></button>
                             </div>
 
+                            <a href="{​​​​​{​​​​​ route('payment', ['s', 'd', 's']) }​​​​​}​​​​​" class="btn btn-dark">Pay for Your Booking</a>
                             @if(session()->has('message'))
                                 <div class="alert alert-success mt-3 text-center">
                                     {{ session()->get('message') }}

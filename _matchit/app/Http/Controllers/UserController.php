@@ -384,10 +384,11 @@ class Usercontroller extends Controller
     {
 
         return view('admin.client.view')
-            ->withUsers(User::all());
+        ->withUsers(User::all());
     }
 
-    /**
+  
+   /**
      * Created At : 5/3/2021
      * Created By : Nilaksha 
      * Summary : Show matches page to the user page
@@ -530,6 +531,4 @@ class Usercontroller extends Controller
             ];
         }
     }
-
-
 }
