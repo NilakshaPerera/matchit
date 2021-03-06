@@ -17,7 +17,7 @@
 
 <div class="container page-home">
 
-    <div class="row lift-and-drop-shadow">
+    <div class="row lift-and-drop-shadow height-pages">
         <div class="col-md-12">
             <div class="">
                 <div class="card-body">   

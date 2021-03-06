@@ -17,6 +17,7 @@ use App\User;
 use App\Event;
 use App\Payment;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
 
 use Illuminate\Support\Facades\Hash;
 
@@ -297,7 +298,7 @@ class Usercontroller extends Controller
                 'personality-details' => ['required'],
                 'interests' => ['required'],
                 'gender' => ['required'],
-                
+                'profile-pic' => [],                
 
             ], [
                 'birthday.before' => "The birthday must be a date before 50 years.",
@@ -329,6 +330,20 @@ class Usercontroller extends Controller
                 $data['password'] = Hash::make($request['password']);
             }
 
+
+            $logoImage = $request->file('profile-pic');
+            if ($logoImage) {  
+                $folderName = time() . '-' . rand();
+                $fileName = time() . '-' . rand();
+                $fileExtension = $logoImage->getClientOriginalExtension();
+                Storage::disk('local')->putFileAs('public/pp/'. $folderName .'/', $logoImage, $fileName . '.' . $fileExtension);
+                $logoImage = 'storage/pp/'. $folderName .'/' . $fileName . '.' . $fileExtension;
+
+                $data['profile_pic'] = $logoImage;
+            }
+
+           
+           
             User::where('id', $currentUser->id)->update($data);
 
             UserHasHobby::where('users_id', $currentUser->id)->delete();
@@ -372,6 +387,22 @@ class Usercontroller extends Controller
             ->withUsers(User::all());
     }
 
+    /**
+     * Created At : 5/3/2021
+     * Created By : Nilaksha 
+     * Summary : Show matches page to the user page
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function showMatches(Request $request){
+        if (Auth::user()->roles_id == AppServiceProvider::Client) {
+            return view('site.user-matches')->withMatches($this->getMatches(Auth::user()->id ));
+        }else{
+            abort(404);
+        }
+    }
+
 
     /**
      * Created At : 2/3/2021
@@ -384,8 +415,7 @@ class Usercontroller extends Controller
      */
     public function getMatches($uesrId, $minScore = 0)
     {
-
-        $currentUser = User::where('id', $uesrId)->where('roles_id', AppServiceProvider::Client)->first();
+        $currentUser = User::where('id', $uesrId)->where('roles_id', AppServiceProvider::Client)->first();  
 
         if ($currentUser) {
 
@@ -482,6 +512,12 @@ class Usercontroller extends Controller
                 }
             }
 
+            usort($matches, function($key = 'total_score'){
+                return function ($a, $b) use ($key) {
+                    return strnatcmp($a[$key], $b[$key]);
+                };        
+            });
+
             return [
                 'success' => true,
                 'data' => $matches
@@ -493,4 +529,6 @@ class Usercontroller extends Controller
             ];
         }
     }
+
+
 }

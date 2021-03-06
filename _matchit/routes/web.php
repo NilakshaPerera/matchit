@@ -21,6 +21,7 @@ Route::get('/user' , 'Usercontroller@index')->name('user');
 Route::get('/user/events' , 'Usercontroller@events')->name('user-events');
 Route::get('/user/membership' , 'Usercontroller@membership')->name('user-membership');
 Route::get('/user/invoice/{id}' , 'Usercontroller@showInvoice')->name('user-invoice');
+Route::get('/user/matches', 'UserController@showMatches')->name('user-matches');
 
 Route::get('/user/all' , 'Usercontroller@all')->name('user.all');
 Route::post('/user/update' , 'Usercontroller@update')->name('user.update');
