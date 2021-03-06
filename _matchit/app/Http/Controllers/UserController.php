@@ -491,7 +491,7 @@ class Usercontroller extends Controller
                 $difference = $userDob->diffInYears($currentUserDob, true);
                 if ($difference < 5) {
                     $matchData['age_score'] = (10 - ($difference * 2));
-                    $score += 10;
+                    $score += (10 - ($difference * 2));
                 }
 
                 if ($score >= $minScore) {
