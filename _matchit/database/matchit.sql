@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 02, 2021 at 12:01 PM
+-- Generation Time: Mar 06, 2021 at 01:06 AM
 -- Server version: 10.4.11-MariaDB
--- PHP Version: 7.2.30
+-- PHP Version: 7.3.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -699,6 +699,7 @@ CREATE TABLE `users` (
   `user_types_id` int(11) DEFAULT NULL,
   `channels_id` int(11) DEFAULT NULL,
   `status_id` int(11) DEFAULT NULL,
+  `profile_pic` varchar(500) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -708,9 +709,9 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `roles_id`, `name`, `email`, `phone`, `email_verified_at`, `password`, `dob`, `gender`, `prefered_gender`, `address`, `user_types_id`, `channels_id`, `status_id`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 5, 'Dale Stokes', 'perera.nilaksha@gmail.com', '111111111111', NULL, '$2y$10$dq7sby75kFmVkQ/xIwGAvu2cisIynrwQpZRMpvarhH.Fwo0HUoqwO', '1950-07-27', 'Male', 'Male', 'Et omnis modi veniam', 1, NULL, 1, 'kLSPbhBK8Ve4zILo8LGwP9kkHDMnulDTIm2QxL25ope6xaFpZW3l24Cfhq1J', '2021-01-28 00:49:51', '2021-03-02 03:08:19'),
-(2, 5, 'Cassady Palmer', 'waxub@mailinator.com', '077777773', NULL, '$2y$10$eGwcTW3ha0sO8cHitEbQo.odz3TxNpOFcgWBcgu5iBjmrDyX//qHa', '1951-10-14', 'Male', 'Female', 'Voluptatibus sapient', 2, NULL, 1, NULL, '2021-03-02 00:49:35', '2021-03-02 05:30:06');
+INSERT INTO `users` (`id`, `roles_id`, `name`, `email`, `phone`, `email_verified_at`, `password`, `dob`, `gender`, `prefered_gender`, `address`, `user_types_id`, `channels_id`, `status_id`, `profile_pic`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 5, 'Dale Stokes', 'perera.nilaksha@gmail.com', '111111111111', NULL, '$2y$10$dq7sby75kFmVkQ/xIwGAvu2cisIynrwQpZRMpvarhH.Fwo0HUoqwO', '1950-07-27', 'Male', 'Male', 'Et omnis modi veniam', 1, NULL, 1, NULL, 'z3ZT4LI7m55FY47c547DQK36e6hsJDwABV0iryFUIOfZzuCHaVL7gJKnVkX6', '2021-01-28 00:49:51', '2021-03-02 03:08:19'),
+(2, 5, 'Cassady Palmer', 'waxub@mailinator.com', '077777773', NULL, '$2y$10$eGwcTW3ha0sO8cHitEbQo.odz3TxNpOFcgWBcgu5iBjmrDyX//qHa', '1951-10-14', 'Male', 'Female', 'Voluptatibus sapient', 2, NULL, 1, NULL, NULL, '2021-03-02 00:49:35', '2021-03-02 05:30:06');
 
 -- --------------------------------------------------------
 

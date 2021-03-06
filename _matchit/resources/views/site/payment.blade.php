@@ -9,13 +9,13 @@
 @section('content')
 
 
-<div class="container page-home">
+<div class="container page-home ">
     <form action="{{ route('payment.create') }}" method="POST">
-        <div class="row d-flex justify-content-center">
+        <div class="row d-flex justify-content-center height-pages">
 
             @csrf
 
-            <div class="col-md-8">
+            <div class="col-md-8 mt-5">
 
                 <div class="row">
                     <div class="col-md-6 mb-3">

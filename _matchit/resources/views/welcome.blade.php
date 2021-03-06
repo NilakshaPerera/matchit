@@ -1,11 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container page-home">
+<div class="container page-home lift-and-drop-shadow">
     <div class="row justify-content-center">
         <div class="col-md-12 card">
 
-            <h3 class="text-center mt-2 mb-2"><b>Upcoming Events</b></h3>
+            @includeIf('site.banner')
+
+            <h2 class="text-center mt-4 mb-4"><b>Upcoming Events</b></h2>
             <div class="row ">
                 <?php
                     $events = \App\Event::all();
@@ -36,7 +38,6 @@
                             </p>
                             <p class="card-action text-center">
                                 <?php 
-
                                     $today = Carbon::now();
 
                                     $expireDate = Carbon::createFromFormat('Y-m-d', $event->date);
@@ -57,12 +58,10 @@
                                     }
                                     }else{
                                 ?>
-
                                     <a class="btn btn-error disabled">This event is expired</a>
                                     <?php 
-
                                     }
-                                    ?>
+                                ?>
                             </p>
                         </div>
                     </div>
