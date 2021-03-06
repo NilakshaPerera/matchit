@@ -11092,6 +11092,32 @@ a.text-dark:focus {
   margin-bottom: 0rem;
 }
 
+.page-home .profiling-block .img-holder {
+  height: 300px;
+  background-position: center center;
+  background-size: cover;
+}
+
+.page-home .profiling-block .basic-data {
+  font-size: 1.125rem;
+}
+
+.page-home .profiling-block .personality-data {
+  font-size: 1.125rem;
+}
+
+.page-home .profiling-block .hobby-data {
+  font-size: 1.125rem;
+}
+
+.page-home .profiling-block .match-rate-data {
+  color: #38c172;
+}
+
+.b {
+  font-weight: bold;
+}
+
 .btn-error {
   color: red;
 }
