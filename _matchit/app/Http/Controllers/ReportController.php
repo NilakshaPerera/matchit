@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Event;
+use App\Payment;
 use App\Providers\AppServiceProvider;
 use Illuminate\Http\Request;
 
@@ -39,6 +40,10 @@ class ReportController extends Controller
                 break;
             case AppServiceProvider::MemberMatches:
                 $template = view('admin.reports.templates.membermatches')->render();
+                break;
+            case AppServiceProvider::Payments:
+                $payments = Payment::all();
+                $template = view('admin.reports.templates.payments')->withPayments($payments)->render();
                 break;
             default:
                     $template = "";
