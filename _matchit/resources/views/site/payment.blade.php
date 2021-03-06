@@ -9,7 +9,7 @@
 @section('content')
 
 
-<div class="container page-home ">
+<div class="container page-home lift-and-drop-shadow">
     <form action="{{ route('payment.create') }}" method="POST">
         <div class="row d-flex justify-content-center height-pages">
 

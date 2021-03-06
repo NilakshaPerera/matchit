@@ -11135,6 +11135,10 @@ a.text-dark:focus {
   color: #fff;
 }
 
+.footer .list-inline-item .nav-link {
+  color: #fff;
+}
+
 @media (max-width: 575.98px) {
   .centered {
     position: inherit !important;
