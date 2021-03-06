@@ -204,6 +204,12 @@
 .footer {
     background-color: #000;
     color: #fff;
+
+    .list-inline-item{
+        .nav-link{
+            color: #fff;
+        }
+    }
 }
 
 @media (max-width: 575.98px) {
