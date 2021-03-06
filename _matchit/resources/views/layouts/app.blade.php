@@ -58,6 +58,10 @@
                             </li>
 
                             <li class="nav-item">
+                                <a class="nav-link {{ (Route::currentRouteName() == 'user-matches')? 'active' : '' }}" href="{{ route('user-matches') }}">Your Matches</a>
+                            </li>
+
+                            <li class="nav-item">
                                 <a class="nav-link {{ (Route::currentRouteName() == 'user-membership')? 'active' : '' }}" href="{{ route('user-membership') }}">Membership</a>
                             </li>
 

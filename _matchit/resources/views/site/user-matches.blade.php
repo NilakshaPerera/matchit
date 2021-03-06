@@ -18,52 +18,35 @@
 <div class="container page-home">
 
     <div class="row lift-and-drop-shadow height-pages">
+
+        @if (count($matches['data']) > 0)
+
+
         <div class="col-md-12">
-            <div class="">
 
-
-
-                <div class="col-md-12 mt-3">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h6>Profile Created On : <b>{{ Auth::user()->created_at->format('Y-m-d') }}</b></h6>
-                            <h6>Last Payment Made On : <b>{{ $lastMembershipPayment }}</b></h6>
-                        </div>
-                        <div class="col-md-6 text-right">
-                            <h5>Ammount Due : <b>{{ $dues }}£</b></h5>
-                            @if($dues)
-                                <a class="btn btn-primary" href="{{ route('payment', [Auth::user()->id , 'membership', 0]) }}">Pay Dues</a>
-                            @endif
+            <h3 class="text-center mt-4 mb-4">Here are your matches based on your profile</h3>
+            <div class="row">
+                @foreach ($matches['data'] as $person)
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <?php 
+                            print_r($person);
+                        ?>
                         </div>
                     </div>
                 </div>
-
-
-                <div class="card-body">
-                    <table class="table table-striped jstable">
-                        <thead>
-                            <tr>
-                                <th>Ref No</th>
-                                <th>Ammount</th>
-                                <th>Paid On</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($payments as $payment)
-                            <tr>
-                                <td>{{ $payment->reference_no }}</td>
-                                <td>{{ $payment->amount }}£</td>
-                                <td>{{ $payment->date }}</td>
-                                <td><a target="_blank" href="{{ route('user-invoice', [ $payment->id ]) }}">Invoice</a>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
+                @endforeach
             </div>
+
+
         </div>
+        @else
+        <div class="col-md-12 text-center mt-5 ">
+            <h2>Unfortunately, we cannot find any matches to your profile. You can try adding more details..</h2>
+        </div>
+        @endif
+
     </div>
 
 </div>
