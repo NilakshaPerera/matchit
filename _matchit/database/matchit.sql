@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 06, 2021 at 01:10 PM
+-- Generation Time: Mar 07, 2021 at 01:09 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.3.26
 
@@ -576,7 +576,8 @@ CREATE TABLE `payments` (
 
 INSERT INTO `payments` (`id`, `users_id`, `payment_status_id`, `date`, `amount`, `reference_no`, `created_at`, `updated_at`) VALUES
 (1, 1, 1, '2021-02-28', '12', 'MATCHIT-00001', '2021-02-28 12:11:03', '2021-02-28 12:11:03'),
-(2, 1, 1, '2021-02-28', '222', 'MATCHIT-00002', '2021-02-28 12:11:37', '2021-02-28 12:11:37');
+(2, 1, 1, '2021-02-28', '222', 'MATCHIT-00002', '2021-02-28 12:11:37', '2021-02-28 12:11:37'),
+(3, 1, 1, '2021-03-06', '24', 'MATCHIT-00003', '2021-03-06 06:56:35', '2021-03-06 06:56:35');
 
 -- --------------------------------------------------------
 
@@ -711,8 +712,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `roles_id`, `name`, `email`, `phone`, `email_verified_at`, `password`, `dob`, `gender`, `prefered_gender`, `address`, `user_types_id`, `channels_id`, `status_id`, `profile_pic`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 5, 'Dale Stokes 1', 'perera.nilaksha@gmail.com', '111111111112', NULL, '$2y$10$dq7sby75kFmVkQ/xIwGAvu2cisIynrwQpZRMpvarhH.Fwo0HUoqwO', '1949-07-27', 'Female', 'Female', 'Et omnis modi veniam Edited', 1, NULL, 1, 'storage/pp/1614992883-16693919/1614992883-591980912.jpg', 'yq4ahFv4160oyJiGRbTy5puZRdSEQTymhJ57iAfDNpICcshob43x3ObrphVX', '2020-12-02 12:00:15', '2021-03-06 06:33:25'),
-(2, 5, 'Cassady Palmer', 'waxub@mailinator.com', '077777773', NULL, '$2y$10$eGwcTW3ha0sO8cHitEbQo.odz3TxNpOFcgWBcgu5iBjmrDyX//qHa', '1951-10-14', 'Male', 'Female', 'Voluptatibus sapient', 2, NULL, 1, 'storage/pp/1614992883-16693919/1614992883-591980912.jpg', NULL, '2021-03-02 00:49:35', '2021-03-02 05:30:06');
+(1, 5, 'Dale Stokes 1', 'perera.nilaksha@gmail.com', '111111111112', NULL, '$2y$10$dq7sby75kFmVkQ/xIwGAvu2cisIynrwQpZRMpvarhH.Fwo0HUoqwO', '1949-07-27', 'Female', 'Female', 'Et omnis modi veniam Edited', 1, 5, 1, 'storage/pp/1614992883-16693919/1614992883-591980912.jpg', 'wQtTKumpfXhidmOAVeN5oCKvm1MKh2KL2Kkb97X42MyYiOmcPbQpbB2VEjor', '2020-12-02 12:00:15', '2021-03-06 06:33:25'),
+(2, 5, 'Cassady Palmer', 'waxub@mailinator.com', '077777773', NULL, '$2y$10$eGwcTW3ha0sO8cHitEbQo.odz3TxNpOFcgWBcgu5iBjmrDyX//qHa', '1951-10-14', 'Female', 'Female', 'Voluptatibus sapient', 1, 5, 1, 'storage/pp/1614992883-16693919/1614992883-591980912.jpg', NULL, '2021-03-02 00:49:35', '2021-03-07 06:39:15');
 
 -- --------------------------------------------------------
 
@@ -747,16 +748,16 @@ CREATE TABLE `user_has_hobbies` (
 --
 
 INSERT INTO `user_has_hobbies` (`id`, `users_id`, `hobbies_id`, `created_at`, `updated_at`) VALUES
-(119, 2, 3, '2021-03-02 05:30:06', '2021-03-02 05:30:06'),
-(120, 2, 4, '2021-03-02 05:30:06', '2021-03-02 05:30:06'),
-(121, 2, 5, '2021-03-02 05:30:06', '2021-03-02 05:30:06'),
-(122, 2, 20, '2021-03-02 05:30:06', '2021-03-02 05:30:06'),
 (172, 1, 1, '2021-03-06 06:33:25', '2021-03-06 06:33:25'),
 (173, 1, 2, '2021-03-06 06:33:25', '2021-03-06 06:33:25'),
 (174, 1, 3, '2021-03-06 06:33:25', '2021-03-06 06:33:25'),
 (175, 1, 4, '2021-03-06 06:33:25', '2021-03-06 06:33:25'),
 (176, 1, 5, '2021-03-06 06:33:25', '2021-03-06 06:33:25'),
-(177, 1, 6, '2021-03-06 06:33:25', '2021-03-06 06:33:25');
+(177, 1, 6, '2021-03-06 06:33:25', '2021-03-06 06:33:25'),
+(186, 2, 3, '2021-03-07 06:39:15', '2021-03-07 06:39:15'),
+(187, 2, 4, '2021-03-07 06:39:15', '2021-03-07 06:39:15'),
+(188, 2, 5, '2021-03-07 06:39:15', '2021-03-07 06:39:15'),
+(189, 2, 20, '2021-03-07 06:39:15', '2021-03-07 06:39:15');
 
 -- --------------------------------------------------------
 
@@ -777,11 +778,11 @@ CREATE TABLE `user_has_personality_details` (
 --
 
 INSERT INTO `user_has_personality_details` (`id`, `users_id`, `personality_details_id`, `created_at`, `updated_at`) VALUES
-(66, 2, 1, '2021-03-02 05:30:06', '2021-03-02 05:30:06'),
-(67, 2, 2, '2021-03-02 05:30:06', '2021-03-02 05:30:06'),
 (103, 1, 1, '2021-03-06 06:33:25', '2021-03-06 06:33:25'),
 (104, 1, 2, '2021-03-06 06:33:25', '2021-03-06 06:33:25'),
-(105, 1, 3, '2021-03-06 06:33:25', '2021-03-06 06:33:25');
+(105, 1, 3, '2021-03-06 06:33:25', '2021-03-06 06:33:25'),
+(110, 2, 1, '2021-03-07 06:39:15', '2021-03-07 06:39:15'),
+(111, 2, 2, '2021-03-07 06:39:15', '2021-03-07 06:39:15');
 
 -- --------------------------------------------------------
 
@@ -994,7 +995,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `payment_status`
@@ -1042,13 +1043,13 @@ ALTER TABLE `user_has_bookings`
 -- AUTO_INCREMENT for table `user_has_hobbies`
 --
 ALTER TABLE `user_has_hobbies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=178;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=190;
 
 --
 -- AUTO_INCREMENT for table `user_has_personality_details`
 --
 ALTER TABLE `user_has_personality_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
 
 --
 -- AUTO_INCREMENT for table `user_has_reviews`
