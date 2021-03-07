@@ -13,7 +13,7 @@
             <div id="who-we-are" class="row mb-3">
                 <div class="col-md-12">
                     <h3><b>Who we are</b></h3>
-                    <p>
+                    <p pl>
                         We are Sussex Comapnions a club for over the 50s which seeks to match up individuals with new friends. We are based in Brighton on the Southcoast of England.We also have multiple branches accross london , with the support of our loyal clients and staffs we have opened two branches in the beautiful towns of Eastbourne and Bogonor.</p>     
                 </div>
             </div>
@@ -35,13 +35,13 @@
                     <h3><b>How to get in touch with us</b></h3>
                     <p>
                         Hey there! Are you interested in joining our club to meet your new friend ? Get in touch with us via below channels.<br>
-                        <i class="bi bi-telephone-fill">+44 20 7946 0612(Head office Brighton) /
-                                                        +44 20 7946 0612(Eastbourne) /
-                                                        +44 20 7946 0612(Bognor)</i>
-                                                        <br>
+                        <i class="bi bi-telephone-fill">: <a href="tel:+44 20 7946 0612">+44 20 7946 0612</a>(Head office Brighton) /
+                        <a href="tel:+44 20 7946 0612">+44 20 7946 0612</a>(Eastbourne) /
+                        <a href="tel:+44 20 7946 0612">+44 20 7946 0612</a>(Bognor)</i>
+                        <br>
 
-                        <i class="bi bi-envelope-fill"></i>Email sussexcompanions@gmail.com <br>
-                        <i class="bi bi-printer-fill"></i> Fax 44-020-5555-915.<br>
+                        <i class="bi bi-envelope-fill"></i>Email: <a href="mailto:sussexcompanions@gmail.com"> sussexcompanions@gmail.com </a><br>
+                        <i class="bi bi-printer-fill"></i> Fax: <a href="fax:+44-020-5555-915"> 44-020-5555-915 </a><br>
 
                          Or simply get registered with us on this website by clicking register! if you face any technical diffculties please send an email to Sussexcomapniontech@gmail.com.    </p> </div>
                 

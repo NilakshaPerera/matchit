@@ -45,7 +45,7 @@
 	<div class="navbar navbar-expand-md navbar-dark">
 		<div class="navbar-brand">
 			<a href="{{ url('/') }}" class="d-inline-block">
-				<img src="{{ asset('assets_theme/images/logo_light.png') }}" alt="">
+				<img src="{{ asset('assets_app/images/logo2.png') }}" alt="">
 			</a>
 		</div>
 
