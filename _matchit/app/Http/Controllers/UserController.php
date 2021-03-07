@@ -398,7 +398,10 @@ class Usercontroller extends Controller
      */
     public function showMatches(Request $request){
         if (Auth::user()->roles_id == AppServiceProvider::Client) {
-            return view('site.user-matches')->withMatches($this->getMatches(Auth::user()->id ));
+
+            return view('site.user-matches')
+                ->withMatches($this->getMatches(Auth::user()->id ))
+                ->withDues($this->getMembershipDues(Auth::user()->id));
         }else{
             abort(404);
         }

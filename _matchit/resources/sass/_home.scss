@@ -204,6 +204,18 @@
 .footer {
     background-color: #000;
     color: #fff;
+
+    .list-inline-item{
+        .nav-link{
+            color: #fff;
+        }
+    }
+}
+
+.register-instructions{
+    li{
+        margin-bottom: 10px;
+    }
 }
 
 @media (max-width: 575.98px) {

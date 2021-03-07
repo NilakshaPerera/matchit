@@ -19,6 +19,12 @@
 
     <div class="row lift-and-drop-shadow height-pages">
 
+
+        @if (!$dues)
+            
+     
+
+
         @if (count($matches['data']) > 0)
 
         <div class="col-md-12">
@@ -99,7 +105,7 @@
                                         Contact &nbsp;
                                     </div>
                                     <div class=" col-7 text-left p-0 b">
-                                        {{$person['phone']}}
+                                      <a href="tel:{{$person['phone']}}">{{$person['phone']}}</a>  
                                     </div>
                                 </div>
 
@@ -108,7 +114,7 @@
                                         Email &nbsp;
                                     </div>
                                     <div class=" col-7 text-left p-0 b" >
-                                        {{$person['email']}}
+                                       <a href="mailto:{{$person['email']}}">{{$person['email']}}</a> 
                                     </div>
                                 </div>
 
@@ -139,6 +145,14 @@
             <h2>Unfortunately, we cannot find any matches to your profile. You can try adding more details..</h2>
         </div>
         @endif
+
+        @else
+        <div class="col-md-12 text-center mt-5 ">
+            <h2 style="color:red">We are unable to show you any result due to pending membership mayments. Please make the payment for the due amount {{ $dues }}£</h2>
+            <a class="btn btn-danger" href="{{ route('payment', [Auth::user()->id , 'membership', 0]) }}">Pay {{ $dues }}£</a>
+        </div>
+        @endif
+
 
     </div>
 
