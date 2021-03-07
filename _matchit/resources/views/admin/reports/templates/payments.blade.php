@@ -15,11 +15,11 @@
                     <tbody>
                         @foreach($payments as $payment)
                         <tr>
-                            <td>{{ $payments->name}}</td>
-                            <td>{{ $payments->paymentstatus	->name}}</td>
-                            <td>{{ $payments->date}}</td>
-                            <td>{{ $payments->amount}}</td>
-                            <td>{{ $payments->reference_no}}</td>
+                            <td>{{ $payment->users_id}}</td>
+                            <td>{{ $payment->paymentstatus->name}}</td>
+                            <td>{{ $payment->date}}</td>
+                            <td>{{ $payment->amount}}</td>
+                            <td>{{ $payment->reference_no}}</td>
                         </tr>
                         @endforeach
                     </tbody>

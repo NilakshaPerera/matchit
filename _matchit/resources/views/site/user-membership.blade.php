@@ -21,8 +21,6 @@
         <div class="col-md-12">
             <div class="">
 
-
-
                 <div class="col-md-12 mt-3">
                     <div class="row">
                         <div class="col-md-6">
@@ -32,12 +30,11 @@
                         <div class="col-md-6 text-right">
                             <h5>Ammount Due : <b>{{ $dues }}£</b></h5>
                             @if($dues)
-                                <a class="btn btn-primary" href="{{ route('payment', [Auth::user()->id , 'membership', 0]) }}">Pay Dues</a>
+                                <a class="btn btn-primary" href="{{ route('payment', [Auth::user()->id , 'membership', 0]) }}">Pay {{ $dues }}£</a>
                             @endif
                         </div>
                     </div>
                 </div>
-
 
                 <div class="card-body">
                     <table class="table table-striped jstable">
@@ -68,9 +65,7 @@
 
 </div>
 
-
 @endsection
-
 
 @section('script')
 

@@ -3,8 +3,7 @@
 
 
 <div class="auth-container">
-    <div class="container d-flex align-items-center justify-content-center"
-        style="background-image: url('{{ url('/images/auth-background.png') }}')">
+    <div class="container d-flex align-items-center justify-content-center lift-and-drop-shadow" @if(isset($bgimg)) style="background: url({{ asset('assets_app/images/background.jpg') }}); background-position: center center; background-size: cover;" @endif>
         <div class="row inner-container justify-content-center">
             <div class="col-md-7 tagline-inverted">
                 <div class="row d-flex align-items-end image-holder">
