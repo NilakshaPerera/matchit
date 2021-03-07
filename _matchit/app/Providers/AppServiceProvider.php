@@ -34,6 +34,8 @@ class AppServiceProvider extends ServiceProvider
     public const Income = 2;
     public const MemberMatches = 3;
     public const Payments = 4;
+    public const Overdueletter = 5;
+    public const Pastevents = 6;
 
 
     //Genders 
