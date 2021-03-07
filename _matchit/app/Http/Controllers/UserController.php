@@ -442,14 +442,6 @@ class Usercontroller extends Controller
 
                 // Preferred gender 10%
                 if ($user->prefered_gender == AppServiceProvider::GenderEveryone || ($currentUser->gender ==  $user->prefered_gender && $currentUser->prefered_gender ==  $user->gender) ) {
-
-                    // $user->prefered_gender ==  $currentUser->gender
-                    
-                   
-
-
-                  //  dd($currentUser->prefered_gender);
-
                     $score += 10;
                     $matchData['gender_score'] = 10;
                 } else {
