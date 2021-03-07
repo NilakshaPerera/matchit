@@ -115,6 +115,10 @@ $.ajaxSetup({
                                         <option {{ ($type ==  \App\Providers\AppServiceProvider::Income)? "selected" : ''  }} value="{{ \App\Providers\AppServiceProvider::Income }}">Income</option>
                                         <option {{ ($type ==  \App\Providers\AppServiceProvider::MemberMatches)? "selected" : ''  }} value="{{ \App\Providers\AppServiceProvider::MemberMatches }}">Member Matches</option>
                                         <option {{ ($type ==  \App\Providers\AppServiceProvider::Payments)? "selected" : ''  }} value="{{ \App\Providers\AppServiceProvider::Payments }}">Payments</option>
+                                        <option {{ ($type ==  \App\Providers\AppServiceProvider::Overdueletter)? "selected" : ''  }} value="{{ \App\Providers\AppServiceProvider::Overdueletter }}">Overdueletter</option>
+                                        <option {{ ($type ==  \App\Providers\AppServiceProvider::Pastevents)? "selected" : ''  }} value="{{ \App\Providers\AppServiceProvider::Pastevents }}">Pastevents</option>
+
+
 
                                 </select>
                                 @error('report_type')
