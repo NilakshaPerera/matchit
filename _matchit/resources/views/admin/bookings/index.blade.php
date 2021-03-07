@@ -47,7 +47,7 @@
 
                             <div class="form-group">
                                 <label>Event Type</label>
-                                <select name="event_types_id" id="event_types_id" data-placeholder="Select your country" class="form-control form-control-select2 @error('event_types_id') is-invalid @enderror" data-fouc>
+                                <select name="event_types_id" id="event_types_id" data-placeholder="Select Event" class="form-control form-control-select2 @error('event_types_id') is-invalid @enderror" data-fouc>
                                     @foreach($events as $event)
                                         <option value="{{ $event->id }}">{{ $event->name }}</option>
                                     @endforeach
@@ -63,12 +63,6 @@
                                 <button type="submit" class="btn btn-primary">Send Email <i class="icon-envelope ml-2"></i></button>
                             </div>
 
-                            <a href="{​​​​​{​​​​​ route('payment', ['s', 'd', 's']) }​​​​​}​​​​​" class="btn btn-dark">Pay for Your Booking</a>
-                            @if(session()->has('message'))
-                                <div class="alert alert-success mt-3 text-center">
-                                    {{ session()->get('message') }}
-                                 </div>
-                            @endif
                             @if(session()->has('error'))
                              <div class="alert alert-warning mt-3 text-center">
                                 {{ session()->get('error') }}
