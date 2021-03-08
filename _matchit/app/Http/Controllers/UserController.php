@@ -291,7 +291,7 @@ class Usercontroller extends Controller
                 'phone' => ['required', 'max:12'],
                 'address' => ['required', 'max:1000'],
                 'birthday' => ['required', 'date', 'before:-50 years'],
-                'user_type' => ['required', 'exists:user_types,id'],
+                'user_type' => ['exists:user_types,id'],
                 'old_password' => $oldPasswordValidatoin,
                 'password' => $passwordValidation,
                 'hobby-details' => ['required'],
@@ -313,10 +313,13 @@ class Usercontroller extends Controller
                 'phone' => $request['phone'],
                 'dob' => $request['birthday'],
                 'address' => $request['address'],
-                'user_types_id'  => $request['user_type'],
                 'prefered_gender' => $request['interests'],
                 'gender' => $request['gender'],
             ];
+
+            if ($request['user_type']) {
+                $data['user_types_id'] = $request['user_type'];
+            }
 
             if ($request['channels_id']) {
                 $data['channels_id'] = $request['channels_id'];
@@ -341,8 +344,6 @@ class Usercontroller extends Controller
 
                 $data['profile_pic'] = $logoImage;
             }
-
-           
            
             User::where('id', $currentUser->id)->update($data);
 
@@ -440,7 +441,7 @@ class Usercontroller extends Controller
                 $matchData['age_score'] = 0;
 
                 // Preferred gender 10%
-                if ($user->prefered_gender == AppServiceProvider::GenderEveryone || $user->prefered_gender ==  $currentUser->gender) {
+                if ($user->prefered_gender == AppServiceProvider::GenderEveryone || ($currentUser->gender ==  $user->prefered_gender && $currentUser->prefered_gender ==  $user->gender) ) {
                     $score += 10;
                     $matchData['gender_score'] = 10;
                 } else {
