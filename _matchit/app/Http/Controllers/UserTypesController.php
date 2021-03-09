@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\UserType;
+
 class UserTypesController extends Controller
 {
     /**
@@ -20,8 +22,8 @@ class UserTypesController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function get()
     {
-      
+        return UserType::all();
     }
 }

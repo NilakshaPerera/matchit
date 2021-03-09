@@ -115,7 +115,7 @@
                     <table>
                         <tr>
                             <td class="title">
-                                <img src="" style="width:100%; max-width:300px;">
+                                <img src="{{ asset('assets_app/images/logo2.png') }}" style="">
                             </td>
                             
                             <td>

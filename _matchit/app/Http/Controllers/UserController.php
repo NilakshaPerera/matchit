@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Providers\AppServiceProvider;
 use App\Hobby;
 use App\PersonalityDetail;
-use App\UserType;
 use App\UserHasHobby;
 use App\UsersHasPersonalityDetail;
 use Auth;
@@ -18,6 +17,10 @@ use App\Event;
 use App\Payment;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
+
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\UserTypesController;
+use App\Http\Controllers\UserHasHobbyController;
 
 use Illuminate\Support\Facades\Hash;
 
@@ -43,18 +46,19 @@ class Usercontroller extends Controller
      */
     public function index()
     {
+        $userTypeController = new UserTypesController();
         if (Auth::user()->roles_id == AppServiceProvider::Client) {
 
             return view('site.user')
                 ->withUser(Auth::user())
                 ->withHobbies(Hobby::all())
                 ->withPersonalityDetails(PersonalityDetail::all())
-                ->withUserTypes(UserType::all());
+                ->withUserTypes($userTypeController->get());
         } else {
 
             return view('admin.client.index')
                 ->withRoles(Role::all())
-                ->withUserTypes(UserType::all())
+                ->withUserTypes($userTypeController->get())
                 ->withChannels(Channel::all())
                 ->withStatus(Status::all());
         }
@@ -89,7 +93,8 @@ class Usercontroller extends Controller
     public function events(Request $request)
     {
 
-        $events = Event::all();
+        $eventController = new EventController();
+        $events = $eventController->getAll();
 
         $payments = Payment::where('users_id', Auth::user()->id)
             ->whereHas('booking', function ($query) {
@@ -243,10 +248,11 @@ class Usercontroller extends Controller
     public function edit(Request $request)
     {
         $user = User::where('id', $request['id'])->first();
+        $userTypeController = new UserTypesController();
         return view('admin.client.edit')
             ->withUser($user)
             ->withRoles(Role::all())
-            ->withUserTypes(UserType::all())
+            ->withUserTypes($userTypeController->get())
             ->withChannels(Channel::all())
             ->withStatus(Status::all())
             ->withHobbies(Hobby::all())
@@ -291,7 +297,7 @@ class Usercontroller extends Controller
                 'phone' => ['required', 'max:12'],
                 'address' => ['required', 'max:1000'],
                 'birthday' => ['required', 'date', 'before:-50 years'],
-                'user_type' => ['required', 'exists:user_types,id'],
+                'user_type' => ['exists:user_types,id'],
                 'old_password' => $oldPasswordValidatoin,
                 'password' => $passwordValidation,
                 'hobby-details' => ['required'],
@@ -313,10 +319,13 @@ class Usercontroller extends Controller
                 'phone' => $request['phone'],
                 'dob' => $request['birthday'],
                 'address' => $request['address'],
-                'user_types_id'  => $request['user_type'],
                 'prefered_gender' => $request['interests'],
                 'gender' => $request['gender'],
             ];
+
+            if ($request['user_type']) {
+                $data['user_types_id'] = $request['user_type'];
+            }
 
             if ($request['channels_id']) {
                 $data['channels_id'] = $request['channels_id'];
@@ -330,7 +339,6 @@ class Usercontroller extends Controller
                 $data['password'] = Hash::make($request['password']);
             }
 
-
             $logoImage = $request->file('profile-pic');
             if ($logoImage) {  
                 $folderName = time() . '-' . rand();
@@ -341,14 +349,14 @@ class Usercontroller extends Controller
 
                 $data['profile_pic'] = $logoImage;
             }
-
-           
            
             User::where('id', $currentUser->id)->update($data);
 
-            UserHasHobby::where('users_id', $currentUser->id)->delete();
+            $userHasHobbyController = new UserHasHobbyController();
+            $userHasHobbyController->delete($currentUser->id);
+
             foreach ($request['hobby-details'] as $hobbyDetail) {
-                UserHasHobby::create([
+                $userHasHobbyController->create([
                     'users_id' => $currentUser->id,
                     'hobbies_id' => $hobbyDetail,
                 ]);
@@ -382,7 +390,6 @@ class Usercontroller extends Controller
      */
     public function all(Request $request)
     {
-
         return view('admin.client.view')
         ->withUsers(User::all());
     }
@@ -440,7 +447,7 @@ class Usercontroller extends Controller
                 $matchData['age_score'] = 0;
 
                 // Preferred gender 10%
-                if ($user->prefered_gender == AppServiceProvider::GenderEveryone || $user->prefered_gender ==  $currentUser->gender) {
+                if ($user->prefered_gender == AppServiceProvider::GenderEveryone || ($currentUser->gender ==  $user->prefered_gender && $currentUser->prefered_gender ==  $user->gender) ) {
                     $score += 10;
                     $matchData['gender_score'] = 10;
                 } else {
