@@ -139,6 +139,17 @@ class EventController extends Controller
     }
 
     /**
+     * Created At : 9/3/2021
+     * Created By : Nilaksha    
+     * Summary : Get all the events
+     *
+     * @return void
+     */
+    public function getAll(){
+        return Event::all();
+    }
+
+    /**
      * Created At : 7/2/2021
      * Created By : Nivetha
      * Summary : Read event details
@@ -146,7 +157,7 @@ class EventController extends Controller
     * @param Request $request
     * @return void
     */    
-    public function all(Request $request){
+    public function show(Request $request){
 
         return view('admin.events.view')
         ->withEvents(Event::all()) ;        
