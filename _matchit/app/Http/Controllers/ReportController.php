@@ -87,12 +87,8 @@ class ReportController extends Controller
             array_push($matches, $match);
 
         }
-        
         return $matches;
-
     }
-
-
 
     /**
      * Undocumented function
@@ -102,10 +98,7 @@ class ReportController extends Controller
      */
     public function get(Request $request){
 
-
-
     }
-
 
 }
  

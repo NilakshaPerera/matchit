@@ -14,6 +14,8 @@ use App\Booking;
 use DB;
 use App\Http\Controllers\Usercontroller;
 use Carbon\Carbon;
+use App\Http\Controllers\BookingController;
+use Illuminate\Support\Facades\DB as FacadesDB;
 
 class PaymentController extends Controller
 {
@@ -135,6 +137,9 @@ class PaymentController extends Controller
         $stripe = Stripe::make(config('services.stripe.secret'));
 
         try {
+
+            DB::beginTransaction();
+
             $order_no = (int) Payment::max('id') + 1;
             $order_ref = 'MATCHIT-' . str_pad($order_no, 5, '0', STR_PAD_LEFT);
 
@@ -148,7 +153,6 @@ class PaymentController extends Controller
                     'cvc' => $request['card_cvc'],
                 ],
             ]);
-
 
             // Create Customer with token
             $customer = $stripe->customers()->create([
@@ -165,7 +169,6 @@ class PaymentController extends Controller
                 'customer' => $customer['id'],
             ]);
 
-
             if ($result['status'] == 'succeeded') {
                 $message = "Your payment was successfully recieved.";
 
@@ -179,7 +182,8 @@ class PaymentController extends Controller
 
                 if ($request['paytype'] == 'event') {
 
-                    Booking::create([
+                    $bookingController = new BookingController();
+                    $bookingController->create([
                         'users_id' => $user->id,
                         'events_id' => $request['id'],
                         'channel_id' => 5,
@@ -188,15 +192,20 @@ class PaymentController extends Controller
                     ]);
                 }
 
+                DB::commit();
+
                 return redirect('/')->with(['paymentSuccess' => $message]);
             } else {
                 $messageErr = 'Payment failed!. Please try again.';
             }
         } catch (Exception $e) {
+            DB::rollback();
             $messageErr = "Payment failed : " . $e->getMessage();
         } catch (\Cartalyst\Stripe\Exception\CardErrorException $e) {
+            DB::rollback();
             $messageErr = "Card detail invalid : " . $e->getMessage();
         } catch (\Cartalyst\Stripe\Exception\MissingParameterException $e) {
+            DB::rollback();
             $messageErr = "Some data is mising : " . $e->getMessage();
         }
 
