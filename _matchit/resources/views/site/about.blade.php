@@ -40,10 +40,10 @@
                         <a href="tel:+44 20 7946 0612">+44 20 7946 0612</a>(Bognor)</i>
                         <br>
 
-                        <i class="bi bi-envelope-fill"></i>Email: <a href="mailto:sussexcompanions@gmail.com"> sussexcompanions@gmail.com </a><br>
+                        <i class="bi bi-envelope-fill"></i>Email: <a href="mailto:matchit.sussexcompanions@gmail.com"> matchit.sussexcompanions@gmail.com </a><br>
                         <i class="bi bi-printer-fill"></i> Fax: <a href="fax:+44-020-5555-915"> 44-020-5555-915 </a><br>
 
-                         Or simply get registered with us on this website by clicking register! if you face any technical diffculties please send an email to Sussexcomapniontech@gmail.com.    </p> </div>
+                         Or simply get registered with us on this website by clicking register! if you face any technical diffculties please send an email to matchit.sussexcompanions@gmail.com.</p></div>
                 
             </div>
 
