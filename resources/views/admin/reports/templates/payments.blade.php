@@ -15,7 +15,7 @@
                     <tbody>
                         @foreach($payments as $payment)
                         <tr>
-                            <td>{{ $payment->users_id}}</td>
+                            <td>{{ $payment->user->name}}</td>
                             <td>{{ $payment->paymentstatus->name}}</td>
                             <td>{{ $payment->date}}</td>
                             <td>{{ $payment->amount}}</td>
