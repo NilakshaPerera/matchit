@@ -7,13 +7,11 @@ use Illuminate\Http\Request;
 use App\Providers\AppServiceProvider;
 use App\Hobby;
 use App\PersonalityDetail;
-use App\UserHasHobby;
 use App\UsersHasPersonalityDetail;
 use Auth;
 use App\Channel;
 use App\Status;
 use App\User;
-use App\Event;
 use App\Payment;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
@@ -40,7 +38,9 @@ class Usercontroller extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Created At : 16/1/2021
+     * Created By : Nilaksha  
+     * Summary : Loads the user profile page for the client user and loads the user create page to the admin users
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
@@ -262,7 +262,7 @@ class Usercontroller extends Controller
     /**
      * Created At : 5/2/2021
      * Created By : Nilaksha 
-     * Summary : saved data for user
+     * Summary : saves updated data for a particular user
      *
      * @param Request $request
      * @return void
