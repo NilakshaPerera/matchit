@@ -6,6 +6,7 @@ use App\Event;
 use App\User;
 use App\Role;
 use App\Booking;
+use Mail;
 
 use Illuminate\Http\Request;
 class BookingController extends Controller
@@ -37,6 +38,9 @@ class BookingController extends Controller
     }
 
 
+    
+
+
     /**
      * Created By : Nilaksha
      * Created At : 9/3/2021
@@ -46,6 +50,6 @@ class BookingController extends Controller
      * @return void
      */
     public function create($params){
-        Booking::create($params);
+       return Booking::create($params);
     }
 }
