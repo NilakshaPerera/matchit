@@ -11135,6 +11135,14 @@ a.text-dark:focus {
   color: #fff;
 }
 
+.footer .list-inline-item .nav-link {
+  color: #fff;
+}
+
+.register-instructions li {
+  margin-bottom: 10px;
+}
+
 @media (max-width: 575.98px) {
   .centered {
     position: inherit !important;

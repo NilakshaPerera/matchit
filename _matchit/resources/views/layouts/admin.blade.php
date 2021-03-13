@@ -45,7 +45,7 @@
 	<div class="navbar navbar-expand-md navbar-dark">
 		<div class="navbar-brand">
 			<a href="{{ url('/') }}" class="d-inline-block">
-				<img src="{{ asset('assets_theme/images/logo_light.png') }}" alt="">
+				<img src="{{ asset('assets_app/images/logo2.png') }}" alt="">
 			</a>
 		</div>
 
@@ -158,7 +158,7 @@
 							<a href="#" class="nav-link"><i class="icon-copy"></i> <span>Events</span></a>
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
 								<li class="nav-item"><a href="{{ route('events.index') }}" class="nav-link ">Create</a></li>
-								<li class="nav-item"><a href="{{ route('events.all') }}" class="nav-link ">Event Schedule</a></li>
+								<li class="nav-item"><a href="{{ route('events.show') }}" class="nav-link ">Event Schedule</a></li>
 						    </ul>
 						</li>
 
