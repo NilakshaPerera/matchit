@@ -52,5 +52,5 @@ Route::post('admin/report/get', 'ReportController@get')->name('report.get');
 
 Route::get('/admin/bookings/index', 'BookingController@index')->name('booking.index');
 
-Route::get('/sendmail','MailSendController@mailsend');
+Route::get('/send-booking-email','MailSendController@mailsend');
 Auth::routes();
