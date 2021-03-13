@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-class Hobbiescontroller extends Controller
+class HobbiesController extends Controller
 {
     /**
      * Create a new controller instance.
