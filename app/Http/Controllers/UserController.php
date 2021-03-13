@@ -206,7 +206,7 @@ class UserController extends Controller
                 'name' => ['required', 'string', 'max:255'],
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
                 'password' => ['required', 'string', 'min:8'],
-                'phone' => ['required', 'digits:12'],
+                'phone' => ['required', 'max:12'],
                 'dob' => $dateValidation,
                 'users_types_id' => ['required', 'exists:user_types,id'],
             ], [
@@ -290,6 +290,7 @@ class UserController extends Controller
                 array_push($passwordValidation, 'required', 'string', 'min:8', 'confirmed');
                 array_push($oldPasswordValidatoin, 'userpassword:' . $currentUser->id);
             }
+       
 
             $request->validate([
                 'name' => ['required', 'string', 'max:255'],
