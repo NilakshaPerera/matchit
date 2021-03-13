@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/jpg" href="{{ url('assets_app/images/favicon.png') }}"/>
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -52,7 +53,9 @@
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
-                        @else
+                        @endguest
+
+                        @if ( Auth::user() && Auth::user()->roles_id == \App\Providers\AppServiceProvider::Client)
 
                             <li class="nav-item">
                                 <a class="nav-link {{ (Route::currentRouteName() == 'user-events')? 'active' : '' }}" href="{{ route('user-events') }}">Your Events</a>
@@ -85,12 +88,16 @@
                                     </form>
                                 </div>
                             </li>
-                        @endguest
+                        @endif
                     </ul>
                 </div>
             
         </nav>
     </div>
+
+    
+
+
 
         <main class="" >
             @yield('content')
@@ -120,9 +127,9 @@
                         <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                     </li>
                 @endif
-                @else
+                @endguest
 
-
+                @if ( Auth::user() && Auth::user()->roles_id == \App\Providers\AppServiceProvider::Client)
                 <li class="list-inline-item">
                     <a class="nav-link" href="{{ route('user-events') }}">Your Events</a>
                 </li>
@@ -142,8 +149,8 @@
                 <li class="list-inline-item">
                     <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> {{ __('Logout') }}</a>
                 </li>
-
-                @endguest
+                @endif
+                
 
             </ul>
             <h5>{{ date('Y') }} All Rights Reserved Sussex Companions Pvt Ltd. </h5>
