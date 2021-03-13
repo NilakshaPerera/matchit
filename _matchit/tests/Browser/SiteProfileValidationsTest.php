@@ -9,5 +9,4 @@ use Tests\DuskTestCase;
 class SiteProfileValidationsTest extends DuskTestCase
 {
 
-
 }
