@@ -240,7 +240,7 @@ class Usercontroller extends Controller
     /**
      * Created At : 5/2/2012
      * Created By : Nivetha 
-     * Summary : shows edit form for user
+     * Summary : shows edit form for a particular user
      *
      * @param [type] $id
      * @return void
