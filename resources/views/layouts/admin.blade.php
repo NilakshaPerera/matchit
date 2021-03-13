@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="shortcut icon" type="image/jpg" href="{{ url('assets_app/images/favicon.png') }}"/>
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<title>MatchiIT Admin</title>
 
@@ -43,8 +44,8 @@
 <body>
 	<!-- Main navbar -->
 	<div class="navbar navbar-expand-md navbar-dark">
-		<div class="navbar-brand">
-			<a href="{{ url('/') }}" class="d-inline-block">
+		<div class="">
+			<a href="Javascript:void(0)" class="d-inline-block pt-1 pb-1">
 				<img src="{{ asset('assets_app/images/logo2.png') }}" alt="">
 			</a>
 		</div>
@@ -63,11 +64,18 @@
 			<ul class="navbar-nav">
 				<li class="nav-item dropdown dropdown-user">
 					<a href="#" class="navbar-nav-link d-flex align-items-center dropdown-toggle" data-toggle="dropdown">
-						<img src="{{ asset('assets_theme/images/placeholders/placeholder.jpg') }}" class="rounded-circle mr-2" height="34" alt="">
-						<span>Victoria</span>
+						{{-- <img src="{ asset('assets_theme/images/placeholders/placeholder.jpg') }}" class="rounded-circle mr-2" height="34" alt=""> --}}
+						<span>{{ Auth::user()->name }}</span>
 					</a>
 					<div class="dropdown-menu dropdown-menu-right">
-						<a href="#" class="dropdown-item"><i class="icon-switch2"></i> Logout</a>
+
+						<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+							{{ __('Logout') }}
+						</a>
+
+						<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+							@csrf
+						</form>
 					</div>
 				</li>
 			</ul>
@@ -104,7 +112,7 @@
 					<div class="card-body">
 						<div class="media">
 							<div class="mr-3">
-								<a href="#"><img src="{{ asset('assets_theme/images/placeholders/placeholder.jpg') }}" width="38" height="38" class="rounded-circle" alt=""></a>
+								{{-- <a href="#"><img src="{ asset('assets_theme/images/placeholders/placeholder.jpg') }}" width="38" height="38" class="rounded-circle" alt=""></a> --}}
 							</div>
 							<div class="media-body">
 								<div class="media-title font-weight-semibold">{{ Auth::user()->name }}</div>
@@ -123,13 +131,13 @@
 						<!-- Main -->
                         <li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Main</div> <i class="icon-menu" title="Main"></i></li>
                     
-						<li class="nav-item nav-item-submenu nav-item-expanded nav-item-open">
+						{{-- <li class="nav-item nav-item-submenu nav-item-expanded nav-item-open">
 							<a href="#" class="nav-link"><i class="icon-copy"></i> <span>System</span></a>
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
 								<li class="nav-item"><a href="" class="nav-link ">Client Matches</a></li>
 								<li class="nav-item"><a href="" class="nav-link ">Member Fees</a></li>
 						    </ul>
-						</li>
+						</li> --}}
 
 						<li class="nav-item nav-item-submenu nav-item-expanded nav-item-open">
 							<a href="#" class="nav-link"><i class="icon-copy"></i> <span>Users</span></a>
@@ -177,7 +185,7 @@
 		<div class="content-wrapper">
 
 			<!-- Page header -->
-			<div class="page-header page-header-light">
+			{{-- <div class="page-header page-header-light">
 				<div class="page-header-content header-elements-md-inline">
 					<div class="page-title d-flex">
 						<h4><i class="icon-arrow-left52 mr-2"></i> <span class="font-weight-semibold">Components</span> - Tabs</h4>
@@ -185,7 +193,7 @@
 					</div>
 				</div>
 
-			</div>
+			</div> --}}
 			<!-- /page header -->
 
 			<!-- Content area -->
