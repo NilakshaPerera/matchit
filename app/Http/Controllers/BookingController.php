@@ -50,6 +50,6 @@ class BookingController extends Controller
      * @return void
      */
     public function create($params){
-        Booking::create($params);
+       return Booking::create($params);
     }
 }
