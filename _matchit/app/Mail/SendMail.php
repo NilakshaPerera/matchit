@@ -28,7 +28,7 @@ class SendMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Mail subject')
+        return $this->subject('Event Details!!!')
                     ->view('admin.emails.bookingrequest');
     }
 }

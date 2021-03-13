@@ -6,6 +6,7 @@ use App\Event;
 use App\User;
 use App\Role;
 use App\Booking;
+use Mail;
 
 use Illuminate\Http\Request;
 class BookingController extends Controller
@@ -35,6 +36,9 @@ class BookingController extends Controller
         ->withUsers($users)
         ->withRoles($roles);
     }
+
+
+    
 
 
     /**
