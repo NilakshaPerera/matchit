@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 
 
-class Usercontroller extends Controller
+class UserController extends Controller
 {
     /**
      * Create a new controller instance.
