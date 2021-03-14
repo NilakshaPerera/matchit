@@ -77,7 +77,7 @@ class UserController extends Controller
 
         $payment = Payment::where('id', $request['id'])->where('users_id', Auth::user()->id)->first();
         $isEvent = ($payment->event) ? true : false;
-        return view('site.invoice')
+        return view('site.partials.invoice')
             ->withPayment($payment)
             ->withIsEvent($isEvent);
     }
