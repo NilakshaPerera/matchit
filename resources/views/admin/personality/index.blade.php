@@ -32,14 +32,6 @@
     <script src="{{ asset('assets_theme/js/demo_pages/form_layouts.js') }}"></script>
 
     <script>
-
-$.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-});
-
-
         $(document).ready( function () {
 
             $('.jstable').DataTable( {
@@ -68,14 +60,6 @@ $.ajaxSetup({
                     },
                 ],
             } );
-
-
-            $('#report_type').on('change', function() {
-                var url = base + '/admin/reports/' + this.value ;
-                location.href =  url;
-            });
-
-
         } );
     </script>
 @endsection
@@ -85,9 +69,9 @@ $.ajaxSetup({
 
 <div class="mb-3">
     <h6 class="mb-0 font-weight-semibold">
-       Generate Reports
+        Create Personality Details
     </h6>
-    <span class="text-muted d-block">Select any report from the list and generate data</span>
+    <span class="text-muted d-block">Create new Personality Details here</span>
 </div>
 
 <div class="row">
@@ -97,33 +81,27 @@ $.ajaxSetup({
 
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-12">
-                        <form id="frmReports" name="frmReports" method="POST" action="{{ route('report.get') }}" enctype="">
+                    <div class="col-md-10 offset-md-1">
+                        <form method="POST" action="{{ route('personality.create') }}" enctype="multipart/form-data">
                             
                             @csrf
-
+                      
                             <div class="form-group">
-                                <label>Report Type</label>
-                                <select name="report_type" id="report_type" data-placeholder="Select the report type" class="form-control form-control-select2 @error('report_type') is-invalid @enderror" data-fouc>
-                                        <option value="">-- Select Report Type --</option>
-                                        <option {{ ($type ==  \App\Providers\AppServiceProvider::EventSchedule)? "selected" : ''  }} value="{{ \App\Providers\AppServiceProvider::EventSchedule }}">Events Report</option>
-                                        <option {{ ($type ==  \App\Providers\AppServiceProvider::Income)? "selected" : ''  }} value="{{ \App\Providers\AppServiceProvider::Income }}">Income</option>
-                                        <option {{ ($type ==  \App\Providers\AppServiceProvider::MemberMatches)? "selected" : ''  }} value="{{ \App\Providers\AppServiceProvider::MemberMatches }}">Member Matches</option>
-                                        <option {{ ($type ==  \App\Providers\AppServiceProvider::Payments)? "selected" : ''  }} value="{{ \App\Providers\AppServiceProvider::Payments }}">Payments</option>
-                                        <option {{ ($type ==  \App\Providers\AppServiceProvider::Overdueletter)? "selected" : ''  }} value="{{ \App\Providers\AppServiceProvider::Overdueletter }}">Overdueletter</option>
-                                        <option {{ ($type ==  \App\Providers\AppServiceProvider::Pastevents)? "selected" : ''  }} value="{{ \App\Providers\AppServiceProvider::Pastevents }}">Pastevents</option>
-
-
-
-                                </select>
-                                @error('report_type')
+                                <label>Personality Detail Name:</label>
+                                <input name="name" id="name" type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Enter a personality name">
+                                
+                                @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+
                             </div>
 
-                            {!! $template !!}
+
+                            <div class="text-right">
+                                <button type="submit" class="btn btn-primary">Submit form <i class="icon-paperplane ml-2"></i></button>
+                            </div>
 
                             @if(session()->has('message'))
                                 <div class="alert alert-success mt-3 text-center">
@@ -146,6 +124,33 @@ $.ajaxSetup({
 </div>
 
 
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">   
+                <table class="table table-striped jstable">
+                    <thead>
+                        <tr>
+                            <th>Personality Name</th>
+                            <th>Created On</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($personalities as $personality)
+                        <tr>
+                            <td>{{ $personality->name }}</td>
+                            <td>{{ $personality->created_at }}</td>
+                            <td><a href="{{ route('personality.edit',[$personality->id]) }}">Edit</a></td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 @endsection
-
-
