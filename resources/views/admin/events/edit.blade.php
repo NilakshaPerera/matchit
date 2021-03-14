@@ -58,7 +58,7 @@
                                 <label>Select event type </label>
                                 <select name="event_type" id="event_type" data-placeholder="Select event type" class="form-control form-control-select2 @error('event_type') is-invalid @enderror" data-fouc value="">
                                     @foreach($eventTypes as $eventType)
-                                        <option {{ ($event->event_types_id == $eventType->id)? "selected" : "" }}value="{{ $eventType->id }}">{{ $eventType->name }}</option>
+                                        <option {{ ($event->event_types_id == $eventType->id)? "selected" : "" }} value="{{ $eventType->id }}">{{ $eventType->name }}</option>
                                     @endforeach
                                 </select>
                                 @error('event_type')

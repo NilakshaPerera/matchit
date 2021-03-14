@@ -2,7 +2,8 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>MatchIT by Sussex Companions</title>
+    <link rel="shortcut icon" type="image/jpg" href="{{ url('assets_app/images/favicon.png') }}"/>
+    <title>MatchIT by Sussex Companions Invoice</title>
     
     <style>
     .invoice-box {
