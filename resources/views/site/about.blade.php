@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12 card">
 
-            @includeIf('site.banner')
+           @includeIf('site.partials.banner')
 
             <h2 class="text-center mt-4 mb-4"><b>About Us</b></h2>
 
