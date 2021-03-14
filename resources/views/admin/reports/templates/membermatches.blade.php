@@ -47,7 +47,7 @@
                                 <td>{{ implode(", ",  $match['personality']) }}</td>
 
                                 <td>{{ implode(", ",  $match['hobby']) }}</td>
-                                <td>{{ $match['total_score'] }}%</td>
+                                <td>{{ round( $match['total_score'] , 1) }}%</td>
                             </tr>
 
                             @endforeach

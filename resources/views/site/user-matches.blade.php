@@ -125,7 +125,7 @@
                                         Match Rate &nbsp;
                                     </div>
                                     <div class="col-7 text-left p-0 b match-rate-data">
-                                        {{ $person['total_score'] }}%
+                                        {{ round($person['total_score'] , 1) }}%
                                     </div>
                                 </div>
 
