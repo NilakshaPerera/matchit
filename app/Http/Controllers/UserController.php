@@ -183,7 +183,7 @@ class UserController extends Controller
     /**
      * Created At : 6/2/2021
      * Created By : Nivetha 
-     * Summary : shows store form for clients
+     * Summary : Creates user record in the users table
      * @param Request $request
      * @return void
      */
