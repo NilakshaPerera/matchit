@@ -70,15 +70,10 @@ $.ajaxSetup({
             } );
 
 
-
             $('#report_type').on('change', function() {
                 var url = base + '/admin/reports/' + this.value ;
                 location.href =  url;
             });
-
-
-
-
 
 
         } );
@@ -102,7 +97,7 @@ $.ajaxSetup({
 
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-10 offset-md-1">
+                    <div class="col-md-12">
                         <form id="frmReports" name="frmReports" method="POST" action="{{ route('report.get') }}" enctype="">
                             
                             @csrf
