@@ -106,14 +106,14 @@ $.ajaxSetup({
                                 <label>Report Type</label>
                                 <select name="report_type" id="report_type" data-placeholder="Select the report type" class="form-control form-control-select2 @error('report_type') is-invalid @enderror" data-fouc>
                                         <option value="">-- Select Report Type --</option>
-                                        <option {{ ($type ==  \App\Providers\AppServiceProvider::EventSchedule)? "selected" : ''  }} value="{{ \App\Providers\AppServiceProvider::EventSchedule }}">Events Report</option>
-                                        <option {{ ($type ==  \App\Providers\AppServiceProvider::Income)? "selected" : ''  }} value="{{ \App\Providers\AppServiceProvider::Income }}">Income</option>
-                                        <option {{ ($type ==  \App\Providers\AppServiceProvider::MemberMatches)? "selected" : ''  }} value="{{ \App\Providers\AppServiceProvider::MemberMatches }}">Member Matches</option>
-                                        <option {{ ($type ==  \App\Providers\AppServiceProvider::Payments)? "selected" : ''  }} value="{{ \App\Providers\AppServiceProvider::Payments }}">Payments</option>
-                                        <option {{ ($type ==  \App\Providers\AppServiceProvider::Overdueletter)? "selected" : ''  }} value="{{ \App\Providers\AppServiceProvider::Overdueletter }}">Overdueletter</option>
-                                        <option {{ ($type ==  \App\Providers\AppServiceProvider::Pastevents)? "selected" : ''  }} value="{{ \App\Providers\AppServiceProvider::Pastevents }}">Pastevents</option>
-
-
+                                        <option {{ ($type ==  \App\Providers\AppServiceProvider::EventSchedule)? "selected" : ''  }} value="{{ \App\Providers\AppServiceProvider::EventSchedule }}">Event Schedule Report</option>
+                                        <option {{ ($type ==  \App\Providers\AppServiceProvider::Income)? "selected" : ''  }} value="{{ \App\Providers\AppServiceProvider::Income }}">Events Income Report</option>
+                                        <option {{ ($type ==  \App\Providers\AppServiceProvider::MemberMatches)? "selected" : ''  }} value="{{ \App\Providers\AppServiceProvider::MemberMatches }}">SuccessfulMember Matches</option>
+                                        <option {{ ($type ==  \App\Providers\AppServiceProvider::Payments)? "selected" : ''  }} value="{{ \App\Providers\AppServiceProvider::Payments }}">Membership Payments Report</option>
+                                        <option {{ ($type ==  \App\Providers\AppServiceProvider::Overdueletter)? "selected" : ''  }} value="{{ \App\Providers\AppServiceProvider::Overdueletter }}">Payment Overdue Letters</option>
+                                        <option {{ ($type ==  \App\Providers\AppServiceProvider::Pastevents)? "selected" : ''  }} value="{{ \App\Providers\AppServiceProvider::Pastevents }}">Past Events Report</option>
+                                        <option {{ ($type ==  \App\Providers\AppServiceProvider::ClientServiceAgentMeetup)? "selected" : ''  }} value="{{ \App\Providers\AppServiceProvider::ClientServiceAgentMeetup }}">Client Service Agent Meetups</option>
+                                        <option {{ ($type ==  \App\Providers\AppServiceProvider::UnsuccessfulMemberMatches)? "selected" : ''  }} value="{{ \App\Providers\AppServiceProvider::UnsuccessfulMemberMatches }}">Unsuccessful Member Matches</option>
 
                                 </select>
                                 @error('report_type')
