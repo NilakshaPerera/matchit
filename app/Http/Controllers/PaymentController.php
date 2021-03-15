@@ -82,9 +82,25 @@ class PaymentController extends Controller
                 ->withUser($user);
         } else {
             abort(404);
+            
+          
+           
         }
     }
-
+    /**
+     * Created At : 14/3/2021
+     * Created By : Imesha
+     * Summary : view due payments
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function getAll(Request $request)
+    {
+        return view('admin.payment.index')
+            ->withUsers(User::all());
+    }
+   
 
     /**
      * Created At : 14/2/2021
