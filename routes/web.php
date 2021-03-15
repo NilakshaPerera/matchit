@@ -75,6 +75,9 @@ Route::middleware(['auth', 'admin.user'])->prefix('/admin')->group(function () {
     Route::post('/report/get', 'ReportController@get')->name('report.get');
 
     Route::get('/bookings/index', 'BookingController@index')->name('booking.index');
+
+    Route::get('/payment/getall', 'PaymentController@getAll')->name('payment.getall');
+
 });
 
 Auth::routes();
