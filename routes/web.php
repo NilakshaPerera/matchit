@@ -78,7 +78,6 @@ Route::middleware(['auth', 'admin.user'])->prefix('/admin')->group(function () {
 
     Route::get('/payment/getall', 'PaymentController@getAll')->name('payment.getall');
 
-    Route::get('/send-booking-email', 'MailSendController@mailsend');
 });
 
 Auth::routes();

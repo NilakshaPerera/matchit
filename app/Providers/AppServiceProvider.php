@@ -36,6 +36,8 @@ class AppServiceProvider extends ServiceProvider
     public const Payments = 4;
     public const Overdueletter = 5;
     public const Pastevents = 6;
+    public const ClientServiceAgentMeetup = 7;
+    public const UnsuccessfulMemberMatches = 8;
 
 
     //Genders 
