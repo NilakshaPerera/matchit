@@ -78,13 +78,3 @@ function getNewClient(){
         'status_id' => AppServiceProvider::Complete,
     ];
 }
-
-function mailsend(){
-    $details = [
-        'title' => 'Mail from MatchIT',
-        'body' => 'Test Mail',
-    ];
-
-    Mail::to('mujitha.m3@gmail.com')->send(new SendMail($details));
-    echo 'Mail Send Succesfully';
-}
