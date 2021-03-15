@@ -82,9 +82,6 @@ class PaymentController extends Controller
                 ->withUser($user);
         } else {
             abort(404);
-            
-          
-           
         }
     }
     /**
