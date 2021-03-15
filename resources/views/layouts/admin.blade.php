@@ -131,42 +131,43 @@
 						<!-- Main -->
                         <li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Main</div> <i class="icon-menu" title="Main"></i></li>
                     
-						{{-- <li class="nav-item nav-item-submenu nav-item-expanded nav-item-open">
+						<li class="nav-item nav-item-submenu  {{(in_array( Route::currentRouteName() , ["hobby.index", "personality.index", "eventtype.index" ] ))? 'nav-item-expanded nav-item-open' : ""   }}">
 							<a href="#" class="nav-link"><i class="icon-copy"></i> <span>System</span></a>
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-								<li class="nav-item"><a href="" class="nav-link ">Client Matches</a></li>
-								<li class="nav-item"><a href="" class="nav-link ">Member Fees</a></li>
-						    </ul>
-						</li> --}}
+								<li class="nav-item {{ (Route::currentRouteName() == "hobby.index")? "nav-item-open" : "" }}"><a href="{{ route('hobby.index') }}" class="nav-link ">Hobbies</a></li>
+								<li class="nav-item {{ (Route::currentRouteName() == "personality.index")? "nav-item-open" : "" }}"><a href="{{ route('personality.index') }}" class="nav-link ">Personality Details</a></li>
+								<li class="nav-item {{ (Route::currentRouteName() == "eventtype.index")? "nav-item-open" : "" }}"><a href="{{ route('eventtype.index') }}" class="nav-link ">Event Types</a></li>
+							</ul>
+						</li>
 
-						<li class="nav-item nav-item-submenu nav-item-expanded nav-item-open">
+						<li class="nav-item nav-item-submenu {{(in_array( Route::currentRouteName() , ["user", "user.all"] ))? 'nav-item-expanded nav-item-open' : ""   }}">
 							<a href="#" class="nav-link"><i class="icon-copy"></i> <span>Users</span></a>
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-								<li class="nav-item"><a href="{{ route('user.all') }}" class="nav-link ">Clients</a></li>					
-								<li class="nav-item"><a href="{{route('user')}}" class="nav-link ">Create Clients</a></li>
+								<li class="nav-item {{ (Route::currentRouteName() == "user")? "nav-item-open" : "" }}"><a href="{{route('user')}}" class="nav-link ">Create Users</a></li>
+								<li class="nav-item {{ (Route::currentRouteName() == "user.all")? "nav-item-open" : "" }}"><a href="{{ route('user.all') }}" class="nav-link ">Show Users</a></li>					
 						    </ul>
 						</li>
 
-						<li class="nav-item nav-item-submenu nav-item-expanded nav-item-open">
+						<li class="nav-item nav-item-submenu  {{(in_array( Route::currentRouteName() , ["booking.index"] ))? 'nav-item-expanded nav-item-open' : ""   }}">
 							<a href="#" class="nav-link"><i class="icon-copy"></i> <span>Event Bookings</span></a>
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-								<li class="nav-item"><a href="{{route('booking.index')}}" class="nav-link ">Accept Bookings</a></li>
+								<li class="nav-item {{ (Route::currentRouteName() == "booking.index")? "nav-item-open" : "" }}"><a href="{{route('booking.index')}}" class="nav-link ">Accept Bookings</a></li>
 								<li class="nav-item"><a href="" class="nav-link ">Accept Payments</a></li>
 						    </ul>
 						</li>
 
-						<li class="nav-item nav-item-submenu nav-item-expanded nav-item-open">
+						<li class="nav-item nav-item-submenu {{(in_array( Route::currentRouteName() , ["reports"] ))? 'nav-item-expanded nav-item-open' : ""   }}">
 							<a href="#" class="nav-link"><i class="icon-copy"></i> <span>Reports</span></a>
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-								<li class="nav-item"><a href="{{ route('reports', [0]) }}" class="nav-link ">Generate</a></li>
+								<li class="nav-item {{ (Route::currentRouteName() == "reports")? "nav-item-open" : "" }}"><a href="{{ route('reports', [0]) }}" class="nav-link ">Generate</a></li>
 						    </ul>
 						</li>
 
-						<li class="nav-item nav-item-submenu nav-item-expanded nav-item-open">
+						<li class="nav-item nav-item-submenu {{(in_array( Route::currentRouteName() , ["events.index", "events.show" ] ))? 'nav-item-expanded nav-item-open' : ""   }}">
 							<a href="#" class="nav-link"><i class="icon-copy"></i> <span>Events</span></a>
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-								<li class="nav-item"><a href="{{ route('events.index') }}" class="nav-link ">Create</a></li>
-								<li class="nav-item"><a href="{{ route('events.show') }}" class="nav-link ">Event Schedule</a></li>
+								<li class="nav-item {{ (Route::currentRouteName() == "events.index")? "nav-item-open" : "" }}"><a href="{{ route('events.index') }}" class="nav-link ">Create</a></li>
+								<li class="nav-item {{ (Route::currentRouteName() == "events.show")? "nav-item-open" : "" }}"><a href="{{ route('events.show') }}" class="nav-link ">Event Schedule</a></li>
 						    </ul>
 						</li>
 
