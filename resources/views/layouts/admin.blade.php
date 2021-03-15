@@ -148,7 +148,7 @@
 						    </ul>
 						</li>
 
-						<li class="nav-item nav-item-submenu  {{(in_array( Route::currentRouteName() , ["booking.index"] ))? 'nav-item-expanded nav-item-open' : ""   }}">
+						<li class="nav-item nav-item-submenu  {{(in_array( Route::currentRouteName() , ["booking.index", "payment.getall"] ))? 'nav-item-expanded nav-item-open' : ""   }}">
 							<a href="#" class="nav-link"><i class="icon-copy"></i> <span>Event Bookings</span></a>
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
 								<li class="nav-item {{ (Route::currentRouteName() == "booking.index")? "nav-item-open" : "" }}"><a href="{{route('booking.index')}}" class="nav-link ">Accept Bookings</a></li>
