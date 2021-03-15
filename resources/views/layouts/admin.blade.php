@@ -144,7 +144,7 @@
 							<a href="#" class="nav-link"><i class="icon-copy"></i> <span>Users</span></a>
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
 								<li class="nav-item {{ (Route::currentRouteName() == "user")? "nav-item-open" : "" }}"><a href="{{route('user')}}" class="nav-link ">Create Users</a></li>
-								<li class="nav-item {{ (Route::currentRouteName() == "user.all")? "nav-item-open" : "" }}"><a href="{{ route('user.all') }}" class="nav-link ">Users</a></li>					
+								<li class="nav-item {{ (Route::currentRouteName() == "user.all")? "nav-item-open" : "" }}"><a href="{{ route('user.all') }}" class="nav-link ">Show Users</a></li>					
 						    </ul>
 						</li>
 

@@ -33,14 +33,13 @@ class ReportController extends Controller
     {
         $template = "";
 
-
-        switch($request['type']){
+        switch ($request['type']) {
             case AppServiceProvider::EventSchedule:
-                    $events = Event::all();
-                    $template = view('admin.reports.templates.eventschedule')->withEvents($events)->render();
+                $events = Event::all();
+                $template = view('admin.reports.templates.eventschedule')->withEvents($events)->render();
                 break;
-            case AppServiceProvider::Income: 
-                $payments = Payment::all();  
+            case AppServiceProvider::Income:
+                $payments = Payment::all();
                 $template = view('admin.reports.templates.income')->withPayments($payments)->render();
                 break;
             case AppServiceProvider::MemberMatches:
@@ -59,13 +58,21 @@ class ReportController extends Controller
                 $events = Event::all();
                 $template = view('admin.reports.templates.pastevents')->withEvents($events)->render();
                 break;
+            case AppServiceProvider::ClientServiceAgentMeetup:
+                $events = Event::all();
+                $template = view('admin.reports.templates.clientserviceagentmeetup')->withEvents($events)->render();
+                break;
+            case AppServiceProvider::UnsuccessfulMemberMatches:
+                $events = Event::all();
+                $template = view('admin.reports.templates.unsucessfulmatches')->withEvents($events)->render();
+                break;
             default:
-                    $template = "";
+                $template = "";
                 break;
         }
         return view('admin.reports.index')->withTemplate($template)->withType($request['type']);
     }
-      
+
     /**
      * Created by:Nivetha
      * Created at 2021-03-07
@@ -73,11 +80,12 @@ class ReportController extends Controller
      * 
      * @return void
      */
-    public function getMemberMatches(){
-        
+    public function getMemberMatches()
+    {
+
         $users = User::where('roles_id', AppServiceProvider::Client)->get();
         $matches = [];
-        foreach($users as $user){
+        foreach ($users as $user) {
 
             $match = [];
             $match['user_id'] = $user->id;
@@ -85,7 +93,6 @@ class ReportController extends Controller
             $match['matches'] = (new Usercontroller())->getMatches($user->id, 50);
 
             array_push($matches, $match);
-
         }
         return $matches;
     }
@@ -96,9 +103,7 @@ class ReportController extends Controller
      * @param Request $request
      * @return void
      */
-    public function get(Request $request){
-
+    public function get(Request $request)
+    {
     }
-
 }
- 

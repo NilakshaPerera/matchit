@@ -1,7 +1,13 @@
-<?php 
+<?php
+
+use App\Mail\SendMail;
 use App\Providers\AppServiceProvider;
 use Faker\Factory as Faker;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+
+// use SendMail;
+// use Mail;
 
 function getNewSeniorClientServiceAgent(){
     $faker = Faker::create();
@@ -71,4 +77,14 @@ function getNewClient(){
         'channels_id' => AppServiceProvider::ChannelWebForm,
         'status_id' => AppServiceProvider::Complete,
     ];
+}
+
+function mailsend(){
+    $details = [
+        'title' => 'Mail from MatchIT',
+        'body' => 'Test Mail',
+    ];
+
+    Mail::to('mujitha.m3@gmail.com')->send(new SendMail($details));
+    echo 'Mail Send Succesfully';
 }
