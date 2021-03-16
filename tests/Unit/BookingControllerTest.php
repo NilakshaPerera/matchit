@@ -22,4 +22,19 @@ class BookingControllerTest extends TestCase
         $response->assertStatus(200);
 
     }
+
+    public function testsendeventdetailsBooking(){
+
+        $user = factory(User::class)->create(getNewSeniorClientServiceAgent());
+
+        $data = array(
+            '_token' => csrf_token()
+        );
+
+        $response = $this->actingAs($user)
+                         ->post(route('bookings.sendeventdetails'), $data);
+        
+        $response->assertStatus(200);
+
+    }
 }
