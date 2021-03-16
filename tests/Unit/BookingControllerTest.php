@@ -25,7 +25,7 @@ class BookingControllerTest extends TestCase
 
     public function testsendeventdetailsBooking(){
 
-        $user = factory(User::class)->create(getNewSeniorClientServiceAgent());
+        $user = factory(User::class)->create(getNewClient());
 
         $data = array(
             '_token' => csrf_token()
