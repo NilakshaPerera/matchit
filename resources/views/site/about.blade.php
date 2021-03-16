@@ -11,7 +11,7 @@
 <script>
 $(document).ready(function() {
     var resize = new Array('p', '.resizable');
-    resize = resize.join(',');
+        resize = resize.join(',');
 
   //resets the font size when "reset" is clicked
     var resetFont = $(resize).css('font-size');
@@ -25,7 +25,7 @@ $(document).ready(function() {
         var originalFontNumber = parseFloat(originalFontSize, 10);
         var newFontSize = originalFontNumber * 1.2;
             $(resize).css('font-size', newFontSize);
-            return false;
+        return false;
     });
 
   //decrease font size when "-" is clicked
@@ -46,11 +46,20 @@ $(document).ready(function() {
 @section('css')
 <style>
 span {
-  font-size: 25px;
-  float: right;
-  display: block;
-  font-weight: bold;
+    font-size: 25px;
+    float: right;
+    display: block;
+    font-weight: bold;
 }
+
+a {
+  color: #417993;
+}
+
+a:hover {
+  color: #1a3d6e;
+}
+
 </style>
 
 @endsection
