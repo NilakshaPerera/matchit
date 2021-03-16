@@ -1,12 +1,72 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
 @extends('layouts.app')
 
+<!-- jquery import -->
+@section('theme-script')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+@endsection
+
+<!-- jquery functions for small and large the font size  -->
+@section('script')
+<script>
+$(document).ready(function() {
+    var resize = new Array('p', '.resizable');
+    resize = resize.join(',');
+
+  //resets the font size when "reset" is clicked
+    var resetFont = $(resize).css('font-size');
+        $(".reset").click(function() {
+        $(resize).css('font-size', resetFont);
+    });
+
+  //increases font size when "+" is clicked
+    $(".increase").click(function() {
+        var originalFontSize = $(resize).css('font-size');
+        var originalFontNumber = parseFloat(originalFontSize, 10);
+        var newFontSize = originalFontNumber * 1.2;
+            $(resize).css('font-size', newFontSize);
+            return false;
+    });
+
+  //decrease font size when "-" is clicked
+
+    $(".decrease").click(function() {
+        var originalFontSize = $(resize).css('font-size');
+        var originalFontNumber = parseFloat(originalFontSize, 10);
+        var newFontSize = originalFontNumber * 0.8;
+            $(resize).css('font-size', newFontSize);
+        return false;
+    });
+
+});
+
+</script>
+@endsection
+
+@section('css')
+<style>
+span {
+  font-size: 25px;
+  float: right;
+  display: block;
+  font-weight: bold;
+}
+</style>
+
+@endsection
+
 @section('content')
 <div class="container page-home lift-and-drop-shadow">
     <div class="row justify-content-center">
         <div class="col-md-12 card">
 
            @includeIf('site.partials.banner')
+            <!-- There elements use for -->
+            <span align='right'> 
+                <a class="increase">+</a> |
+                <a class="decrease">-</a> |
+                <a class="reset">reset</a>
+            </span>
 
             <h2 class="text-center mt-4 mb-4"><b>About Us</b></h2>
 
@@ -42,13 +102,9 @@
 
                         <i class="bi bi-envelope-fill"></i>Email: <a href="mailto:matchit.sussexcompanions@gmail.com"> matchit.sussexcompanions@gmail.com </a><br>
                         <i class="bi bi-printer-fill"></i> Fax: <a href="fax:+44-020-5555-915"> 44-020-5555-915 </a><br>
-
                          Or simply get registered with us on this website by clicking register! if you face any technical diffculties please send an email to matchit.sussexcompanions@gmail.com.</p></div>
-                
+                </div>
             </div>
-
-           
-        </div>
     </div>
 </div>
 
