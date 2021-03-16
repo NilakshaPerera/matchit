@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="shortcut icon" type="image/jpg" href="{{ url('assets_app/images/favicon.png') }}"/>
 	<meta name="csrf-token" content="{{ csrf_token() }}">
-	<title>MatchiIT Admin</title>
+	<title>MatchIT Admin</title>
 
 	<script> var base = '{{ url('/') }}';</script>
 	<!-- Global stylesheets -->
