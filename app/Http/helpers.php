@@ -74,7 +74,10 @@ function getNewClient(){
         'roles_id' => AppServiceProvider::Client,
         'password' => Hash::make('Pa$$w0rd!'),
         'dob' => '09/03/1940',
-        'channels_id' => AppServiceProvider::ChannelWebForm,
+        'channels_id' => (array_rand([1,2,3,4,5], 1))[0],
         'status_id' => AppServiceProvider::Complete,
+        'user_types_id' => (array_rand([1,2], 1))[0],
+        'gender' => (array_rand(['Male', 'Female'], 1))[0],
+        'address' => $faker->name . ' ' . $faker->name,
     ];
 }
