@@ -12,6 +12,7 @@ use Cartalyst\Stripe\Stripe;
 use App\Payment;
 use App\Booking;
 use DB;
+use Mail;
 use App\Http\Controllers\Usercontroller;
 use Carbon\Carbon;
 use App\Http\Controllers\BookingController;
@@ -94,10 +95,36 @@ class PaymentController extends Controller
      */
     public function getAll(Request $request)
     {
+        $users = User::where('roles_id', AppServiceProvider::Client)->get();
         return view('admin.payment.index')
-            ->withUsers(User::all());
+        ->withUsers($users);
+        return UserController::getMembershipDues($userId);
+        
     }
    
+    /**
+     * Created At : 15/3/2021
+     * UpdateCreated By : Imesha
+     * Summary : Dispatches the due payment notification for passed user ID 
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function sendDueMembershipNotification(Request $request){
+
+        $user = User::where('id', $request['user-id'])->first();
+        if(!$user){ return ['success' => false, 'data' => "Invalid user"]; }
+
+        $due = (new UserController())->getMembershipDues($user->id);
+
+        Mail::send('admin.emails.paymentrequest', ['user' => $user , 'due' => $due], function($message) use($user) {
+            $message->to($user->email)
+            ->subject('Reminder to Pay Membership Dues');
+        });
+
+        return ['success' => true, 'data' => "You sent a notification to " . $user->name];
+
+    }
 
     /**
      * Created At : 14/2/2021
