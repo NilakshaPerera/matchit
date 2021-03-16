@@ -98,8 +98,6 @@ class PaymentController extends Controller
         $users = User::where('roles_id', AppServiceProvider::Client)->get();
         return view('admin.payment.index')
         ->withUsers($users);
-        return UserController::getMembershipDues($userId);
-        
     }
    
     /**

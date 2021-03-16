@@ -27,7 +27,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-10 offset-md-1">
-                        <form method="POST" action="{{ route('bookings.sendeventdetails') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('bookings.sendeventdetails') }}">
                             
                             @csrf
 
