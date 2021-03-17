@@ -147,7 +147,7 @@
                     <table>
                         <tbody><tr>
                             <td class="title">
-                                <img src="{{url('/assets_app/images/logo2.png')}}" style="">
+                                <img src="{{url('https://i.ibb.co/Tmt7n5d/Logo2.png')}}" style="">
                             </td>
                         </tr>
                     </tbody></table>
