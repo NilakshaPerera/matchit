@@ -3,6 +3,7 @@
 
 @endsection
 
+
 @section('theme-script')
     <script src="{{ asset('assets_theme/js/plugins/forms/selects/select2.min.js') }}"></script>
     <script src="{{ asset('assets_theme/js/plugins/forms/styling/uniform.min.js') }}"></script>
@@ -27,7 +28,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-10 offset-md-1">
-                        <form method="POST" action="{{ route('events.create') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('bookings.sendeventdetails') }}">
                             
                             @csrf
 
@@ -60,13 +61,21 @@
                             </div>
 
                             <div class="text-right">
-                                <button type="submit" class="btn btn-primary">Send Email <i class="icon-envelope ml-2"></i></button>
+                                <button type="submit" class="btn btn-primary m-3"> Send Email <i class="icon-envelope ml-2"></i></button>
                             </div>
 
-                            @if(session()->has('error'))
-                             <div class="alert alert-warning mt-3 text-center">
-                                {{ session()->get('error') }}
-                             </div>
+                            @if ($message = Session::get('error'))
+                                <div class="alert alert-warning alert-block" id='msg'>
+                                    <button type="button" class="close" data-dismiss="alert">×</button>
+                                        <strong>{{ $message }}</strong>
+                                </div>
+                            @endif
+
+                            @if ($message = Session::get('success'))
+                                <div class="alert alert-success alert-block" id='msg'>
+                                    <button type="button" class="close" data-dismiss="alert">×</button>
+                                        <strong>{{ $message }}</strong>
+                                </div>
                             @endif
 
                         </form>

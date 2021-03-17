@@ -108,7 +108,11 @@ class EventController extends Controller
 
     try {
         DB::beginTransaction();
-        $event = Event::where('id', $request['id'])->first();
+        $event = Event::where('id', $request['event_id'])->first();
+
+        if(!$event){
+            abort(404);
+        }
 
         $request->validate([
             'name' => ['required', 'string', 'max:255'],

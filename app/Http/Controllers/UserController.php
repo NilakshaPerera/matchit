@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\UserTypesController;
 use App\Http\Controllers\UserHasHobbyController;
+use App\Http\Controllers\UsersHasPersonalityDetailController;
 
 use Illuminate\Support\Facades\Hash;
 
@@ -77,7 +78,7 @@ class UserController extends Controller
 
         $payment = Payment::where('id', $request['id'])->where('users_id', Auth::user()->id)->first();
         $isEvent = ($payment->event) ? true : false;
-        return view('site.invoice')
+        return view('site.partials.invoice')
             ->withPayment($payment)
             ->withIsEvent($isEvent);
     }
@@ -183,7 +184,7 @@ class UserController extends Controller
     /**
      * Created At : 6/2/2021
      * Created By : Nivetha 
-     * Summary : shows store form for clients
+     * Summary : Creates user record in the users table
      * @param Request $request
      * @return void
      */
@@ -363,9 +364,12 @@ class UserController extends Controller
                 ]);
             }
 
-            UsersHasPersonalityDetail::where('users_id', $currentUser->id)->delete();
+            $userHasPersonalityDetailsController = new UsersHasPersonalityDetailController();
+            $userHasPersonalityDetailsController->delete($currentUser->id);
+
+
             foreach ($request['personality-details'] as $personDetail) {
-                UsersHasPersonalityDetail::create([
+                $userHasPersonalityDetailsController->create([
                     'users_id' => $currentUser->id,
                     'personality_details_id' => $personDetail,
                 ]);

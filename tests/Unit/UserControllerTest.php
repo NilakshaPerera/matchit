@@ -53,6 +53,7 @@ class UserControllerTest extends TestCase
         $response->assertStatus(302);
     }
 
+
     public function testAllUser()
     {
         $user = factory(User::class)->create(getNewSeniorClientServiceAgent());
@@ -63,7 +64,6 @@ class UserControllerTest extends TestCase
         $response->assertStatus(200);
 
     }
-
   
     
 }

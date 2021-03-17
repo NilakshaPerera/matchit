@@ -6,36 +6,32 @@ use Tests\TestCase;
 use App\User;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 
-class BookingControllerTest extends TestCase
+
+class AcceptPaymentControllerTest extends TestCase
 {
     use WithoutMiddleware;
 
     /**
-     * Undocumented function
+     * Created At : 17/3/2021
+     * Created By : Imesha
+     * Summary : test show due payments and test send due membership notification
      *
      * @return void
      */
-    public function testIndexBooking()
+    public function testShowDuePayment()
     {
         $this->withMiddleware();
 
         $user = factory(User::class)->create(getNewSeniorClientServiceAgent());
 
         $response = $this->actingAs($user)
-            ->get(route('booking.index'));
+            ->get(route('payment.getall'));
 
         $response->assertStatus(200);
     }
+  
 
-
-   /**
-     * Created At : 16/03/2021
-     * Created By : Mujitha
-     * Summary : Test Send event details email notification function
-     *
-     * @return void
-     */
-    public function testSendEventBookingDetails()
+    public function testsendduemembershipnotification()
     {
         $user = factory(User::class)->create(getNewSeniorClientServiceAgent());
 
@@ -44,9 +40,10 @@ class BookingControllerTest extends TestCase
         );
 
         $response = $this->actingAs($user)
-            ->post(route('bookings.sendeventdetails'), $data);
+            ->post(route('payment.sendduemembershipnotification'), $data);
 
         $response->assertStatus(200);
     }
 
 }
+

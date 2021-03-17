@@ -2,7 +2,7 @@
 <html><head>
     <meta charset="utf-8">
     <link rel="shortcut icon" type="image/jpg" href="{{ url('/assets_app/images/favicon.png') }}">
-    <title>MatchIT by Sussex Companions Event Details</title>
+    <title>MatchIT by Sussex Companions Invoice</title>
     
     <style>
 
@@ -158,21 +158,17 @@
                 <td colspan="2">
                     <table>
                         <tbody><tr>
-                            <td>Hello <b><i>{{ $user->name }},</i></b>
+                            <td>Hello {{ $user->name }},
                             <br>
-                            We are sending this email because you have requested event payment details from us. 
-                            Please click the below link and complete your payment. Feel free to contact us for any further assistance. <br></td>
+                            We are sending this email because you have due membership fee of {{ $due }}£. Please click the below link to visit our payment terminal to complete your payment.<br></td>
                         </tr>
                     </tbody></table>
                 </td>
             </tr>
             
             <tr style="text-align:center">
-                <td>
-                    <a class="btn btn-primary" href="{{  route('payment', [$user->id , 'event', $event->id]) }}" target="_blank" >Pay for your Booking</a>
-                </td>
+                <td><a class="btn btn-primary" href="{{  route('payment', [$user->id , 'membership', 0]) }}" target="_blank" >Make Payment</a></td>
             </tr>
-
             <tr class="total" style="text-align:center">
                 &nbsp;        
             </tr>

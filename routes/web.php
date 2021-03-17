@@ -26,6 +26,9 @@ Route::get('/terms', function () {
 })->name('terms');
 
 Route::get('/user', 'Usercontroller@index')->name('user');
+Route::post('/user/update', 'Usercontroller@update')->name('user.update');
+Route::get('/user/payment/{user}/{type}/{id}', 'PaymentController@index')->name('payment');
+Route::post('/user/payment/create', 'PaymentController@create')->name('payment.create');
 
 Route::middleware(['auth', 'client.user'])->prefix('/user')->group(function () {
 
@@ -33,14 +36,25 @@ Route::middleware(['auth', 'client.user'])->prefix('/user')->group(function () {
     Route::get('/membership', 'Usercontroller@membership')->name('user-membership');
     Route::get('/invoice/{id}', 'Usercontroller@showInvoice')->name('user-invoice');
     Route::get('/matches', 'UserController@showMatches')->name('user-matches');
-    Route::post('/update', 'Usercontroller@update')->name('user.update');
-    Route::post('/store', 'Usercontroller@store')->name('user.store');
 
-    Route::get('/payment/{user}/{type}/{id}', 'PaymentController@index')->name('payment');
-    Route::post('/payment/create', 'PaymentController@create')->name('payment.create');
 });
 
 Route::middleware(['auth', 'admin.user'])->prefix('/admin')->group(function () {
+
+    Route::get('/eventtype', 'EventTypeController@index')->name('eventtype.index');
+    Route::post('/eventtype/create', 'EventTypeController@store')->name('eventtype.create');
+    Route::get('/eventtype/edit/{id}', 'EventTypeController@edit')->name('eventtype.edit');
+    Route::post('/eventtype/update', 'EventTypeController@update')->name('eventtype.update');
+
+    Route::get('/personality', 'PersonalityDetailController@index')->name('personality.index');
+    Route::post('/personality/create', 'PersonalityDetailController@store')->name('personality.create');
+    Route::get('/personality/edit/{id}', 'PersonalityDetailController@edit')->name('personality.edit');
+    Route::post('/personality/update', 'PersonalityDetailController@update')->name('personality.update');
+
+    Route::get('/hobby', 'HobbiesController@index')->name('hobby.index');
+    Route::post('/hobby/create', 'HobbiesController@store')->name('hobby.create');
+    Route::get('/hobby/edit/{id}', 'HobbiesController@edit')->name('hobby.edit');
+    Route::post('/hobby/update', 'HobbiesController@update')->name('hobby.update');
 
     Route::get('/events', 'EventController@index')->name('events.index');
     Route::post('/events/create', 'EventController@store')->name('events.create');
@@ -51,7 +65,8 @@ Route::middleware(['auth', 'admin.user'])->prefix('/admin')->group(function () {
 
     Route::get('/user/all', 'Usercontroller@all')->name('user.all');
     Route::get('/client', 'UserController@index')->name('client.index');
-    Route::get('/client/create', 'UserController@store')->name('client.create');
+    //Route::get('/client/create', 'UserController@store')->name('client.create');
+    Route::post('/store', 'Usercontroller@store')->name('user.store');
     Route::get('/client/edit/{id}', 'UserController@edit')->name('client.edit');
     Route::post('/client/update', 'UserController@update')->name('client.update');
 
@@ -59,8 +74,11 @@ Route::middleware(['auth', 'admin.user'])->prefix('/admin')->group(function () {
     Route::post('/report/get', 'ReportController@get')->name('report.get');
 
     Route::get('/bookings/index', 'BookingController@index')->name('booking.index');
+    Route::post('/bookings/sendeventdetails' ,'BookingController@sendeventdetails')->name('bookings.sendeventdetails');
 
-    Route::get('/send-booking-email', 'MailSendController@mailsend');
+    Route::get('/payment/getall', 'PaymentController@getAll')->name('payment.getall');
+    Route::post('/payment/sendduemembershipnotification' ,'PaymentController@sendDueMembershipNotification')->name('payment.sendduemembershipnotification');
+
 });
 
 Auth::routes();
