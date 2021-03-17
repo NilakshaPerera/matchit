@@ -72,7 +72,7 @@ class BookingController extends Controller
         }catch(\Exception $e){
 
             // check for failures
-            return back()->with('error', "There is a issue with email address, unable to send email");
+            return back()->with('error', "There is an issue with client's email address, unable to send email");
         
         }
     }
