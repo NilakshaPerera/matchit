@@ -60,7 +60,7 @@
                             </div>
 
                             <div class="text-right">
-                                <button type="submit" class="btn btn-primary m-3" >Send Email <i class="icon-envelope ml-2"></i></button>
+                                <button type="submit" class="btn btn-primary m-3"> Send Email <i class="icon-envelope ml-2"></i></button>
                             </div>
 
                             @if(session()->has('error'))
