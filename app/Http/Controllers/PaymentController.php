@@ -234,6 +234,7 @@ class PaymentController extends Controller
 
                 return redirect('/')->with(['paymentSuccess' => $message]);
             } else {
+                DB::rollback();
                 $messageErr = 'Payment failed!. Please try again.';
             }
         } catch (Exception $e) {
