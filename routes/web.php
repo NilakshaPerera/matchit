@@ -65,7 +65,6 @@ Route::middleware(['auth', 'admin.user'])->prefix('/admin')->group(function () {
 
     Route::get('/user/all', 'Usercontroller@all')->name('user.all');
     Route::get('/client', 'UserController@index')->name('client.index');
-    //Route::get('/client/create', 'UserController@store')->name('client.create');
     Route::post('/store', 'Usercontroller@store')->name('user.store');
     Route::get('/client/edit/{id}', 'UserController@edit')->name('client.edit');
     Route::post('/client/update', 'UserController@update')->name('client.update');
