@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\UserTypesController;
 use App\Http\Controllers\UserHasHobbyController;
+use App\Http\Controllers\UsersHasPersonalityDetailController;
 
 use Illuminate\Support\Facades\Hash;
 
@@ -364,8 +365,13 @@ class UserController extends Controller
             }
 
             UsersHasPersonalityDetail::where('users_id', $currentUser->id)->delete();
+
+            $userHasPersonalityDetailsController = new UsersHasPersonalityDetailController();
+            $userHasPersonalityDetailsController->delete($currentUser->id);
+
+
             foreach ($request['personality-details'] as $personDetail) {
-                UsersHasPersonalityDetail::create([
+                $userHasPersonalityDetailsController->create([
                     'users_id' => $currentUser->id,
                     'personality_details_id' => $personDetail,
                 ]);
