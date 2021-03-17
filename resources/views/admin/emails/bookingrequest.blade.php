@@ -158,18 +158,21 @@
                 <td colspan="2">
                     <table>
                         <tbody><tr>
-                            <td>Hello {{ $user->name }},
+                            <td>Hello <b><i>{{ $user->name }},</i></b>
                             <br>
-                            We are sending this email because you have requested event registration payment details from us. 
-                            Please click the below link to visit our registration page.<br></td>
+                            We are sending this email because you have requested event payment details from us. 
+                            Please click the below link and complete your payment. Feel free to contact us for any further assistance. <br></td>
                         </tr>
                     </tbody></table>
                 </td>
             </tr>
             
             <tr style="text-align:center">
-            <td><a class="btn btn-primary" href="{{  route('payment', [$user->id , 'event', 3]) }}" target="_blank" >View Event</a></td>
+                <td>
+                    <a class="btn btn-primary" href="{{  route('payment', [$user->id , 'event', $event->id]) }}" target="_blank" >Pay for your Booking</a>
+                </td>
             </tr>
+
             <tr class="total" style="text-align:center">
                 &nbsp;        
             </tr>

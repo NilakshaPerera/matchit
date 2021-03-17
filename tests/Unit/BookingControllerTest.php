@@ -33,7 +33,7 @@ class BookingControllerTest extends TestCase
      *
      * @return void
      */
-    public function testSendeventDetailsBooking()
+    public function testSendEventBookingDetails()
     {
         $user = factory(User::class)->create(getNewSeniorClientServiceAgent());
 
