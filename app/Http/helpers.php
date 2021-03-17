@@ -3,6 +3,13 @@ use App\Providers\AppServiceProvider;
 use Faker\Factory as Faker;
 use Illuminate\Support\Facades\Hash;
 
+
+function stream_sorter($key = 'total_score'){
+    return function ($a, $b) use ($key) {
+        return strnatcmp($a[$key], $b[$key]);
+    };        
+}
+
 function getNewSeniorClientServiceAgent(){
     $faker = Faker::create();
     return [
