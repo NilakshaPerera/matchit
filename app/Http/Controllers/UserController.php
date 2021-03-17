@@ -364,8 +364,6 @@ class UserController extends Controller
                 ]);
             }
 
-            UsersHasPersonalityDetail::where('users_id', $currentUser->id)->delete();
-
             $userHasPersonalityDetailsController = new UsersHasPersonalityDetailController();
             $userHasPersonalityDetailsController->delete($currentUser->id);
 
