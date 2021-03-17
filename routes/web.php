@@ -27,6 +27,8 @@ Route::get('/terms', function () {
 
 Route::get('/user', 'Usercontroller@index')->name('user');
 Route::post('/user/update', 'Usercontroller@update')->name('user.update');
+Route::get('/user/payment/{user}/{type}/{id}', 'PaymentController@index')->name('payment');
+Route::post('/user/payment/create', 'PaymentController@create')->name('payment.create');
 
 Route::middleware(['auth', 'client.user'])->prefix('/user')->group(function () {
 
@@ -35,9 +37,6 @@ Route::middleware(['auth', 'client.user'])->prefix('/user')->group(function () {
     Route::get('/invoice/{id}', 'Usercontroller@showInvoice')->name('user-invoice');
     Route::get('/matches', 'UserController@showMatches')->name('user-matches');
     Route::post('/store', 'Usercontroller@store')->name('user.store');
-
-    Route::get('/payment/{user}/{type}/{id}', 'PaymentController@index')->name('payment');
-    Route::post('/payment/create', 'PaymentController@create')->name('payment.create');
 
 });
 
@@ -75,6 +74,11 @@ Route::middleware(['auth', 'admin.user'])->prefix('/admin')->group(function () {
     Route::post('/report/get', 'ReportController@get')->name('report.get');
 
     Route::get('/bookings/index', 'BookingController@index')->name('booking.index');
+    Route::post('/bookings/sendeventdetails' ,'BookingController@sendeventdetails')->name('bookings.sendeventdetails');
+
+    Route::get('/payment/getall', 'PaymentController@getAll')->name('payment.getall');
+    Route::post('/payment/sendduemembershipnotification' ,'PaymentController@sendDueMembershipNotification')->name('payment.sendduemembershipnotification');
+
 });
 
 Auth::routes();

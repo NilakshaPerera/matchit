@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="shortcut icon" type="image/jpg" href="{{ url('assets_app/images/favicon.png') }}"/>
 	<meta name="csrf-token" content="{{ csrf_token() }}">
-	<title>MatchiIT Admin</title>
+	<title>MatchIT Admin</title>
 
 	<script> var base = '{{ url('/') }}';</script>
 	<!-- Global stylesheets -->
@@ -148,11 +148,11 @@
 						    </ul>
 						</li>
 
-						<li class="nav-item nav-item-submenu  {{(in_array( Route::currentRouteName() , ["booking.index"] ))? 'nav-item-expanded nav-item-open' : ""   }}">
+						<li class="nav-item nav-item-submenu  {{(in_array( Route::currentRouteName() , ["booking.index", "payment.getall"] ))? 'nav-item-expanded nav-item-open' : ""   }}">
 							<a href="#" class="nav-link"><i class="icon-copy"></i> <span>Event Bookings</span></a>
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
 								<li class="nav-item {{ (Route::currentRouteName() == "booking.index")? "nav-item-open" : "" }}"><a href="{{route('booking.index')}}" class="nav-link ">Accept Bookings</a></li>
-								<li class="nav-item"><a href="" class="nav-link ">Accept Payments</a></li>
+	            				<li class="nav-item {{ (Route::currentRouteName() == "payment.getall")? "nav-item-open" : "" }}"><a href="{{route('payment.getall')}}" class="nav-link ">Accept Payments</a></li>
 						    </ul>
 						</li>
 
