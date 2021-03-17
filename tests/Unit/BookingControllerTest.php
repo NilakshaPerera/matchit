@@ -28,8 +28,10 @@ class BookingControllerTest extends TestCase
     }
 
 
-    /**
-     * Undocumented function
+   /**
+     * Created At : 16/03/2021
+     * Created By : Mujitha
+     * Summary : Test Send event details email notification function
      *
      * @return void
      */
