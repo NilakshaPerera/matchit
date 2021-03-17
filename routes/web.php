@@ -36,7 +36,6 @@ Route::middleware(['auth', 'client.user'])->prefix('/user')->group(function () {
     Route::get('/membership', 'Usercontroller@membership')->name('user-membership');
     Route::get('/invoice/{id}', 'Usercontroller@showInvoice')->name('user-invoice');
     Route::get('/matches', 'UserController@showMatches')->name('user-matches');
-    Route::post('/store', 'Usercontroller@store')->name('user.store');
 
 });
 
@@ -66,7 +65,8 @@ Route::middleware(['auth', 'admin.user'])->prefix('/admin')->group(function () {
 
     Route::get('/user/all', 'Usercontroller@all')->name('user.all');
     Route::get('/client', 'UserController@index')->name('client.index');
-    Route::get('/client/create', 'UserController@store')->name('client.create');
+    //Route::get('/client/create', 'UserController@store')->name('client.create');
+    Route::post('/store', 'Usercontroller@store')->name('user.store');
     Route::get('/client/edit/{id}', 'UserController@edit')->name('client.edit');
     Route::post('/client/update', 'UserController@update')->name('client.update');
 

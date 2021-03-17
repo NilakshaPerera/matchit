@@ -27,7 +27,7 @@
                             <h6>Profile Created On : <b>{{ Auth::user()->created_at->format('Y-m-d') }}</b></h6>
                             <h6>Last Payment Made On : <b>{{ $lastMembershipPayment }}</b></h6>
                         </div>
-                        <div class="col-md-6 text-right">
+                        <div class="col-md-6 text-right mt-4">
                             <h5>Ammount Due : <b>{{ $dues }}£</b></h5>
                             @if($dues)
                                 <a class="btn btn-primary" href="{{ route('payment', [Auth::user()->id , 'membership', 0]) }}">Pay {{ $dues }}£</a>
