@@ -8,6 +8,11 @@ use Tests\DuskTestCase;
 
 class SitePagesTest extends DuskTestCase
 {
+
+    // INSTRUCTIONS 
+    // php artisan:serve
+    // php artisan dusk
+
     /**
      * Created At : 27/02/2021
      * Created By : Nilaksha 
@@ -188,7 +193,7 @@ class SitePagesTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/user/events')
-                ->clickLink('Dale Stokes')
+                ->clickLink('Nilaksha Perera')
                 ->clickLink('Logout')
                 ->assertSee('Login');
         });
