@@ -37,22 +37,16 @@ class UserControllerTest extends TestCase
         $response->assertStatus(200);
     }
 
-     /**
-     * Undocumented function
-     *
-     * @return void
-     */
-
-    public function testCreateUser()
+    public function testAllUser()
     {
         $user = factory(User::class)->create(getNewSeniorClientServiceAgent());
 
         $response = $this->actingAs($user)
-                         ->get(route('client.create'));
+                         ->get(route('user.all'));
 
-        $response->assertStatus(302);
+        $response->assertStatus(200);
+
     }
-
   
     
 }
