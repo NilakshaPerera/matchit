@@ -16,12 +16,27 @@ class PersonalityDetailController extends Controller
         $this->middleware('auth');
     }
 
+    /**
+     * Created At : 23/02/2021
+     * Created By : Mujitha 
+     * Summary : Shows personality in personality index
+     *
+     * @param Request $request
+     * @return void
+     */
     public function index()
     {
         return view('admin.personality.index')->withPersonalities(PersonalityDetail::all());
     }
 
-
+    /**
+     * Created At : 23/02/2021
+     * Created By : Mujitha 
+     * Summary : Create new personality
+     *
+     * @param Request $request
+     * @return void
+     */
     public function store(Request $request)
     {
         $request->validate([
@@ -36,6 +51,14 @@ class PersonalityDetailController extends Controller
         
     }
 
+    /**
+     * Created At : 23/02/2021
+     * Created By : Mujitha 
+     * Summary : Display personality when click edit button
+     *
+     * @param Request $request
+     * @return void
+     */
     public function edit(Request $request)
     {
         $personality = PersonalityDetail::where('id', $request['id'])->first();
@@ -43,6 +66,14 @@ class PersonalityDetailController extends Controller
             ->withPersonality($personality);
     }
 
+    /**
+     * Created At : 23/02/2021
+     * Created By : Mujitha 
+     * Summary : Update personality
+     *
+     * @param Request $request
+     * @return void
+     */
     public function update(Request $request)
     {
         $request->validate([
