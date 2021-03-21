@@ -17,7 +17,7 @@ class UserControllerTest extends TestCase
         $user = factory(User::class)->create(getNewSeniorClientServiceAgent());
 
         $response = $this->actingAs($user)
-                         ->get(route('eventtype.index'));
+                         ->get(route('user'));
 
         $response->assertStatus(200);
     }
@@ -37,16 +37,6 @@ class UserControllerTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function testAllUser()
-    {
-        $user = factory(User::class)->create(getNewSeniorClientServiceAgent());
-
-        $response = $this->actingAs($user)
-                         ->get(route('user.all'));
-
-        $response->assertStatus(200);
-
-    }
-  
+    
     
 }
