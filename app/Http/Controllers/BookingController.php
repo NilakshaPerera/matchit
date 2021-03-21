@@ -76,7 +76,7 @@ class BookingController extends Controller
      * Summary Creates a booking
      *
      * @param [type] $params
-     * @return void
+     * @return enum
      */
     public function create($params){
        return Booking::create($params);
