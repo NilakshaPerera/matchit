@@ -7,6 +7,7 @@ use App\User;
 
 class UserControllerTest extends TestCase
 {
+        // php artisan test --filter UserControllerTest
     /**
      * Undocumented function
      *
