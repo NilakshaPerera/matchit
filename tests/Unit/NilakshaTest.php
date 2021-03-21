@@ -42,7 +42,7 @@ class NilakshaTest extends TestCase
     {
         $userController = new UserController();
         $result = $userController->getMembershipDues(1);
-        $this->assertNotEmpty($result);
+        $this->assertGreaterThan(-1, (float)$result);
     }
 
     /**
