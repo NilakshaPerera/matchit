@@ -529,11 +529,7 @@ class UserController extends Controller
                 }
             }
 
-            usort($matches, function($key = 'total_score'){
-                return function ($a, $b) use ($key) {
-                    return strnatcmp($a[$key], $b[$key]);
-                };        
-            });
+            usort($matches, stream_sorter());
 
             return [
                 'success' => true,
@@ -546,4 +542,5 @@ class UserController extends Controller
             ];
         }
     }
+
 }

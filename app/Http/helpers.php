@@ -9,8 +9,15 @@ use Illuminate\Support\Facades\Mail;
 // use SendMail;
 // use Mail;
 
-function getNewSeniorClientServiceAgent()
-{
+
+function stream_sorter($key = 'total_score'){
+    return function ($a, $b) use ($key) {
+        return strnatcmp($a[$key], $b[$key]);
+    };        
+}
+
+function getNewSeniorClientServiceAgent(){
+
     $faker = Faker::create();
     return [
         'name' => $faker->name,

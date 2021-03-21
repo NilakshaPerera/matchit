@@ -22,6 +22,15 @@ class EventTypeControllerTest extends TestCase
         $response->assertStatus(200);
     }
 
-   
+    public function testShowallEventTypes()
+    {
+        $user = factory(User::class)->create(getNewSeniorClientServiceAgent());
+
+        $response = $this->actingAs($user)
+                         ->get(route('eventtype.index'));
+
+        $response->assertStatus(200);
+    }
+
     
 }

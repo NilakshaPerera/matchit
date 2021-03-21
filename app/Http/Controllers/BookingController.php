@@ -60,14 +60,21 @@ class BookingController extends Controller
         if(!$user){ return ['success' => false, 'data' => "Invalid user"]; }
         $event = Event::where('id', $request['event_types_id'])->first();
         
+        try{
 
-        Mail::send('admin.emails.bookingrequest', ['user' => $user , 'event' => $event], function($message) use($user) {
-            $message->to($user->email)
-            ->subject('Event Registration!!!');
-        });
+            Mail::send('admin.emails.bookingrequest', ['user' => $user , 'event' => $event], function($message) use($user) {
+                $message->to($user->email)
+                ->subject('Event Registration!!!');
+            });
 
-        return back()->with('success', "You sent a notification to " . $user->name);
+            return back()->with('success', "Email has successfully send to " . $user->name);
     
+        }catch(\Exception $e){
+
+            // check for failures
+            return back()->with('error', "There is an issue with client's email address, unable to send email");
+        
+        }
     }
 
     /**
