@@ -8,6 +8,7 @@ use Tests\DuskTestCase;
 
 class SitePagesTest extends DuskTestCase
 {
+
     /**
      * Created At : 27/02/2021
      * Created By : Nilaksha 
@@ -128,6 +129,40 @@ class SitePagesTest extends DuskTestCase
         });
     }
 
+    public function testRegister()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/register')
+                ->type('email', 'perera.nilaksha@gmail.com')
+                ->type('name', 'Dale Stokes')
+                ->type('phone', "0044" . mt_rand(10000000, 99999999))
+                ->type('password', 'Pa$$w0rd!')
+                ->type('password_confirmation', 'Pa$$w0rd!')
+                ->type('birthday', '09031940')
+                ->select('user_type', 'Local')
+                ->press('Register')
+                ->assertSee('Basic Details');
+        });
+    }
+
+    /**
+     * Created At : 27/02/2021
+     * Created By : Nilaksha 
+     * Summary : Log out function needs to redirect user to home page and should be able to see the login option
+     *
+     * @return void
+     */
+    public function testLogOut()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/user/events')
+                ->clickLink('Dale Stokes')
+                ->clickLink('Logout')
+                ->assertSee('Login');
+        });
+    }
+
+
     /**
      * Created At : 27/02/2021
      * Created By : Nilaksha 
@@ -174,23 +209,6 @@ class SitePagesTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->visit('/user/events')
                 ->assertSee('Your Events');
-        });
-    }
-
-    /**
-     * Created At : 27/02/2021
-     * Created By : Nilaksha 
-     * Summary : Log out function needs to redirect user to home page and should be able to see the login option
-     *
-     * @return void
-     */
-    public function testLogOut()
-    {
-        $this->browse(function (Browser $browser) {
-            $browser->visit('/user/events')
-                ->clickLink('Dale Stokes')
-                ->clickLink('Logout')
-                ->assertSee('Login');
         });
     }
 }

@@ -13,17 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', function (){return view('welcome'); });
 
-Route::get('/about', function () {
-    return view('site.about');
-})->name('about');
+Route::get('/about', function (){return view('site.about');})->name('about');
 
-Route::get('/terms', function () {
-    return view('site.terms');
-})->name('terms');
+Route::get('/terms', function (){return view('site.terms');})->name('terms');
 
 Route::get('/user', 'Usercontroller@index')->name('user');
 Route::post('/user/update', 'Usercontroller@update')->name('user.update');

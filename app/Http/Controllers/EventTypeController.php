@@ -6,8 +6,7 @@ use Illuminate\Http\Request;
 use App\EventType;
 
 class EventTypeController extends Controller
-{
-
+{    
     /**
      * Create a new controller instance.
      *
@@ -18,12 +17,28 @@ class EventTypeController extends Controller
         $this->middleware('auth');
     }
 
+    /**
+     * Created At : 14/2/2021
+     * Created By : Dulan 
+     * Summary : Shows eventType in eventType index
+     *
+     * @param Request $request
+     * @return void
+     */
     public function index()
     {
         return view('admin.eventtype.index')->withEventTypes(EventType::all());
     }
 
 
+    /**
+     * Created At : 14/2/2021
+     * Created By : Dulan 
+     * Summary : Create new EventType
+     *
+     * @param Request $request
+     * @return void
+     */
     public function store(Request $request)
     {
         $request->validate([
@@ -37,6 +52,14 @@ class EventTypeController extends Controller
         return redirect()->back()->with('message', 'Event Type Created Successfully!');
     }
 
+    /**
+     * Created At : 14/2/2021
+     * Created By : Dulan 
+     * Summary : Display EventType when click edit button
+     *
+     * @param Request $request
+     * @return void
+     */
     public function edit(Request $request)
     {
         $eventType = EventType::where('id', $request['id'])->first();
@@ -44,6 +67,14 @@ class EventTypeController extends Controller
             ->withEventType($eventType);
     }
 
+    /**
+     * Created At : 14/2/2021
+     * Created By : Dulan 
+     * Summary : Update EventType
+     *
+     * @param Request $request
+     * @return void
+     */
     public function update(Request $request)
     {
         $request->validate([
