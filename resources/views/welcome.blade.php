@@ -10,7 +10,7 @@
             <h2 class="text-center mt-4 mb-4"><b>Upcoming Events</b></h2>
             <div class="row ">
                 <?php
-                    $events = \App\Event::all();
+                    $events = \App\Event::orderBy('id', 'DESC')->get();
                 ?>
                 @foreach ($events as $event)
                 <?php

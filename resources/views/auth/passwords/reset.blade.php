@@ -48,7 +48,7 @@
 
                         <div class="form-group ">
                             <div class="col-md-12 mb-1-on-mobile">
-                                <input id="password-confirm" type="password" class="form-control @error('password-confirm') is-invalid @enderror" name="password-confirm" value="{{ old('password') }}" placeholder="{{ __('Confirm Password') }}" required autocomplete="password-confirm" autofocus>
+                                <input id="password-confirm" type="password" class="form-control @error('password-confirm') is-invalid @enderror" name="password_confirmation" value="{{ old('password') }}" placeholder="{{ __('Confirm Password') }}" required autocomplete="password-confirm" autofocus>
                                
                             </div>
                         </div>
