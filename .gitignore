@@ -11,3 +11,4 @@ npm-debug.log
 yarn-error.log
 public/assets_app/css/app.css
 public/assets_app/js/app.js
+.env
